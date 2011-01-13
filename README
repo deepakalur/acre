@@ -1,0 +1,42 @@
+ACRE - Application Characteristics Repository Environment
+============================================================
+Version 0.1
+Licensed per Apache 2.0 License. See LICENSE file for details.
+
+Steps to compile and run ACRE:
+=================================
+1. Make sure you have installed J2SE 1.5 or later.
+The compile depends on tools.jar from J2SE 1.5
+2. Modify the build.properties to point to the J2SE 1.5 installation.
+3. Run ant to compile:
+    % ant clean
+    % ant all
+4. Create Database, see steps below before proceeding to #5
+5. Run ant to run the ACRE UI:
+    % ant run
+
+Creating the ACRE Database
+================================
+1. Install MySQL (4.1.5 or later). Modify the "path" variable to include mysql bins.
+2. Create a database (schema) "salsa"
+3. Create a user "salsa", password "salsa"
+   Assign all privileges to salsa user on salsa database
+4. Create the tables in "salsa" database by running the script:
+   % scripts/createfactdb.sh
+5. Run factextractor target using the runfact.bat file. Modify the script as necessary.
+6. Alternatively, you can import an example database from the mysqldbdump file
+with filename of "psa.salsa.db.dump" located under factextractor/db directory.
+
+Running Configuration Settings
+====================================
+If the application does not start and you want to set the configuration
+settings (such as DBURL, password, etc.), run the runconfig target
+in the build.xml:
+    % ant runconfig
+This will bring up the configuration window without starting
+all of ACRE.
+
+If you don't see anything under the Default System and Default
+Version combo boxes, it means that there are no facts in the database.
+Try populating/creating the data in the database first according to the
+steps above before run configure again.
