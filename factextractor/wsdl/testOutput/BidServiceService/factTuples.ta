@@ -1,0 +1,5 @@
+
+FACT TUPLE :
+
+hasPortType http://bidservice.com:BidServiceService http://bidservice.com:BidServiceService:BidService
+hasBinding http://bidservice.com:BidServiceService http://bidservice.com:BidServiceService:BidServiceBinding

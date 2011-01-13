@@ -1,0 +1,191 @@
+
+FACT TUPLE :
+
+$INSTANCE <root_package> jPackage
+$INSTANCE my jPackage
+contain <root_package> my
+$INSTANCE my.salsa jPackage
+contain my my.salsa
+$INSTANCE my.salsa.test jPackage
+contain my.salsa my.salsa.test
+contain my.salsa.test my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.Dannotation jInterface
+extends my.salsa.test.Dannotation java.lang.annotation.Annotation
+$INSTANCE my.salsa.test.Dannotation.type[] jMethod
+contain my.salsa.test.Dannotation my.salsa.test.Dannotation.type[]
+isOfType my.salsa.test.Dannotation.type[] java.lang.String
+$INSTANCE my.salsa.test.Dannotation.value[] jMethod
+contain my.salsa.test.Dannotation my.salsa.test.Dannotation.value[]
+isOfType my.salsa.test.Dannotation.value[] java.lang.String
+contain my.salsa.test my.salsa.test.TestJsp
+$INSTANCE my.salsa.test.TestJsp jClass
+extends my.salsa.test.TestJsp java.lang.Object
+$INSTANCE my.salsa.test.TestJsp.TestJsp[] jMethod
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.TestJsp[]
+isOfType my.salsa.test.TestJsp.TestJsp[] void
+calls my.salsa.test.TestJsp.TestJsp[] java.lang.Object.Object[]
+$INSTANCE my.salsa.test.TestJsp.runjsp[] jMethod
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.runjsp[]
+isOfType my.salsa.test.TestJsp.runjsp[] void
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal0 jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$dummyLocal0
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal0 int
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$dummyLocal0 my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal1 jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$dummyLocal1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal1 int
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$dummyLocal1 my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal2 jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$dummyLocal2
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal2 int
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$dummyLocal2 my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal3 jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$dummyLocal3
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal3 int
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$dummyLocal3 my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1 my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletCount jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$scriptletCount
+isOfType my.salsa.test.TestJsp.$salsa$scriptletCount int
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$scriptletCount my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1 my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1 my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletTotalLines jField
+contain my.salsa.test.TestJsp my.salsa.test.TestJsp.$salsa$scriptletTotalLines
+isOfType my.salsa.test.TestJsp.$salsa$scriptletTotalLines int
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp.$salsa$scriptletTotalLines my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1
+isOfType my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1 my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1 my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE my.salsa.test.TestJsp$annotation$1 jAnnotation
+hasAnnotations my.salsa.test.TestJsp my.salsa.test.TestJsp$annotation$1
+isOfType my.salsa.test.TestJsp$annotation$1 my.salsa.test.Dannotation
+$INSTANCE my.salsa.test.TestJsp$annotation$1$arg$1 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp$annotation$1 my.salsa.test.TestJsp$annotation$1$arg$1
+isOfType my.salsa.test.TestJsp$annotation$1$arg$1 my.salsa.test.Dannotation.type[]
+$INSTANCE my.salsa.test.TestJsp$annotation$1$arg$2 jAnnotationArgument
+hasAnnotationArgument my.salsa.test.TestJsp$annotation$1 my.salsa.test.TestJsp$annotation$1$arg$2
+isOfType my.salsa.test.TestJsp$annotation$1$arg$2 my.salsa.test.Dannotation.value[]
+$INSTANCE java.lang.Object.Object[] jMethod
+contain java.lang.Object java.lang.Object.Object[]
+isOfType java.lang.Object.Object[] void
+contain java.lang java.lang.Object
+$INSTANCE java.lang.Object jClass
+$INSTANCE java.lang jPackage
+contain java java.lang
+$INSTANCE java jPackage
+contain <root_package> java
+contain java.lang.annotation java.lang.annotation.Annotation
+$INSTANCE java.lang.annotation.Annotation jInterface
+$INSTANCE java.lang.annotation jPackage
+contain java.lang java.lang.annotation
+contain java.lang java.lang.String
+$INSTANCE java.lang.String jClass
+extends java.lang.String java.lang.Object
+implements java.lang.String java.io.Serializable
+implements java.lang.String java.lang.Comparable
+implements java.lang.String java.lang.CharSequence
+contain java.io java.io.Serializable
+$INSTANCE java.io.Serializable jInterface
+$INSTANCE java.io jPackage
+contain java java.io
+contain java.lang java.lang.Comparable
+$INSTANCE java.lang.Comparable jInterface
+contain java.lang java.lang.CharSequence
+$INSTANCE java.lang.CharSequence jInterface
+$INSTANCE void jNonClassType
+$INSTANCE int jNonClassType
+
+FACT ATTRIBUTE :
+
+<root_package> { shortName=<root_package> }
+my { shortName=my }
+my.salsa { shortName=salsa }
+my.salsa.test { shortName=test }
+my.salsa.test.Dannotation { shortName=Dannotation accessibility=<package> isStatic=true isInner=false sourceFile=test/my/salsa/test/TestJsp.java lineNum=3 }
+my.salsa.test.Dannotation.type[] { shortName=type accessibility=public isStatic=false isFinal=false isAbstract=true isConstructor=false numParams=0 lineNum=4 }
+my.salsa.test.Dannotation.value[] { shortName=value accessibility=public isStatic=false isFinal=false isAbstract=true isConstructor=false numParams=0 lineNum=5 }
+my.salsa.test.TestJsp { shortName=TestJsp accessibility=public isStatic=false isInner=false isAbstract=false isFinal=false sourceFile=test/my/salsa/test/TestJsp.java lineNum=12 }
+my.salsa.test.TestJsp.TestJsp[] { shortName=TestJsp accessibility=public isStatic=false isFinal=false isAbstract=false isConstructor=true numParams=0 lineNum=12 }
+(calls my.salsa.test.TestJsp.TestJsp[] java.lang.Object.Object[]) { lineNum=12 }
+my.salsa.test.TestJsp.runjsp[] { shortName=runjsp accessibility=public isStatic=false isFinal=false isAbstract=false isConstructor=false numParams=0 lineNum=13 }
+my.salsa.test.TestJsp.$salsa$dummyLocal0 { shortName=$salsa$dummyLocal0 accessibility=<package> isStatic=false isFinal=false lineNum=16 }
+my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$1 { shortName=type stringValue="Scriptlet" }
+my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1$arg$2 { shortName=value stringValue="body1" }
+my.salsa.test.TestJsp.$salsa$dummyLocal0$annotation$1 { shortName=$salsa$dummyLocal0$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp.$salsa$dummyLocal1 { shortName=$salsa$dummyLocal1 accessibility=<package> isStatic=false isFinal=false lineNum=21 }
+my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$1 { shortName=type stringValue="Scriptlet" }
+my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1$arg$2 { shortName=value stringValue="body 1" }
+my.salsa.test.TestJsp.$salsa$dummyLocal1$annotation$1 { shortName=$salsa$dummyLocal1$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp.$salsa$dummyLocal2 { shortName=$salsa$dummyLocal2 accessibility=<package> isStatic=false isFinal=false lineNum=22 }
+my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$1 { shortName=type stringValue="Scriptlet" }
+my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1$arg$2 { shortName=value stringValue="body 2" }
+my.salsa.test.TestJsp.$salsa$dummyLocal2$annotation$1 { shortName=$salsa$dummyLocal2$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp.$salsa$dummyLocal3 { shortName=$salsa$dummyLocal3 accessibility=<package> isStatic=false isFinal=false lineNum=23 }
+my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$1 { shortName=type stringValue="Scriptlet" }
+my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1$arg$2 { shortName=value stringValue="body 3" }
+my.salsa.test.TestJsp.$salsa$dummyLocal3$annotation$1 { shortName=$salsa$dummyLocal3$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp.$salsa$scriptletCount { shortName=$salsa$scriptletCount accessibility=<package> isStatic=true isFinal=false lineNum=26 }
+my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$1 { shortName=type stringValue="scriptletCount" }
+my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1$arg$2 { shortName=value stringValue="37" }
+my.salsa.test.TestJsp.$salsa$scriptletCount$annotation$1 { shortName=$salsa$scriptletCount$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp.$salsa$scriptletTotalLines { shortName=$salsa$scriptletTotalLines accessibility=<package> isStatic=true isFinal=false lineNum=27 }
+my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$1 { shortName=type stringValue="scriptletTotalLines" }
+my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1$arg$2 { shortName=value stringValue="69" }
+my.salsa.test.TestJsp.$salsa$scriptletTotalLines$annotation$1 { shortName=$salsa$scriptletTotalLines$annotation$1 numArgs=2 }
+my.salsa.test.TestJsp$annotation$1$arg$1 { shortName=type stringValue="JSP" }
+my.salsa.test.TestJsp$annotation$1$arg$2 { shortName=value stringValue="JSP" }
+my.salsa.test.TestJsp$annotation$1 { shortName=TestJsp$annotation$1 numArgs=2 }
+java.lang.Object.Object[] { shortName=Object accessibility=public isStatic=false isFinal=false isAbstract=false isConstructor=true numParams=0 lineNum=1 }
+java.lang.Object { shortName=Object accessibility=public isStatic=false isInner=false isAbstract=false isFinal=false sourceFile=Object.java lineNum=1 }
+java.lang { shortName=lang }
+java { shortName=java }
+java.lang.annotation.Annotation { shortName=Annotation accessibility=public isStatic=false isInner=false sourceFile=Annotation.java lineNum=1 }
+java.lang.annotation { shortName=annotation }
+java.lang.String { shortName=String accessibility=public isStatic=false isInner=false isAbstract=false isFinal=true sourceFile=String.java lineNum=1 }
+java.io.Serializable { shortName=Serializable accessibility=public isStatic=false isInner=false sourceFile=Serializable.java lineNum=1 }
+java.io { shortName=io }
+java.lang.Comparable { shortName=Comparable accessibility=public isStatic=false isInner=false sourceFile=Comparable.java lineNum=1 }
+java.lang.CharSequence { shortName=CharSequence accessibility=public isStatic=false isInner=false sourceFile=CharSequence.java lineNum=1 }

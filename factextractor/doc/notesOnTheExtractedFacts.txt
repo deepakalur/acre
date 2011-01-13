@@ -1,0 +1,211 @@
+			 Notes on the Extracted Facts
+			 ============================
+
+			       Michael Godfrey
+			      migod@uwaterloo.ca
+
+			       January 15, 2004
+			    revised March 25, 2004
+		       revised for SALSA June  7, 2004
+			    revised June 18, 2004
+
+For details of the facts extracted, see the textual meta model in
+javaMetaModel.ta or the diagram in JavaMetaModel.jpg.
+
+Issues new to the SALSA version:
+	-- Modelling and extracting annotations (JSR-175) is a work in
+	   progress and is not documented in this file yet.
+
+Lexical issues:
+	The TA language (i.e., what the facts are written in and what QL
+	understands) doesn't permit blanks, parentheses, or angle brackets
+	inside entity names.  Parentheses and angle brackets (i.e., "<" and
+	">") have been converted to square brackets, and blanks have been
+	removed from parameter signatures (they occurred only inside of
+	generic parameters).
+
+Names:  
+	All entities (packages, classes/interfaces, methods, fields,
+	parameters) are fully qualified to avoid ambiguity.  This makes for
+	rather long identifiers, but so far the performance price doesn't
+	seem to be very high.  This makes the files bigger to write/read,
+	but the grok language (as you would expect) doesn't need to keep
+	walking over the long identifier names once the factbase has been
+	read into memory.  This approach makes scrutinizing the output much
+	simpler; if we later decide it's too slow, there are several
+	straightforward tricks we can use.
+
+	Packages, classes/interface, and fields are named in the "normal"
+	Java way:
+		package		java.util
+		class		java.lang.String
+
+	Methods include their param signatures (so as to disambiguate
+	overloaded methods):
+		method		java.lang.String.String[char[]]
+	That's the constructor of String that takes a char array.  Adding
+	the param information is enough to disambiguate overloaded methods,
+	since (in Java) the return type is not part of the signature.  Note
+	since Java allows classes to have methods with the same name as the
+	class, you need to check the isConstructor attribute to verify if
+	the above is a constructor or normal method.  
+
+	Parameters are named by <methodName>.paramIndex, as in:
+		java.lang.String.String[char[]].<param1>
+	The first param is param 1, not 0 (of course, we can change this if
+	people feel strongly that the other way makes more sense).  Note
+	that param names are in the AST and could be dumped if desired, but
+	symbols whose existence is inferred from jar library files do not
+	have param names available, so I just made all of the names
+	anonymous.
+
+"jType":
+	In the meta model diagram, you will see that "jType" is an abstract
+	type; it is the inheritance parent of "jClass", "jInterface", and
+	"jNonClassType".  No instances of "jType" are created by the
+	extractor.
+
+"isTypeOf":
+	The "isTypeOf" relation returns the name of the type of a field,
+	parameter, or method.  For methods, this relation models the return
+	type.  
+
+	If the type is a normal class or interface, then the value is the
+	class/interface name.  Such a name will also be a $INSTANCE of a
+	jClass or jInterface.
+
+	If the type is a basic type, array type, or generic type (TypeVar
+	or ForAll in javac), then the type name in constructed as expected
+	and that name is created as a $INSTANCE of "jNonClassType".
+
+Parameters:
+	The index of a parameter is its place in the list.  The first
+	parameter has index 1, the second 2, etc.
+
+	You might think that for consistency, "contain" should be used as
+	the name for "hasParam".  You're correct, but if you do this, the
+	"contain" relations suddenly explodes.  So I just picked another
+	name for this relation, reasoning that you don't care about
+	parameters as often as you care about the other entity kinds.
+
+The fake methods "foo.<initializer>" and "foo.<staticInitializer>":
+	Most relations (calls, instantiates, uses, etc) occur in method
+	bodies.  However, they can also occur inside field declarations and
+	class initializers.  To model this, I have created fake methods as
+	needed for each such class "foo": "foo.<initializer>" for
+	non-static init blocks and field declarations, and
+	"foo.<staticInitializer>" for static init blocks and field
+	declarations.  This allows me to maintain the assumption of the
+	model that, for example, only methods call methods.
+
+"foo.<initializer>" vs "foo.<init>"
+	javac renames constructor methods as "<init>".  I decided to use
+	the class name plus param information to give more information.
+	Note that therefore "<initialiazer>" corresponds to (non-static)
+	initialization code that is *not* inside a constructor.
+
+"Interesting" vs. "boring" entities:
+	Again, in the interests of simplicity, I have decided to ignore
+	"boring" entities.  Here is my definition of "interesting":
+	    -- all packages and top-level classes 
+	    -- member classes of interesting classes (nested to any depth)
+	    -- methods and fields of interesting classes
+	    -- parameters of interesting methods
+	So roughly, this is what is boring:
+	    -- anonymous and local classes
+	    -- any subpart of a boring class.
+	How does this affect what gets extracted?  Read on.
+
+Relations and "boring" entities:
+	First, we note that boring entities can exist either only inside a
+	methodDef, or inside some sort of initialization code (which is
+	modelled at the fake method "foo.<[staticI|i]nitializer>", as
+	discussed above).
+
+	Second, we note that "interesting" things (calls to interesting
+	methods, etc) might happen inside a boring entity, and we want to
+	record these.  This leads to the following rule: 
+
+	For any relation "rel a b":
+	-- if both "a" and "b" are interesting entities, then "rel a b" is
+	   duly recorded in the fact dump.  
+	-- if "b" is boring, then the relation is not recorded.
+	-- if "a" is boring but "b" is interesting, then "rel c b" is duly
+	   recorded, where "c" is the first interesting containment
+	   ancestor of "a" that you would hit as you ascend the containment
+	   hierarchy.
+
+	OK, that's a little abstract.  Here's an example.  Suppose that
+	"pckg.cls.intMeth[]" is an interesting method that contains a local
+	or anonymous class "localC" within its definition.  Suppose in turn
+	localC defines methods called "m1" and "m2".  If we find that m1
+	calls m2, then we ignore this relation, as the object (m2) is
+	boring.  But if m1 also calls "java.lang.System.currentTimeMillis[]" 
+	and instantiates from "java.util.Vector", then these relations are
+	recorded and associated with intMeth:
+	    calls 	 pckg.cls.intMeth[] java.lang.System.currentTimeMillis[]
+	    instantiates pckg.cls.intMeth[] java.util.Vector
+
+Throws:
+	The "throws" relations is extracted by visiting throw statements
+	inside method bodies; it is NOT done by examining the throws
+	specification.  This means that the throwing of both checked and
+	unchecked exceptions will be included in the dumped facts.
+	
+References to library entities:
+	To be able to run the extractor, you must have complete sources and
+	libraries for the system you wish to examine.  The extractor will
+	"visit" all of the entities in the source, but not those in the
+	library (tho there are symbol table entries for them).  We would like
+	*some* information about the symbol table entries that are used (i.e.,
+	are objects of the meta-model relations calls, implements, extends,
+	uses, throws, catches, ...) by the client code, so we keep track of
+	all of the fields/methods/classes/interfaces that are referenced but
+	not visited (i.e., the library entities that are used).  At the end of
+	the extraction we visit these entities.  We also visit their
+	containing classes (if any) and packages recursively up to the root.
+
+Line and column information:
+	In previous versions of the extractor, I had included both line and
+	column information about where entities are defined and where
+	relationships (eg method calls occur).  I have decided to only
+	model line numbers from now on as it makes life simpler, it's not
+	clear column information is really necessary, and the column
+	information extracted by javac is sometimes incorrect anyway.
+
+	Note that line information about library entities is not modelled
+	by javac, so a dummy value of zero is used.
+
+Issues punted on:
+	(... because they were considered relatively unimportant)
+
+	The "imports" relation has not been modelled.  All entities are
+	fully qualified (thanks, javac), so there's no need.  This is
+	really a relationship between compilation units rather than classes
+	etc, so I really don't see why this would be interesting to us.
+
+	I decided not to bother modelling info about arrays, as I felt
+	that it just makes the model uglier.  It would be some, but not a
+	lot of, work to add.
+
+File paths:
+	All file paths (i.e., the jSourceFile attribute of classes) are
+	converted to Unix notation, regardless of true origin.  This is
+	because QL can't easily deal with DOS-style backslashes in character
+	strings.  So you'll understand if you see a strange looking path like
+	"C:/MyPrograms/MyTargetSystem/Main.java".
+
+Generic types:
+	Generic classes and methods are parameterized by type variables.  I
+	have converted these variables to their "erasure types" (I hope I'm
+	using the term correctly).  That is, if you see a type variable
+	declaration (in front of the generic class or method) of 
+	"<T extends foo>"
+
+
+[This file should be found in
+ $SALSA_EXTRACTOR/doc/notesOnTheExtractedFacts.txt
+
+ See also the file 
+ $SALSA_EXTRACTOR/doc/usingSalsaFactExtractor.txt
+]

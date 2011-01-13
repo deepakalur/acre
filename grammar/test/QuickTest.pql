@@ -1,0 +1,68 @@
+//select foo(c.name) from classes c ;
+//define x as select foo.a as a, foo.b AS b from foo;
+//define y as select x.b from x where x.a = "xexe";
+//include a.b.c;
+//select c from classes c where not c.name like "xexe";
+//select c from classes c where not c.name rlike "xexe";
+
+// Example 1. Select classes with total number of statements > 1000
+SELECT c
+FROM classes c
+WHERE c.numStatements > 10
+ORDER BY c.name DESC;
+
+// Example 2. Select classes that have a method with
+// number of statements > 100
+SELECT DISTINCT c
+FROM classes c
+WHERE c.methods.numStatements > 100
+ORDER BY c.name DESC;
+
+// Example 3. Select classes having synchronized blocks
+// by number of synchronized blocks
+//SMA: cannot use projection column alias in where clase. It can be used in order by though
+//SMA: NOW it is possible to use SELECT aliases any clause other that FROM
+SELECT c, c.numSynchronizedBlocks AS n
+FROM classes c
+WHERE n > 0
+ORDER BY n DESC;
+
+// Example 4. SELECT classes that have a method with more then 5 casts
+SELECT DISTINCT c
+FROM classes c
+WHERE c.methods.numCasts > 5;
+
+// Example 5. SELECT classes with a method having > 100 control statements
+SELECT DISTINCT c
+FROM classes c, c.methods m
+WHERE m.numIfStatements + m.numLoopStatements + m.numSwitchStatements > 100;
+
+// Example 6. Select classes with average number of control branches
+// per method > 100
+SELECT DISTINCT c
+FROM classes c, AVG(c.methods.numLinearSegments) n
+WHERE  n > 5
+ORDER BY n DESC;
+
+DEFINE @project AS "PSA";
+DEFINE @version AS "1.1";
+
+select c, e
+from classes c, c.extendsClass.**. e
+where e.extendsClass.name = "java.lang.Object"
+and c.name like "com.%";
+
+
+select c, e
+from classes c, c.extendsClass.**. e
+where e.extendsClass.name = "java.lang.Object"
+and c.name like "com.%";
+
+select c, e
+from classes c, classes e
+where
+  c.name like "com.%"
+  and c.extendsClass.**.name = e.name
+  and e.extendsClass.name = "java.lang.Object"
+;
+

@@ -1,0 +1,6 @@
+SELECT a.annotation.parentField.parentClass AS class, a.stringValue AS scriptlet_lines
+FROM annotation_arguments a
+WHERE a.annotation.shortName LIKE "%$scriptletTotalLines$%"
+     AND a.shortName = "value"
+     AND a.stringValue  > 50
+;

@@ -1,0 +1,9 @@
+DEFINE ejbClasses1 AS SELECT c FROM classes c 
+WHERE c.extendsClass.**.name IN ("javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE ejbClasses2 AS SELECT c FROM classes c 
+WHERE c.implementsInterfaces.**.name IN ("javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE ejbClasses AS ejbClasses1 + ejbClasses2;
+
+return ejbClasses;

@@ -1,0 +1,3 @@
+This directory contains the source code for PSA application.
+./com/sun/...
+./*.jar

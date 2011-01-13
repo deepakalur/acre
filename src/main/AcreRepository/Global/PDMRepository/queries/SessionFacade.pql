@@ -1,0 +1,19 @@
+DEFINE SFInterfaces1 AS SELECT c FROM classes c
+WHERE c.extendsClass.**.name IN ("javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE SFInterfaces2 AS SELECT c FROM classes c
+WHERE c.implementsInterfaces.**.name IN ("javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE SFInterfaces AS SFInterfaces1 + SFInterfaces2;
+
+Define SFBeans as
+select c
+from classes c
+where c.extendsClass.**.name in ("javax.ejb.SessionBean") OR c.implementsInterfaces.**.name in ("javax.ejb.SessionBean");
+
+define SFHomes as
+select c
+from classes c
+where c.extendsClass.**.name in ("javax.ejb.EJBHome", "javax.ejb.EJBLocalHome");
+
+return SFBeans, SFInterfaces, SFHomes;

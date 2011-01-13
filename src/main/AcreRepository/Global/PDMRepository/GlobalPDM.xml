@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PDMList xsi:schemaLocation="http://java.sun.com/xml/ns/acre/
+AcrePDMSchema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/acre/">
+    <PDM category="CoreJ2EEPatterns" description="Identifies Business Delegate calls to Session Facades" name="BD_Calls_SF" tier="BusinessTier" type="ModelPDM">
+        <Roles>
+            <Role name="BusinessDelegate" sequence="1" type="PDM"/>
+            <Role name="SessionFacade" sequence="2" type="PDM"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="BusinessDelegate" name="Calls" toRole="SessionFacade.SessionFacadeInterface" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM category="CoreJ2EEPatterns" description="Identifies all Business Delegates" name="BusinessDelegate" tier="BusinessTier" type="PQLPDM">
+        <Roles>
+            <Role name="BusinessDelegate" queryName="BusinessDelegate" returnVariableName="BusinessDelegates" sequence="1" type="Query"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM category="CoreJ2EEPatterns" description="Identifies Session Facades" name="SessionFacade" scriptedPDMPath="SessionFacade" tier="BusinessTier" type="PQLPDM">
+        <Roles>
+            <Role name="SessionFacadeHome" returnVariableName="SFHomes" sequence="1" type="Query"/>
+            <Role name="SessionFacadeInterface" returnVariableName="SFInterfaces" sequence="2" type="Query"/>
+            <Role name="SessionFacadeBean" returnVariableName="SFBeans" sequence="3" type="Query"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="SessionFacadeHome" name="Creates" toRole="SessionFacadeInterface" type="IsOfType"/>
+            <Relationship fromRole="SessionFacadeBean" name="Implements" toRole="SessionFacadeInterface" type="Implements"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies classes with abstract methods" name="ClassesWithAbsAndNonAbsMethods" scriptedPDMPath="PDMClassesWithAbsAndNonAbsMethods.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies all EJB classes" name="EJBClasses" scriptedPDMPath="PDMEJBClasses.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Home interfaces" name="EJBHomes" scriptedPDMPath="PDMEJBHomes.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Local Home Home interfaces" name="EJBLocalHomes" scriptedPDMPath="PDMEJBLocalHomes.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Local Object interfaces" name="EJBLocalObjects" scriptedPDMPath="PDMEJBLocalObjects.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Remote Object interfaces" name="EJBRemoteObjects" scriptedPDMPath="PDMEJBRemoteObjects.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Entity Beans" name="EntityBeans" scriptedPDMPath="PDMEntityBeans.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies all Servlets" name="Servlets" scriptedPDMPath="PDMServlets.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Session Beans" name="SessionBeans" scriptedPDMPath="PDMSessionBeans.groovy" tier="AllTiers" type="GroovyPDM">
+        <Roles>
+            <Role name="result" sequence="1" type="Abstract"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Singleton classes" factModelType="Java" name="SingletonGroovyPDM" scriptedPDMPath="PDMSingletonScript" tier="Any" type="GroovyPDM">
+        <Roles>
+            <Role name="Singleton" returnVariableName="result" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Find intercepting filters " factModelType="Java" name="IF_intercepts_FC" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="IF" sequence="0" type="PDM" typeReferenceName="InterceptingFilter"/>
+            <Role name="FrontController" sequence="1" type="PDM" typeReferenceName="FrontController"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Data Access Object with DAI Wrapped With Query" factModelType="Java" name="DAODAIWrappedWithQuery" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="DAOWithDAI" sequence="2" type="PDM" typeReferenceName="DAOWithDAI"/>
+            <Role name="QueryWrapperForDAO" queryName="" returnVariableName="" sequence="1" type="PDM" typeReferenceName="QueryWrapperForDAO"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="QueryWrapperForDAO" name="Calls" toRole="DAOWithDAI.DAI" type="Calls"/>
+        </Relationships>
+    </PDM>
+
+    <PDM attributes="" category="CoreJ2EEPatterns" description="InterceptingFilter" factModelType="Java" name="InterceptingFilter" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="Filter" queryName="InterceptingFilter" returnVariableName="filters" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="FrontController " factModelType="Java" name="FrontController" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="FrontController" queryName="FrontController" returnVariableName="frontControllers" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Identifies all Queries wrapping DAOs" factModelType="Java" name="QueryWrapperForDAO" scriptedPDMPath="" tier="any" type="PQLPDM">
+        <Roles>
+            <Role name="QueryWrapperForDAO" queryName="QueryWrapperForDAO" returnVariableName="QueryWrapperForDAO" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Modify values before saving" factModelType="Java" name="BD_Calls_Singletons" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="BusinessDelegate" queryName="" returnVariableName="" sequence="0" type="PDM" typeReferenceName="BusinessDelegate"/>
+            <Role name="Singletons" queryName="" returnVariableName="" sequence="1" type="PDM" typeReferenceName="SingletonGroovyPDM"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="BusinessDelegate" name="Calls" toRole="Singletons" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="frontController calling BusinessDelegates" factModelType="Java" name="FC_Calls_BD" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="FrontController" queryName="" returnVariableName="" sequence="0" type="PDM" typeReferenceName="FrontController"/>
+            <Role name="BusinessDelegate" queryName="" returnVariableName="" sequence="1" type="PDM" typeReferenceName="BusinessDelegate"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="FrontController" name="Calls" toRole="BusinessDelegate" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="Other" description="FrontController Calling SessionFacade" factModelType="Java" name="FC_Calls_SF" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="FC_Calls_BD" queryName="" returnVariableName="" sequence="0" type="PDM" typeReferenceName="FC_Calls_BD"/>
+            <Role name="BD_Calls_SF" queryName="BusinessDelegate" returnVariableName="" sequence="1" type="PDM" typeReferenceName="BD_Calls_SF"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="Modify values before saving" factModelType="Java" name="Command_Calls_SF" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="Command" queryName="" returnVariableName="" sequence="0" type="PDM" typeReferenceName="Command"/>
+            <Role name="BD_Calls_SF" queryName="" returnVariableName="" sequence="1" type="PDM" typeReferenceName="BD_Calls_SF"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="Command" name="Calls" toRole="BD_calls_SF.BusinessDelegate" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="Other" description="SF calls DAO" factModelType="Java" name="SF_Calls_DAO" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="SessionFacade" sequence="0" type="PDM"/>
+            <Role name="DataAccessObject" queryName="DataAccessObject" returnVariableName="daoClasses" sequence="1" type="Query"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="SessionFacade.SessionFacadeBean" name="SFCalls" toRole="DataAccessObject" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="Other" description="simple micro-architecture" factModelType="Java" name="mA_FC_BD_SF_DAO" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="FC_Calls_BD" sequence="0" type="PDM"/>
+            <Role name="BD_Calls_SF" sequence="1" type="PDM"/>
+            <Role name="SF_Calls_DAO" sequence="2" type="PDM"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="GoF" description="Modify values before saving" factModelType="Java" name="Command" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="Command" queryName="Command" returnVariableName="commands" sequence="0" type="Query"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="recursive PDM" factModelType="Java" name="RecursivePDM" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="FrontController" sequence="0" type="PDM" typeReferenceName="FrontController"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="FrontController" name="Calls" toRole="FrontController" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM category="CoreJ2EEPatterns" description="application" name="PackageView" tier="BusinessTier" type="PQLPDM">
+        <Roles queryName="packages" returnVariableName="appPackages" type="dynamic">
+            <Role name="$appPackages" queryName="packageArtifacts" returnVariableName="$result" sequence="1" type="Query"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="Modify values before saving" factModelType="Java" name="CoreJavaClasses" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="javaxclassesR" queryName="javaxclasses" returnVariableName="javaxclasses" sequence="0" type="Query" typeReferenceName=""/>
+            <Role name="javaclasses" queryName="javaclasses" returnVariableName="javaclasses" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="Modify values before saving" factModelType="Java" name="ServiceLocatorDependency" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="ServiceLocator" queryName="" returnVariableName="" sequence="0" type="PDM" typeReferenceName="ServiceLocator"/>
+            <Role name="CoreJavaClasses" queryName="" returnVariableName="" sequence="1" type="PDM" typeReferenceName="CoreJavaClasses"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="ServiceLocator" name="Calls" toRole="CoreJavaClasses" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="Other" description="Modify values before saving" factModelType="Java" name="ServiceLocator" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="EJBServiceLocators" queryName="ServiceLocator" returnVariableName="EJBServiceLocators" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="PDM created with a single query 'Governance1' as a role" factModelType="Java" name="SFCallpathViolation" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="SFCallpath" queryName="Governance1" returnVariableName="cmdCallpath_Violations" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="PDM created with a single query 'Governance2' as a role" factModelType="Java" name="DelegateCallpaths" scriptedPDMPath="Governance1" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="DelegateCallpath" queryName="Governance1" returnVariableName="cmd_Delegate_Callpaths" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="Other" description="PDM created with a single query 'Governance3' as a role" factModelType="Java" name="SFCallpaths" scriptedPDMPath="Governance1" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="SFCallpath" queryName="Governance1" returnVariableName="cmd_SF_Callpaths" sequence="0" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM category="CoreJ2EEPatterns" description="Identifies ApplicationController calls to DAO" name="ApplicationController_call_DAO" tier="Any" type="ModelPDM">
+        <Roles>
+            <Role name="ApplicationController" sequence="1" type="PDM"/>
+            <Role name="DAO" sequence="2" type="PDM"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="ApplicationController" name="Calls" toRole="DAO" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Data Access Object" factModelType="Java" name="DAO" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="DAO" queryName="DataAccessObject" returnVariableName="daoClasses" sequence="1" type="Query"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Data Access Object With Data Access Interface" factModelType="Java" name="DAOWithDAI" scriptedPDMPath="" tier="Any" type="ModelPDM">
+        <Roles>
+            <Role name="DAO" sequence="2" type="PDM" typeReferenceName="DAO"/>
+            <Role name="DAI" queryName="DataAccessInterface" returnVariableName="daoInterfaces" sequence="1" type="Query"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="DAO" name="Implements" toRole="DAI" type="Implements"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Identifies all Queries wrapping DAOs" factModelType="Java" name="QueryWrapperForDAO" scriptedPDMPath="" tier="any" type="PQLPDM">
+        <Roles>
+            <Role name="QueryWrapperForDAO" queryName="QueryWrapperForDAO" returnVariableName="QueryWrapperForDAO" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Data Access Object Wrapped With Query" factModelType="Java" name="DAOWrappedWithQuery" scriptedPDMPath="" tier="Any" type="ModelPDM">
+        <Roles>
+            <Role name="QueryWrapperForDAO" sequence="1" type="PDM"/>
+            <Role name="DAO" sequence="2" type="PDM"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="QueryWrapperForDAO" name="Calls" toRole="DAO" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="App Service call Data Access Layer" factModelType="Java" name="AS_calls_DA" scriptedPDMPath="" tier="Any" type="PQLPDM">
+        <Roles>
+            <Role name="DAODAIWrappedWithQuery" sequence="1" type="PDM" typeReferenceName="DAODAIWrappedWithQuery"/>
+            <Role name="ApplicationService" queryName="ApplicationService" returnVariableName="applicationservice" sequence="2" type="Query"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="ApplicationService" name="Calls" toRole="DAODAIWrappedWithQuery.QueryWrapperForDAO" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="FC Calls App Service call Data Access Layer" factModelType="Java" name="FC_calls_AS_calls_DA" scriptedPDMPath="" tier="Any" type="ModelPDM">
+        <Roles>
+            <Role name="FrontController" sequence="1" type="PDM" typeReferenceName="FrontController"/>
+            <Role name="AS_calls_DA" sequence="2" type="PDM" typeReferenceName="AS_calls_DA"/>
+        </Roles>
+        <Relationships>
+            <Relationship fromRole="FrontController" name="Calls" toRole="AS_calls_DA.ApplicationService" type="Calls"/>
+        </Relationships>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Identifies all Application Controllers" factModelType="Java" name="ApplicationController" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="ApplicationController" queryName="ApplicationController" returnVariableName="AppCtrlr" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Identifies the Use of Struts" factModelType="Java" name="Struts" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="Struts" queryName="Struts" returnVariableName="strutsPackages" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM attributes="" category="CoreJ2EEPatterns" description="Identifies callers of Struts" factModelType="Java" name="StrutsUsage" scriptedPDMPath="" tier="PresentationTier" type="PQLPDM">
+        <Roles>
+            <Role name="StrutsUsage" queryName="StrutsUsage" returnVariableName="strutsUsage" sequence="1" type="Query" typeReferenceName=""/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+</PDMList>
+

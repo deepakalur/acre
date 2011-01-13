@@ -1,0 +1,59 @@
+
+=====================================================================
+ Welcome to ACRE - Application Characteristics Repository Environment
+
+    Available ACRE make targets are:
+
+        help          - Show this message
+
+        ......................... ACRE distribution .....................
+        dist          - Build ACRE distribution
+
+
+        ......................... Build ACRE ..............................
+        clean         - Clean intermediate files
+        gen           - Generate PQL parser from PQL grammar
+        compile       - Compile ACRE 
+        build         - "gen" and "compile"
+        all           - "clean" and "build"
+        grammar       - Create HTML file out of PQL grammar for SableCC
+                        parser generator
+
+        ......................... Test ACRE ..............................
+        astprinter    - Test PQL Abstract Synatx Tree GUI Displayer
+        astdisplay    - Test PQL Abstract Synatx Tree GUI Printer
+        regression    - Run regression test
+
+        ......................... Run PQL ...............................
+        pql           - Run standalone PQL/QL shell
+        ql            - Run standalone QL shell
+        groovy        - Run Groovy test script calling PQL
+        groovysh      - Run Groovy interactive shell
+        groovyconsole - Run Groovy GUI console
+
+        ........................ Run PDM (pattern definition model) ....
+        pdmtest       - Test sample PDM components
+
+        ......................... Jasper (JSP compiler) targets ........
+        buildjasper   - Build japser engine
+        rebuildpsa    - (Re)build PSA sample application
+        runjasper     - Run Jasper on PSA sampe application JSP pages
+
+        ......................... Fact Extractor targets ...............
+        buildfactextractor - Build Fact Extractor
+        runfactextractor   - Run Fact Extractor on
+                             PSA sample application code
+
+        ......................... Run ACRE ............................
+        mdi           - Build and run Main ACRE UI
+        mdidemo       - Build and run Main ACRE UI in a demo mode
+                            with repository Root wired to
+                            ./src/main/AcreRepository
+
+        acreui        - Build and run test ACRE UI
+        sampleui      - Build and run PQL introspection UI
+                        (to be integrated into ACRE UI)
+
+
+=====================================================================
+

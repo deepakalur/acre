@@ -1,0 +1,5 @@
+
+FACT TUPLE :
+
+hasPortType http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null:AttendeeWebService
+hasBinding http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null:AttendeeWebServiceSoapBinding

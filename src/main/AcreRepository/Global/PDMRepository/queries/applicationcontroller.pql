@@ -1,0 +1,61 @@
+// Find All EJB Classes
+DEFINE ejbClasses1 AS SELECT c FROM classes c 
+WHERE c.extendsClass.**.name IN 
+    ("javax.ejb.EntityBean", "javax.ejb.SessionBean", "javax.ejb.EJBHome",
+     "javax.ejb.EJBLocalHome", "javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE ejbClasses2 AS SELECT c FROM classes c 
+WHERE c.implementsInterfaces.**.name IN 
+    ("javax.ejb.EntityBean", "javax.ejb.SessionBean", "javax.ejb.EJBHome",
+     "javax.ejb.EJBLocalHome", "javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE allEJBClasses AS ejbClasses1 + ejbClasses2;
+
+// Find All Servlets, or interfaces extending basic servlet interfaces
+DEFINE servlets AS
+SELECT c FROM classes c
+WHERE c.extendsClass.**.name IN ("javax.servlet.http.HttpServlet", "javax.servlet.http.GenericServlet");
+
+// Find All Non Exception classes
+DEFINE nonExceptionClasses AS
+SELECT c FROM classes c
+WHERE c.extendsClass.**.name NOT IN ("java.lang.Throwable");
+
+// Find POJOs
+DEFINE pojos AS nonExceptionClasses - allEJBClasses ;
+DEFINE pojos AS pojos - servlets;
+
+//Find Commands
+DEFINE commands AS SELECT m.parentClass FROM methods m
+WHERE (      m.shortName RLIKE ".*[eE]xecute.*"
+          OR m.shortName RLIKE ".*[aA]ction.*"
+          OR m.shortName RLIKE ".*[pP]erform.*"
+       )
+AND m.parentClass IN pojos;
+
+DEFINE commandConstructors AS
+SELECT m FROM methods m
+WHERE m.parentClass in commands AND m.isConstructor = true;
+
+
+DEFINE CommandFactory AS SELECT c FROM classes c WHERE c.methods.calls IN commandConstructors;
+
+//TODO: This is incorrect
+DEFINE FrontController AS SELECT c FROM classes c;
+
+DEFINE AppCtrlr1 AS SELECT c FROM classes c 
+    WHERE c.methods.calls.parentClass IN CommandFactory;
+    
+DEFINE AppCtrlr AS SELECT c FROM AppCtrlr1 c 
+    WHERE c IN FrontController.methods.calls.parentClass;
+    
+return AppCtrlr;
+
+/*
+return SELECT c FROM classes c 
+    WHERE c.methods.calls.parentClass IN CommandFactory 
+    AND   c IN FrontController.methods.calls.parentClass;
+
+return CommandFactory;
+    
+*/    

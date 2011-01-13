@@ -1,0 +1,3 @@
+// Find all JSP-generated classes (servlets)
+DEFINE jspClasses AS SELECT a.parentClass FROM annotations a WHERE a.arguments.stringValue = "JSP";
+return jspClasses;

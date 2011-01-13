@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" xmlns:intf="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://bos.javsavant.dasl.sun.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><wsdl:types><schema targetNamespace="http://bos.javsavant.dasl.sun.com" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="Question"><sequence><element name="id" type="xsd:long"/><element name="stem" type="xsd:string"/><element name="answer1" type="xsd:string"/><element name="answer2" type="xsd:string"/><element name="answer3" type="xsd:string"/><element name="answer4" type="xsd:string"/><element name="answer5" type="xsd:string"/><element name="correctAnswer" type="xsd:long"/><element name="author" type="xsd:string"/></sequence></complexType><complexType name="QuestionStruct"><sequence><element name="questionId" type="xsd:long"/><element name="stem" type="xsd:string"/><element name="answer1" type="xsd:string"/><element name="answer2" type="xsd:string"/><element name="answer3" type="xsd:string"/><element name="answer4" type="xsd:string"/><element name="answer5" type="xsd:string"/><element name="answerId" type="xsd:long"/></sequence></complexType><complexType name="AttendeeQuestion"><sequence><element name="id" type="xsd:long"/><element name="answer" type="xsd:long"/><element name="correct" type="xsd:boolean"/><element name="attendee" type="tns1:Attendee"/><element name="theQuestion" type="tns1:Question"/></sequence></complexType><complexType name="Attendee"><sequence><element name="id" type="xsd:long"/><element name="userName" type="xsd:string"/><element name="password" type="xsd:string"/><element name="firstName" type="xsd:string"/><element name="middleInitial" type="xsd:string"/><element name="lastName" type="xsd:string"/><element name="email" type="xsd:string"/><element name="phone" type="xsd:string"/><element name="score" type="xsd:long"/><element name="status" type="xsd:long"/><element name="STATUS_INIT" type="xsd:long"/><element name="STATUS_QUESTIONS_SENT" type="xsd:long"/><element name="STATUS_QUESTIONS_ANSWERED" type="xsd:long"/><element name="STATUS_BOOK_GIVEN" type="xsd:long"/><element name="REWARD_SCORE" type="xsd:long"/><element name="questions" type="soapenc:Array"/></sequence></complexType><complexType name="AnswerStruct"><sequence><element name="answerId" type="xsd:long"/><element name="userAnswer" type="xsd:long"/></sequence></complexType><complexType name="UserStruct"><sequence><element name="id" type="xsd:long"/><element name="userName" type="xsd:string"/><element name="firstName" type="xsd:string"/><element name="middleInitial" type="xsd:string"/><element name="lastName" type="xsd:string"/><element name="email" type="xsd:string"/><element name="phone" type="xsd:string"/></sequence></complexType></schema><schema targetNamespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="ArrayOf_tns1_QuestionStruct"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:QuestionStruct[]"/></restriction></complexContent></complexType><complexType name="ArrayOf_tns1_AnswerStruct"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AnswerStruct[]"/></restriction></complexContent></complexType></schema></wsdl:types>
+  <wsdl:message name="getAttendeeQuestionsResponse">
+    <wsdl:part name="getAttendeeQuestionsReturn" type="soapenc:Array"/>
+  </wsdl:message>
+  <wsdl:message name="getAttendeeQuestionsRequest">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="noOpResponse">
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="userName" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="signUpRequest">
+    <wsdl:part name="userName" type="xsd:string"/>
+    <wsdl:part name="password1" type="xsd:string"/>
+    <wsdl:part name="password2" type="xsd:string"/>
+    <wsdl:part name="firstName" type="xsd:string"/>
+    <wsdl:part name="middleInitial" type="xsd:string"/>
+    <wsdl:part name="lastName" type="xsd:string"/>
+    <wsdl:part name="email" type="xsd:string"/>
+    <wsdl:part name="phone" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="giveBookRequest">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="giveBookResponse">
+    <wsdl:part name="giveBookReturn" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="submitAttendeeAnswers2Request">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+    <wsdl:part name="answers" type="impl:ArrayOf_tns1_AnswerStruct"/>
+  </wsdl:message>
+  <wsdl:message name="signUpResponse">
+    <wsdl:part name="signUpReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="noOpRequest">
+    <wsdl:part name="question" type="tns1:QuestionStruct"/>
+    <wsdl:part name="answer" type="tns1:AnswerStruct"/>
+  </wsdl:message>
+  <wsdl:message name="getAttendeeQuestions2Request">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreRequest">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getAttendeeQuestions2Response">
+    <wsdl:part name="getAttendeeQuestions2Return" type="impl:ArrayOf_tns1_QuestionStruct"/>
+  </wsdl:message>
+  <wsdl:message name="login2Request">
+    <wsdl:part name="userName" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="submitAttendeeAnswers2Response">
+    <wsdl:part name="submitAttendeeAnswers2Return" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreResponse">
+    <wsdl:part name="getScoreReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="loginReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="login2Response">
+    <wsdl:part name="login2Return" type="tns1:UserStruct"/>
+  </wsdl:message>
+  <wsdl:message name="submitAttendeeAnswersRequest">
+    <wsdl:part name="attendeeId" type="xsd:long"/>
+    <wsdl:part name="answers" type="soapenc:Array"/>
+  </wsdl:message>
+  <wsdl:message name="submitAttendeeAnswersResponse">
+    <wsdl:part name="submitAttendeeAnswersReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:portType name="AttendeeWebService">
+    <wsdl:operation name="getScore" parameterOrder="attendeeId">
+      <wsdl:input message="impl:getScoreRequest" name="getScoreRequest"/>
+      <wsdl:output message="impl:getScoreResponse" name="getScoreResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendeeQuestions" parameterOrder="attendeeId">
+      <wsdl:input message="impl:getAttendeeQuestionsRequest" name="getAttendeeQuestionsRequest"/>
+      <wsdl:output message="impl:getAttendeeQuestionsResponse" name="getAttendeeQuestionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="giveBook" parameterOrder="attendeeId">
+      <wsdl:input message="impl:giveBookRequest" name="giveBookRequest"/>
+      <wsdl:output message="impl:giveBookResponse" name="giveBookResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="login" parameterOrder="userName password">
+      <wsdl:input message="impl:loginRequest" name="loginRequest"/>
+      <wsdl:output message="impl:loginResponse" name="loginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitAttendeeAnswers" parameterOrder="attendeeId answers">
+      <wsdl:input message="impl:submitAttendeeAnswersRequest" name="submitAttendeeAnswersRequest"/>
+      <wsdl:output message="impl:submitAttendeeAnswersResponse" name="submitAttendeeAnswersResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="signUp" parameterOrder="userName password1 password2 firstName middleInitial lastName email phone">
+      <wsdl:input message="impl:signUpRequest" name="signUpRequest"/>
+      <wsdl:output message="impl:signUpResponse" name="signUpResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="login2" parameterOrder="userName password">
+      <wsdl:input message="impl:login2Request" name="login2Request"/>
+      <wsdl:output message="impl:login2Response" name="login2Response"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendeeQuestions2" parameterOrder="attendeeId">
+      <wsdl:input message="impl:getAttendeeQuestions2Request" name="getAttendeeQuestions2Request"/>
+      <wsdl:output message="impl:getAttendeeQuestions2Response" name="getAttendeeQuestions2Response"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitAttendeeAnswers2" parameterOrder="attendeeId answers">
+      <wsdl:input message="impl:submitAttendeeAnswers2Request" name="submitAttendeeAnswers2Request"/>
+      <wsdl:output message="impl:submitAttendeeAnswers2Response" name="submitAttendeeAnswers2Response"/>
+    </wsdl:operation>
+    <wsdl:operation name="noOp" parameterOrder="question answer">
+      <wsdl:input message="impl:noOpRequest" name="noOpRequest"/>
+      <wsdl:output message="impl:noOpResponse" name="noOpResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AttendeeWebServiceSoapBinding" type="impl:AttendeeWebService">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getScore">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getScoreRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getScoreResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendeeQuestions">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAttendeeQuestionsRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getAttendeeQuestionsResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="giveBook">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="giveBookRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="giveBookResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAttendeeAnswers">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="submitAttendeeAnswersRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="submitAttendeeAnswersResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signUp">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="signUpRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="signUpResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login2">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="login2Request">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="login2Response">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendeeQuestions2">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAttendeeQuestions2Request">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getAttendeeQuestions2Response">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAttendeeAnswers2">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="submitAttendeeAnswers2Request">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="submitAttendeeAnswers2Response">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="noOp">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="noOpRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.bos.javsavant.dasl.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="noOpResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AttendeeWebServiceService">
+    <wsdl:port binding="impl:AttendeeWebServiceSoapBinding" name="AttendeeWebService">
+      <wsdlsoap:address location="http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

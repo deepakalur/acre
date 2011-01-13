@@ -1,0 +1,5 @@
+define strutsPackages as
+
+select sp from packages sp where (count(sp.classes) > 0) and sp.name like "org.apache.struts%";
+
+return strutsPackages;

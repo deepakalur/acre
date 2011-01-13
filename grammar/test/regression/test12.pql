@@ -1,0 +1,11 @@
+///////////////////////////// return statement test
+return a, b;
+        return c,;
+        return (a, b);
+        return (c,);
+        return d;
+
+return SELECT c FROM classes c
+WHERE c.name = "com.acme.Jane"
+   AND c.methods.calls.parentClass.name = "com.acme.biz.Account";
+

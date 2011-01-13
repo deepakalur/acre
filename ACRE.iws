@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4" relativePaths="false">
+  <component name="AspectsView" />
+  <component name="BookmarkManager" />
+  <component name="CheckinPanelState" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="COMPILE_IN_BACKGROUND" value="false" />
+    <option name="AUTO_SHOW_ERRORS_IN_EDITOR" value="true" />
+    <option name="CLOSE_MESSAGE_VIEW_IF_SUCCESS" value="true" />
+  </component>
+  <component name="Cvs2Configuration">
+    <option name="ON_FILE_ADDING" value="1" />
+    <option name="ON_FILE_REMOVING" value="1" />
+    <option name="PRUNE_EMPTY_DIRECTORIES" value="true" />
+    <option name="SHOW_UPDATE_OPTIONS" value="true" />
+    <option name="SHOW_ADD_OPTIONS" value="true" />
+    <option name="SHOW_REMOVE_OPTIONS" value="true" />
+    <option name="MERGING_MODE" value="0" />
+    <option name="MERGE_WITH_BRANCH1_NAME" value="HEAD" />
+    <option name="MERGE_WITH_BRANCH2_NAME" value="HEAD" />
+    <option name="RESET_STICKY" value="false" />
+    <option name="CREATE_NEW_DIRECTORIES" value="true" />
+    <option name="DEFAULT_TEXT_FILE_SUBSTITUTION" value="kv" />
+    <option name="PROCESS_UNKNOWN_FILES" value="false" />
+    <option name="PROCESS_DELETED_FILES" value="false" />
+    <option name="SHOW_EDIT_DIALOG" value="true" />
+    <option name="RESERVED_EDIT" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
+    <option name="CHECKOUT_DATE_OR_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="false" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="UPDATE_DATE_OR_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="false" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="SHOW_CHANGES_REVISION_SETTINGS">
+      <value>
+        <option name="BRANCH" value="1.1" />
+        <option name="DATE" value="" />
+        <option name="USE_BRANCH" value="true" />
+        <option name="USE_DATE" value="false" />
+      </value>
+    </option>
+    <option name="SHOW_OUTPUT" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="ADD_WATCH_INDEX" value="0" />
+    <option name="REMOVE_WATCH_INDEX" value="0" />
+    <option name="UPDATE_KEYWORD_SUBSTITUTION" value="NONE" />
+    <option name="MAKE_NEW_FILES_READONLY" value="false" />
+    <option name="SHOW_CORRUPTED_PROJECT_FILES" value="0" />
+    <option name="TAG_AFTER_FILE_COMMIT" value="false" />
+    <option name="TAG_AFTER_FILE_COMMIT_NAME" value="" />
+    <option name="TAG_AFTER_PROJECT_COMMIT" value="false" />
+    <option name="TAG_AFTER_PROJECT_COMMIT_NAME" value="" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing. JAXB generated files" />
+    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+  </component>
+  <component name="CvsTabbedWindow">
+    <UpdateInfo EnvName="UPDATE_FILES_OR_DIRECTORY" date="2/16/06 3:09 PM">
+      <FileInformation>
+        <MODIFIED>
+          <PATH>C:\ACRE\source\ACRE.iws</PATH>
+        </MODIFIED>
+        <MERGED_WITH_CONFLICTS />
+        <MERGED />
+        <UNKNOWN>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\Argument.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\ArgumentType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\jaxb.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\ObjectFactory.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\PDMQueryList.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\PDMQueryListType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\Query.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\QueryType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\ReturnVariable.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdmqueries\ReturnVariableType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\FreeVariableWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\LineMapper.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\Oql2AsciiWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\OqlOutputStrategy.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\OqlOutputStrategyString.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\ProjectionNamesWalker$FieldWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\ProjectionNamesWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\ProjectionWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\QueryAnalyser.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\QueryBuilder.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\QueryPreProcessor$Macro.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\QueryPreProcessor.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\QueryPreProcessorTestCase.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\SimpleAstWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\ToAscii.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\TreeBuilder.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Annotation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\AnnotationType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Argument.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\ArgumentType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\jaxb.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\ObjectFactory.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\PDM.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\PDMList.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\PDMListType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\PDMType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Relationship.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Relationships.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\RelationshipsType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\RelationshipType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Role.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\Roles.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\RolesType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\pdm\RoleType.class</PATH>
+          <PATH>C:\ACRE\source\classes\AcreRepository\Projects\PSA\TempateProject.properties</PATH>
+          <PATH>C:\ACRE\source\classes\AcreRepository\Projects\TemplateProject\TempateProject.properties</PATH>
+          <PATH>C:\ACRE\source\classes\AcreRepository\Global\FactModelRepository\Models.properties</PATH>
+          <PATH>C:\ACRE\source\src\main\AcreRepository\logs\AcreLog.log.1</PATH>
+          <PATH>C:\ACRE\source\src\main\AcreRepository\logs\AcreLog.log.lck</PATH>
+          <PATH>C:\ACRE\source\src\main\AcreRepository\logs\AcreLog.log.1.lck</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\AnalyserException.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\Condition.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\DMLStatement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\Expression.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\Messages.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\messages.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\NotYetImplementedException.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\QueryAnalyser.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\QueryModel$1.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\QueryModel$OrderByStruct.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\QueryModel.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\QueryWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\ScriptModel.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\ScriptWalker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\SQLAnalyser.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\analyser\SQLTranslator.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\parser\Parser.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\parser\parser.dat</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\parser\ParserException.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\parser\State.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\parser\TokenIndex.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\lexer\Lexer$State.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\lexer\Lexer.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\lexer\lexer.dat</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\lang\lexer\LexerException.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreIconConstants.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreProgressBar.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreSplash.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreToolBar.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreUIConstants.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\AcreUIUtils.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\FactExtractorProjectLauncher.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\GlobalSettings.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$1.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$10.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$11.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$12.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$13.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$14.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$15.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$16.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$2.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$3.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$4.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$5.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$6.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$7.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$8.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$9.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$DashboardWorker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main$ExecAllWorker.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\Main.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\MainMDIFrameInterface.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusBarUpdater.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusPanel$1.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusPanel$2.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusPanel$3.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusPanel$4.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\StatusPanel.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\AttrDeclsAttribute.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\AttrDeclsAttributeGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\jaxb.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\ObjectFactory.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\ParticleElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\ParticleGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Annotation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Any.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Appinfo.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_ComplexContent.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Documentation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Field.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Import.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Include.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Keyref.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_List.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Notation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Pattern.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Redefine.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Restriction.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Schema.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Selector.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_SimpleContent.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_TotalDigits.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_Union.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdAnon_WhiteSpace.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAll.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAnnotation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAny.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAnyAttribute.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAppinfo.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAttribute.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemAttributeGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemChoice.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemComplexContent.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemComplexType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemDocumentation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemEnumeration.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemField.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemFractionDigits.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemImport.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemInclude.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemKey.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemKeyref.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemLength.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemList.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMaxExclusive.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMaxInclusive.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMaxLength.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMinExclusive.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMinInclusive.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemMinLength.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemNotation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemPattern.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemRedefine.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemRestriction.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemSchema.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemSelector.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemSequence.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemSimpleContent.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemSimpleType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemTotalDigits.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemUnion.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemUnique.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdElemWhiteSpace.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeAll.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeAnnotated.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeAttribute.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeAttributeGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeAttributeGroupRef.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeComplexRestrictionType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeComplexType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeExplicitGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeExtensionType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeFacet.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeGroupRef.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeKeybase.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeLocalComplexType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeLocalElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeLocalSimpleType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNamedAttributeGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNamedGroup$XsdAnon_All.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNamedGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNarrowMaxMin.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNoFixedFacet.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeNumFacet.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeOpenAttrs.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeRealGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeRestrictionType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeSimpleExplicitGroup.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeSimpleExtensionType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeSimpleRestrictionType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeSimpleType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeTopLevelAttribute.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeTopLevelComplexType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeTopLevelElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeTopLevelSimpleType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\xsd\XsdTypeWildcard.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\jaxb.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\ObjectFactory.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemAddress.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemBinding.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemBody.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemFault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemHeader.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemHeaderfault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapElemOperation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTAddress.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTBinding.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTBody.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTFault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTFaultRes.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTHeader.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTHeaderFault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\soap\SoapTypeTOperation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementBinding.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementImport.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementMessage.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementPortType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementService.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\AnyTopLevelOptionalElementTypes.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\jaxb.properties</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\ObjectFactory.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlElemDefinitions.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTBinding.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTBindingOperation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTBindingOperationFault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTBindingOperationMessage.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTDefinitions.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTDocumentation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTDocumented.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTExtensibilityElement.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTExtensibleAttributesDocumented.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTExtensibleDocumented.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTFault.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTImport.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTMessage.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTOperation.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTParam.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTPart.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTPort.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTPortType.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTService.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\extractor\jaxb\wsdl\WsdlTypeTTypes.class</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\1BusinessDelegate.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\1InterceptingFilter.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\1SessionFacade.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ApplicationController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\BlueBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\BusinessDelegate.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ClearGraph.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\CompositeEntity.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ContextObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\DataAccessObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\DebugOff.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\DebugOn.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\DiagramIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\FileFolder.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\FrontController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\GreenArrowEdge.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\GreenBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Grid.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Group.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\InterceptingFilter.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\JavaLogo.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\JavaLogo.jpg</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Layout.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\OrangeBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\OrangePortIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Package.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\PatternPalette.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\PDM.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\PurpleBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\RedBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\RedSquare.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaAbout.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaBackground.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaBackground.jpg</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaCopyright.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaError.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaMDIIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaSplash.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SalsaSplashTitle.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Save.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SessionFacade.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SplashLeftBar.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SplashRightBar.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\SunLogo.jpg</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Tools.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\Ungroup.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\YellowBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ZoomIn.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ZoomIn2.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ZoomOut.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ZoomOut2.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\ZoomRevert.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\frame\DashboardFrameIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\frame\PDMFrameIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\frame\PQLFrameIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\frame\SalsaMDIIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\frame\SalsaMDIIcon1.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Database.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Debug.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Pattern.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\PDM.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\PQL.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Relationship.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Repository.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Role.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\SalsaDiagram.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\Settings.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\SettingsTabTitle.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\tabs\ViewSource.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\AbstractClass.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\AbstractMethod.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Annotation.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Argument.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\BDCalls.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Calls.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Catches.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Class.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Contains.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Creates.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Default.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Depends.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Extends.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Field.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Implements.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Instanceof.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Interface.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Intersect.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\List.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Method.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Package.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Parameter.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Properties.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Throws.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Type.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\Uses.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\special\YellowBall.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ApplicationController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ApplicationService.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\BusinessDelegate.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\BusinessObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\CompositeEntity.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ContextObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\DataAccessObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\DomainStore.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\FrontController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\InterceptingFilter.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ServiceActivator.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ServiceLocator.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\SessionFacade.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\Singleton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\TransferObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\TransferObjectAssembler.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\ValueListHandler.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\WebServiceBroker.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\toolbar\DBIcon.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\toolbar\PDMTool.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Add.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\AddButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\BlankButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\CancelButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\ChooseButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\ClearAllButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\ClearButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Config.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Delete.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\DeleteButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Edit.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\EditButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Errors.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Execute.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\ExecuteButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\GarbageCan.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\MakePDMButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\MoveDown.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\MoveUp.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\NewButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Next.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\NoErrors.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Previous.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Refresh.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\RefreshButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Repository.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\SaveButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\SaveNewButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\Settings.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\spacer.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\TestButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\buttons\ValidateButton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\Annotate.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\Grid.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\Group.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\Hide.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\ShowConnections.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\ShowNewTab.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\Ungroup.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\popups\ViewSource.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ApplicationController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ApplicationService.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\BusinessDelegate.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\BusinessObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\CompositeEntity.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ContextObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\DataAccessObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\DomainStore.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\FrontController.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\InterceptingFilter.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ServiceActivator.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ServiceLocator.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\SessionFacade.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\Singleton.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\TransferObject.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\TransferObjectAssembler.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\ValueListHandler.gif</PATH>
+          <PATH>C:\ACRE\source\classes\org\acre\visualizer\ui\icons\patterns\buttons\WebServiceBroker.gif</PATH>
+        </UNKNOWN>
+        <LOCALLY_ADDED />
+        <LOCALLY_REMOVED />
+        <UPDATED />
+        <REMOVED_FROM_REPOSITORY />
+        <UNKNOWN_TYPE />
+        <CREATED />
+        <MOD_REMOVED_FROM_SERVER />
+        <LOCALLY_REMOVED_MODIFIED_ON_SERVER />
+        <RESTORED />
+        <CREATED_BY_SECOND_PARTY />
+      </FileInformation>
+    </UpdateInfo>
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config/ConfigurationPanel.java" line="335">
+        <option name="ENABLED" value="true" />
+        <option name="SUSPEND_VM" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="myCondition" value="" />
+        <option name="myLogMessage" value="" />
+      </breakpoint>
+    </line_breakpoints>
+    <exception_breakpoints>
+      <breakpoint_any>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="SUSPEND_VM" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="myCondition" value="" />
+        <option name="myLogMessage" value="" />
+      </breakpoint_any>
+    </exception_breakpoints>
+    <field_breakpoints />
+    <method_breakpoints />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="HIDE_WARNINGS" value="false" />
+  </component>
+  <component name="FileEditorManager" split-orientation="vertical" split-proportion="0.5">
+    <first-group selected-file="file://$PROJECT_DIR$/README.txt">
+      <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/Main.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="14" column="39" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config/ConfigurationPanel.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="1355" column="0" selection-start="54851" selection-end="54851" vertical-scroll-proportion="1.0065789">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/main/org/acre/config/ConfigData.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="326" column="16" selection-start="13010" selection-end="13010" vertical-scroll-proportion="0.05592105">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/main/org/acre/config/ConfigService.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="435" column="0" selection-start="15483" selection-end="15483" vertical-scroll-proportion="0.35855263">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config/Main.java" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="25" column="13" selection-start="827" selection-end="827" vertical-scroll-proportion="0.9243421">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/build.xml" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="53" column="0" selection-start="2161" selection-end="2161" vertical-scroll-proportion="1.1611842">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/runfact.bat" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="3" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.16776316">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/runfact.xml" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="29" column="63" selection-start="1692" selection-end="1692" vertical-scroll-proportion="-1.8092105">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/README.txt" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="7" column="29" selection-start="289" selection-end="289" vertical-scroll-proportion="0.39144737">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+      <entry file="file://$PROJECT_DIR$/scripts/createfactdb.sh" pinned="false">
+        <provider selected="true" editor-type-id="text-editor">
+          <state line="3" column="10" selection-start="58" selection-end="58" vertical-scroll-proportion="0.16776316">
+            <folding />
+          </state>
+        </provider>
+      </entry>
+    </first-group>
+    <second-group />
+  </component>
+  <component name="HibernateTools">
+    <HIBERNATE_HOME value="" />
+    <HIBERNATE_TOOLS_HOME value="" />
+    <DB_CLASSPATH value="" />
+    <projectMode value="true" />
+    <moduleName value="" />
+    <HIBERNATE_VERSION value="1" />
+    <SCHEMA_EXPORT>
+      <EXPORT_TOOL value="true" />
+      <ONLY_DROP value="false" />
+      <CONNECTION_NAME value="NONE" />
+      <NOT_EXPORT value="false" />
+      <FORMAT value="false" />
+      <DELIMITER value="false" />
+      <CREATE_DDL_FILE value="false" />
+      <DELIMITER_STRING value="" />
+      <DDL_FILE_NAME value="" />
+    </SCHEMA_EXPORT>
+    <MAP_GENERATOR>
+      <MODIFY_UID value="false" />
+      <SET_UID value="false" />
+      <ADD_UID value="false" />
+      <DEPTH value="false" />
+      <SELECT_MODE value="false" />
+      <CREATE_MAP value="true" />
+      <ABSTRACT_CLASS value="false" />
+      <UID value="" />
+      <DEPTH_VALUE value="" />
+      <SELECT_STRING value="" />
+      <MAP_NAME value="" />
+      <ABSTRACT_CLASS_NAME value="" />
+    </MAP_GENERATOR>
+    <CODE_GENERATOR>
+      <OUT_DIR value="" />
+      <CONFIG_DIR value="" />
+    </CODE_GENERATOR>
+    <REVERSE_GENERATOR>
+      <PACKAGE_NAME value="" />
+      <BASE_CLASS_NAME value="" />
+      <OPT_HIBERNATE_TYPE value="false" />
+      <SINGLE_MAP_FILE value="false" />
+      <OUT_TO_SRC value="true" />
+      <ID_NAME value="" />
+      <ID_TYPE value="" />
+      <MAPPING_FILE value="" />
+      <CONNECTION_NAME value="NONE" />
+    </REVERSE_GENERATOR>
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="SORT_ALPHABETICALLY" value="false" />
+    <option name="HIDE_CLASSES_WHERE_METHOD_NOT_IMPLEMENTED" value="false" />
+  </component>
+  <component name="InspectionManager">
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="SPLITTER_PROPORTION" value="0.5" />
+    <profile name="Default" />
+  </component>
+  <component name="J2EEProjectPane" />
+  <component name="NamedScopeManager" />
+  <component name="PackagesPane">
+    <expanded_node url="" module="ACRE" type="module" />
+    <expanded_node url="ca.uwaterloo.cs.ql.fb.Helper" module="ACRE" type="class" />
+    <expanded_node url="org.acre.visualizer" module="ACRE" type="package" />
+    <expanded_node url="ca.uwaterloo.cs" module="ACRE" type="package" />
+    <expanded_node url="ca.uwaterloo.cs.ql" module="ACRE" type="package" />
+    <expanded_node url="org.acre" module="ACRE" type="package" />
+    <expanded_node url="ca.uwaterloo" module="ACRE" type="package" />
+    <expanded_node url="org" module="ACRE" type="package" />
+    <expanded_node url="org.acre.visualizer.ui" module="ACRE" type="package" />
+    <expanded_node url="ca" module="ACRE" type="package" />
+    <expanded_node url="org.acre.extractor" module="ACRE" type="package" />
+    <expanded_node url="org.acre.extractor.java" module="ACRE" type="package" />
+    <expanded_node url="ca.uwaterloo.cs.ql.fb" module="ACRE" type="package" />
+  </component>
+  <component name="ProjectPane">
+    <expanded_node url="file://$PROJECT_DIR$/scripts" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/factextractor" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/acre" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/factextractor/db" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/acre/extractor" module="ACRE" type="directory" />
+    <expanded_node url="" module="ACRE" type="module" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main/org/acre/visualizer" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$" module="ACRE" type="directory" />
+    <expanded_node url="file://$PROJECT_DIR$/src/main" module="ACRE" type="directory" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" splitterProportion="0.5">
+      <flattenPackages PackagesPane="false" />
+      <showMembers PackagesPane="true" />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <showStructure PackagesPane="false" ProjectPane="false" />
+      <autoscrollToSource />
+      <autoscrollFromSource PackagesPane="true" />
+    </navigator>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="vcs_file_view_treeWidth2" value="88" />
+    <property name="vcs_file_view_flatOrder1" value="1" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="vcs_file_view_treeOrder4" value="4" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="vcs_file_view_flatWidth2" value="72" />
+    <property name="vcs_file_view_flatWidth5" value="71" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="vcs_file_view_flatOrder3" value="3" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="vcs_file_view_treeWidth0" value="89" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="vcs_file_view_treeOrder0" value="0" />
+    <property name="vcs_file_view_flatOrder4" value="4" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="vcs_file_view_flatOrder5" value="5" />
+    <property name="vcs_file_view_treeOrder3" value="3" />
+    <property name="vcs_file_view_flatWidth4" value="72" />
+    <property name="vcs_file_view_treeWidth1" value="89" />
+    <property name="vcs_file_view_flatOrder2" value="2" />
+    <property name="vcs_file_view_treeWidth4" value="88" />
+    <property name="vcs_file_view_treeOrder2" value="2" />
+    <property name="vcs_file_view_flatWidth3" value="71" />
+    <property name="vcs_file_view_treeWidth3" value="89" />
+    <property name="vcs_file_view_flatOrder0" value="0" />
+    <property name="vcs_file_view_flatWidth0" value="71" />
+    <property name="vcs_file_view_treeOrder1" value="1" />
+    <property name="vcs_file_view_flatWidth1" value="71" />
+  </component>
+  <component name="RunManager">
+    <activeType name="Application" />
+    <tempConfiguration selected="true" default="false" name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.acre.visualizer.ui.config.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <module name="ACRE" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </tempConfiguration>
+    <configuration selected="false" default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="" />
+    </configuration>
+    <configuration selected="false" default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration selected="false" default="true" type="JUnit" factoryName="JUnit">
+      <module name="" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+    </configuration>
+    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration selected="false" default="false" name="MainMDI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.acre.visualizer.ui.Main" />
+      <option name="VM_PARAMETERS" value=" " />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <module name="ACRE" />
+      <RunnerSettings RunnerId="Run" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="1340" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <ConfigurationWrapper RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+    </configuration>
+  </component>
+  <component name="SQL">
+    <export>
+      <html table="border: 1px solid black; border-spacing:0px" cell="border: 1px solid black" header="background: darkgrey; font-weight:bold; text-align: center" row1="background: white" row2="background: lightgrey" alternate="true" interval="1" />
+      <csvExport delimiter="," text="&quot;" />
+    </export>
+    <general />
+    <databases savePasswords="false" encodePasswords="true" />
+    <queries projectClassLoader="false" save="false" />
+    <results primaryKeyCols="true" saveTableConfig="false">
+      <rowLimit enabled="true" value="1000" />
+      <resizeColumns toHeader="true" toContent="true" />
+    </results>
+  </component>
+  <component name="SelectInManager">
+    <target name="J2EE View" />
+    <target name="File Structure" />
+    <target name="Project" />
+    <target name="Packages" />
+    <target name="Commander" />
+  </component>
+  <component name="StarteamConfiguration">
+    <option name="SERVER" value="" />
+    <option name="PORT" value="49201" />
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="PROJECT" value="" />
+    <option name="VIEW" value="" />
+    <option name="ALTERNATIVE_WORKING_PATH" value="" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+  </component>
+  <component name="StructuralSearchPlugin" />
+  <component name="StructureViewFactory">
+    <option name="SORT_MODE" value="0" />
+    <option name="GROUP_INHERITED" value="true" />
+    <option name="AUTOSCROLL_MODE" value="true" />
+    <option name="SHOW_FIELDS" value="true" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+    <option name="GROUP_GETTERS_AND_SETTERS" value="true" />
+    <option name="SHOW_INHERITED" value="false" />
+    <option name="HIDE_NOT_PUBLIC" value="false" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-4" y="-4" width="1032" height="776" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Properties File Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.20473251" order="3" />
+      <window_info id="CVS" active="true" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.3297546" order="8" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="7" />
+      <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.23251028" order="0" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.36934155" order="1" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.3297546" order="1" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.24693252" order="8" x="575" y="284" width="850" height="457" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="6" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.22839506" order="1" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.3297546" order="2" />
+      <window_info id="CVS File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32963786" order="3" x="477" y="60" width="446" height="930" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.40030676" order="4" />
+      <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
+      <window_info id="Metrics Reloaded" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Chat" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="0" />
+      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="2" />
+      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="3" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25" order="5" />
+    </layout>
+  </component>
+  <component name="VCS.FileViewConfiguration">
+    <option name="SELECTED_STATUSES" value="DEFAULT" />
+    <option name="SELECTED_COLUMNS" value="DEFAULT" />
+    <option name="SHOW_FILTERS" value="true" />
+    <option name="CUSTOMIZE_VIEW" value="true" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ACTIVE_VCS_NAME" value="CVS" />
+    <option name="STATE" value="0" />
+  </component>
+  <component name="VssConfiguration">
+    <CheckoutOptions>
+      <option name="COMMENT" value="" />
+      <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
+      <option name="REPLACE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckoutOptions>
+    <CheckinOptions>
+      <option name="COMMENT" value="" />
+      <option name="KEEP_CHECKED_OUT" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckinOptions>
+    <AddOptions>
+      <option name="COMMENT" value="" />
+      <option name="STORE_ONLY_LATEST_VERSION" value="false" />
+      <option name="CHECK_OUT_IMMEDIATELY" value="false" />
+      <option name="FILE_TYPE" value="0" />
+    </AddOptions>
+    <UndocheckoutOptions>
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="REPLACE_LOCAL_COPY" value="0" />
+      <option name="RECURSIVE" value="false" />
+    </UndocheckoutOptions>
+    <GetOptions>
+      <option name="REPLACE_WRITABLE" value="0" />
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </GetOptions>
+    <option name="CLIENT_PATH" value="" />
+    <option name="SRCSAFEINI_PATH" value="" />
+    <option name="USER_NAME" value="" />
+    <option name="PWD" value="" />
+    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
+    <option name="SHOW_ADD_OPTIONS" value="true" />
+    <option name="VSS_IS_INITIALIZED" value="false" />
+    <option name="SHOW_UNDOCHECKOUT_OPTIONS" value="true" />
+    <option name="SHOW_DIFF_OPTIONS" value="true" />
+    <option name="SHOW_GET_OPTIONS" value="true" />
+    <option name="REUSE_LAST_COMMENT" value="false" />
+    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
+    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <antCommandLine value="-verbose" />
+      <runInBackground value="false" />
+      <targetFilters>
+        <filter targetName="javadoc" isVisible="false" />
+        <filter targetName="init" isVisible="false" />
+        <filter targetName="pattern_queries" isVisible="false" />
+        <filter targetName="printmetamodel" isVisible="false" />
+        <filter targetName="clean.grammar" isVisible="false" />
+        <filter targetName="diagnostics" isVisible="false" />
+        <filter targetName="compile.pdm" isVisible="false" />
+        <filter targetName="generate.factextractorjaxb" isVisible="false" />
+        <filter targetName="check_tiger" isVisible="false" />
+        <filter targetName="dist" isVisible="false" />
+        <filter targetName="build.factextractor" isVisible="false" />
+        <filter targetName="compile.grammar" isVisible="false" />
+        <filter targetName="compile" isVisible="false" />
+        <filter targetName="build" isVisible="false" />
+        <filter targetName="clean" isVisible="false" />
+        <filter targetName="clean.pdm" isVisible="false" />
+        <filter targetName="copy.pdm" isVisible="false" />
+        <filter targetName="run" isVisible="false" />
+        <filter targetName="all" isVisible="true" />
+        <filter targetName="remoteserver" isVisible="false" />
+        <filter targetName="regression_tests" isVisible="false" />
+        <filter targetName="unittests" isVisible="false" />
+        <filter targetName="extract.acre" isVisible="false" />
+      </targetFilters>
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/runfact.xml">
+      <antCommandLine value="" />
+      <runInBackground value="false" />
+      <targetFilters />
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/grammar/PQL.grammar">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="18" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.9807692">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/lang/node/TAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="135" selection-end="135" vertical-scroll-proportion="0.27945206">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/analytics/AcreContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="31" selection-start="935" selection-end="935" vertical-scroll-proportion="0.26064736">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.properties">
+      <provider selected="true" editor-type-id="properties">
+        <state line="25" column="28" selection-start="531" selection-end="531" vertical-scroll-offset="1" key-parts-delimiter="'.'">
+          <NAVIGATION_TREE>
+            <expanded path="lib.dir" />
+            <expanded path="pdm.schema" />
+            <expanded path="groovy" />
+            <expanded path="src" />
+            <expanded path="query.schema" />
+            <expanded path="jgraph" />
+            <expanded path="lib" />
+            <expanded path="java.tiger" />
+            <expanded path="fact" />
+            <expanded path="java" />
+            <expanded path="src.output" />
+            <expanded path="catalina" />
+            <expanded path="src.test" />
+            <expanded path="build" />
+            <expanded path="query" />
+            <expanded path="ant" />
+            <expanded path="pdm" />
+            <expanded path="src.main" />
+            <expanded path="" />
+            <expanded path="pdm.repository" />
+            <expanded path="fact.output" />
+          </NAVIGATION_TREE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/extractor/tools/jackpot/PackageTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="34" selection-start="975" selection-end="976" vertical-scroll-proportion="0.43714285">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="29" selection-start="289" selection-end="289" vertical-scroll-proportion="0.39144737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/createfactdb.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="10" selection-start="58" selection-end="58" vertical-scroll-proportion="0.16776316">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="2161" selection-end="2161" vertical-scroll-proportion="1.1611842">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runfact.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="63" selection-start="1692" selection-end="1692" vertical-scroll-proportion="-1.8092105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runfact.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.16776316">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="39" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="827" selection-end="827" vertical-scroll-proportion="0.9243421">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/visualizer/ui/config/ConfigurationPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1355" column="0" selection-start="54851" selection-end="54851" vertical-scroll-proportion="1.0065789">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/config/ConfigService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="435" column="0" selection-start="15483" selection-end="15483" vertical-scroll-proportion="0.35855263">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/org/acre/config/ConfigData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="326" column="16" selection-start="13010" selection-end="13010" vertical-scroll-proportion="0.05592105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="ideajad">
+    <property name="annotate" value="false" />
+    <property name="annotateFully" value="false" />
+    <property name="braces" value="false" />
+    <property name="clear" value="false" />
+    <property name="confirmNavigationTriggeredDecompile" value="true" />
+    <property name="dead" value="true" />
+    <property name="defaultInitializers" value="false" />
+    <property name="dissassemblerOnly" value="false" />
+    <property name="fieldsFirst" value="true" />
+    <property name="fileExtension" value="java" />
+    <property name="fullyQualifiedNames" value="false" />
+    <property name="indentation" value="4" />
+    <property name="intRadix" value="10" />
+    <property name="lineNumbersAsComments" value="true" />
+    <property name="longRadix" value="10" />
+    <property name="maxStringLength" value="64" />
+    <property name="nocast" value="false" />
+    <property name="noclass" value="false" />
+    <property name="nocode" value="false" />
+    <property name="noconv" value="false" />
+    <property name="noctor" value="false" />
+    <property name="nodos" value="false" />
+    <property name="nofd" value="false" />
+    <property name="noinner" value="false" />
+    <property name="nolvt" value="false" />
+    <property name="nonlb" value="false" />
+    <property name="outputDirectory" value="" />
+    <property name="packFields" value="3" />
+    <property name="packImports" value="7" />
+    <property name="prefixNumericalClasses" value="_cls" />
+    <property name="prefixNumericalFields" value="_fld" />
+    <property name="prefixNumericalLocals" value="_lcl" />
+    <property name="prefixNumericalMethods" value="_mth" />
+    <property name="prefixNumericalParameters" value="_prm" />
+    <property name="prefixUnusedExceptions" value="_ex" />
+    <property name="readonly" value="false" />
+    <property name="safe" value="false" />
+    <property name="sort" value="false" />
+    <property name="spaceAfterKeyword" value="false" />
+    <property name="splitStringsAtNewline" value="false" />
+    <property name="useTabs" value="false" />
+  </component>
+  <component name="simpleUML.DiagramSettingsWorkspace" />
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$" />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
+  </component>
+</project>
+

@@ -1,0 +1,133 @@
+Persons
+;
+method()
+;
+method(sd,12)
+;
+p.methodcall()
+;
+p.methodcall(12,43)
+;
+p.methodcall(12, b)
+;
+p.methodcall(12, b.o)
+;
+a.p.methodcall()
+;
+a.p.methodcall(12,43)
+;
+a.p.methodcall(12, b)
+;
+a.p.methodcall(12, b.o)
+;
+select p from Persons p
+;
+Student except TA
+;
+select ((Employee) s).salary from Student s
+;
+select p from p in Persons
+;
+select p from Persons p
+;
+select p from Persons as p
+;
+define jones as select distinct x from Students x where x.name = "Jones";select distinct student_id from Students
+;
+select p from distinct(select distinct p from Students) as p
+;
+select p from Students d where p = distinct(d)
+;
+define Does as select x from Student x where x.name = "Doe";select distinct student_id from Does
+;
+define Doe as element(select x from Student x where x.name = "Doe");select distinct student_id from Doe
+;
+Employee (name: Name, boss: Chairman)
+;
+Employee (name: "Peter", boss: Chairman)
+;
+BigNumber (real: 2.243, realreal: -423.123e-34)
+;
+Vector(data: set(1,3,10))
+;
+Person(name: "Mariusz")
+;
+select * from Persons p where p = Person(name: "xxx", surname: "yyy", age: 12)
+;
+struct(name:"Peter", age:25)
+;
+set(1,2,3)
+;
+set(1,2,3)<set(3,4,2,1)
+;
+list(1,2,3,4)
+;
+list(a,b,c,d)[1]
+;
+list(a,b,c,d)[1:3]
+;
+list(1 .. 2)
+;
+listtoset(list(1,2,3,2))
+;
+flatten(list(1,2,3,2))
+;
+distinct(select p from Person p)
+;
+element(Persons)
+;
+bag(1,1,2,3,3)
+;
+array(3,4,2,1,1)
+;
+10 < first(list(8,15,7,22))
+;
+10 < some(list(8,15,7,22))
+;
+10 < some list(8,15,7,22)
+;
+10 < any array(8,15,7,22)
+;
+100 > all(bag(8,15,7,22))
+;
+flatten(list(set(1,2,3), set(3,4,5,6), set(7)))
+;
+not true
+;
+count(Students) - count(TA)
+;
+"a nice string" like "%nice%str_ng"
+;
+Doe = element(select s from Students s where s.name="Doe")
+;
+Doe.name
+;
+Doe.name.toLowerCase
+;
+Doe.name.toLowerCase()
+;
+Doe.name.substring(123)
+;
+Doe.name.substring[1,3]
+;
+((octet) o)
+;
+(octet) o
+;
+((Mama) m)
+;
+(Employee) student
+;
+Doe->spouse != nil and Doe ->spouse->name = "Carol"
+;
+jones -> number_of_students
+;
+Mariusz in Persons
+;
+Doe->apply_course("Math", Turing)->number
+;
+for all x in Students: x.student_id > 0
+;
+exists x in Doe.takes: x.taught_by.name = "Turing"
+;
+

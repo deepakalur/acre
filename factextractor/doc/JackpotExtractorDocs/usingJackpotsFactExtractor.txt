@@ -1,0 +1,58 @@
+		How to use the Factor Extractor in Jackpot
+		==========================================
+
+			    Mike Godfrey
+			    migod@uwaterloo.ca
+			    January 15, 2004
+
+1.  Acquire the Jackpot source, and install it somewhere; let's call the
+    installation directory $JACKPOT_SRC.  If you have an existing version,
+    the only files that the extractor requires are "FactExtractor.java" and
+    the tweaked "testui", both in 
+    	$JACKPOT_SRC/src/share/javac/com/sun/labs/tools/systemorph
+
+2.  Run Jackpot (run "make" at the top level).  This should start up the
+    gui, using the Jackpot source as the example system.  If you want to
+    try out Jackpot on your own code, do "File -> Replace source" and
+    navigate to the appropriate root directory.
+
+3.  Jackpot will show you a package GUI view of your code.  Right click on
+    the topmost package for your source (if there are multiple package
+    trees in your source, you'll have to repeat the steps below for each
+    tree, and save the files after each extraction; see #7 below).  Select
+    "Fact extractor" and it will go about its business.  Note that whatever
+    package you select, Jackpot will examine all classes recursively
+    contained within.
+
+5.  The extraction will create two plain text files (which you will find in
+    $JACKPOT_SRC):  "factTuples.ta" and "factAttributes.ta".  To create a
+    file you can use with grok/QL, do this:
+    	cat javaMetaModel.ta factTuples.ta factAttributes.ta > jackpotFacts.ta
+    The filename you choose ("jackpotFacts.ta") is not important as long as
+    it has a ".ta" extension.  The order of the files is VERY important,
+    however.  The file "javaMetaModel.ta" is the TA encoding of the
+    meta-model for Java that the extractor adheres to; you can find it in
+    $JACKPOT_SRC.  There is a diagram of this meta model (with a couple of
+    extra bits added for clarity) in
+	$JACKPOT_SRC/factExtractor/metaModelDiagrams/JavaMetaModel.jpg
+
+6.  You can now use this fact file to run grok queries!  The first line of
+    your grok script will probably be "getta jackpotFacts.ta"
+
+7.  If you have multiple top-level package trees in your source, you will
+    need to perform an extraction for each tree and save the results.  e.g.,
+    	<jackpot extraction of "java" package tree>
+	mv factTuples.ta factTuples-java.ta
+	mv factAttributes.ta factAttributes-java.ta
+	<jackpot extraction of "com" package tree>
+	mv factTuples.ta factTuples-com.ta
+	mv factAttributes.ta factAttributes-com.ta
+	<etc>
+	cat javaMetaModel.ta factTuples*.ta factAttributes*.ta > jackpotFacts.ta
+
+[This file should be found in 
+ $JACKPOT_SRC/smdoc/factExtractor/usingJackpotsFactExtractor.txt] 
+ See also the file 
+ $JACKPOT_SRC/smdoc/factExtractor/notesOnTheExtractedFacts.txt
+]
+

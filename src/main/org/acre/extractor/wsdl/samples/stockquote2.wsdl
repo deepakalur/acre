@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<definitions name="StockQuoteData" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/stockquote/schemas">
+			<element name="TradePriceRequest">
+				<complexType>
+					<all>
+						<element name="tickerSymbol" type="string"/>
+					</all>
+				</complexType>
+			</element>
+			<element name="TradePrice">
+				<complexType>
+					<all>
+						<element name="price" type="float"/>
+					</all>
+				</complexType>
+			</element>
+		</schema>
+	</types>
+    <message name="TradePrice">
+        <part name="body" element="TradePriceRequest"/>
+    </message>
+
+</definitions>

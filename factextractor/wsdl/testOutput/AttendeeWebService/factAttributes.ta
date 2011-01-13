@@ -1,0 +1,6 @@
+
+FACT ATTRIBUTE :
+
+http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null { name=null targetNameSpace=http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService }
+http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null:AttendeeWebService { name=AttendeeWebService }
+http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService:null:AttendeeWebServiceSoapBinding { name=AttendeeWebServiceSoapBindingtype={http://localhost:8080/JavaSavant-jdo-struts/services/AttendeeWebService}AttendeeWebService }

@@ -1,0 +1,8 @@
+SELECT m as method, m.usedFields as field 
+FROM methods m 
+WHERE m.usedFields IN 
+    (SELECT f 
+    FROM fields f 
+    WHERE f.isFinal=false 
+    AND f.accessibility="public" 
+    AND f.parentClass.accessibility ="public")

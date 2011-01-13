@@ -1,0 +1,20 @@
+include pojo;
+
+//Find DAO
+DEFINE classesWithCRUDoperations AS SELECT c from classes c
+WHERE  c.methods.shortName RLIKE ".*[uU]pdate.*"
+    OR c.methods.shortName RLIKE ".*[dD]elete.*"
+    OR c.methods.shortName RLIKE ".*[lL]oad.*"
+    OR c.methods.shortName RLIKE ".*[iI]nsert.*";
+
+DEFINE classesWithJDBCCalls AS SELECT c from classes c
+WHERE  c.isInner=false and (c.methods.calls.parentClass.name LIKE "java.sql%"
+         OR c.methods.calls.parentClass.name LIKE "java.sql%");
+
+DEFINE potentialDaoClasses AS classesWithCRUDoperations ^ classesWithJDBCCalls;
+
+
+DEFINE daoClasses AS potentialDaoClasses ^ pojos;
+
+
+return daoClasses;

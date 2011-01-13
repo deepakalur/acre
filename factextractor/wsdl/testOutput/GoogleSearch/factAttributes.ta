@@ -1,0 +1,6 @@
+
+FACT ATTRIBUTE :
+
+urn:GoogleSearch:GoogleSearch { name=GoogleSearch targetNameSpace=urn:GoogleSearch }
+urn:GoogleSearch:GoogleSearch:GoogleSearchPort { name=GoogleSearchPort }
+urn:GoogleSearch:GoogleSearch:GoogleSearchBinding { name=GoogleSearchBindingtype={urn:GoogleSearch}GoogleSearchPort }

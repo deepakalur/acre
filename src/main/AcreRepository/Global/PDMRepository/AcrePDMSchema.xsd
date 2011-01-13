@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Deepak Alur (Deepak Alur) -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Deepak Alur (none) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pdm="http://java.sun.com/xml/ns/acre/" targetNamespace="http://java.sun.com/xml/ns/acre/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PDMList">
+		<xs:annotation>
+			<xs:documentation>List of PDM Definitions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdm:PDM" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PDM">
+		<xs:annotation>
+			<xs:documentation>Defines the basic PDM that contains 1-many roles and 0-many relationships</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdm:Roles"/>
+				<xs:element ref="pdm:Relationships" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="category" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>indicates the category of this PDM. User Defined. E.g. CoreJ2EEPatterns, GoF, etc.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Indicates the type of this PDM: ModelPDM or ScriptedPDM (GroovyPDM, PQLPDM, QLPDM, JavaPDM)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="tier" type="xs:string" use="optional"/>
+			<xs:attribute name="attributes" type="xs:string" use="optional"/>
+			<xs:attribute name="scriptedPDMPath" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>If type != ModelPDM, then specify the path for the PDM script in this attribute</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="factModelType" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Defaults to "JModel". 
+This is an optional attribute that indicates what fact model this PDM belongs to.
+E.g. "JModel", "WSDL". 
+For a PDM with different roles from different models you can have this attribute with a comma separated list. E.g. "JModel, WSDL". If no factModelType is specified, then the type will be derived by drilling down into roles under the PDM. </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Roles">
+		<xs:annotation>
+			<xs:documentation>Defines a set of roles in the PDMl</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdm:Role" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="queryName" type="xs:string"/>
+			<xs:attribute name="returnVariableName" type="xs:string"/>
+			<xs:attribute name="type" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Relationships">
+		<xs:annotation>
+			<xs:documentation>Defines a set of relationships between the different roles in the PDM</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdm:Relationship" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Role">
+		<xs:annotation>
+			<xs:documentation>Defines a role in the PDM. Each role can be mapped to one of:  another PDM, an abstract place holder, or a query that results the instances fulfilling that role.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdm:Argument" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Identifies the role by a name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>type indicates whether this role is fullfilled by another PDM, or can be executed using a query or can be declared as an Abstract role, in which case, this may be used to just build the hierarchy in visualization and ignored in the query construction. type can be one of:PDM, Query, or Abstract</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sequence" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>sequence indicates the order in which the roles should appear in the visualization scheme as well as in the query building algorithm.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="typeReferenceName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>typeReferenceName is optional. If the type attribute is specified as "PDM", then the typeReferenceName can be used to specify the name of the PDM. If the type attribute is specified as "Query", then the typeReferenceName can be used to specify the name of the query that can be looked up from the query mappings. if the type attribute is specified as "PDM" or "Query" and typeReferenceName is not specified, then the typeReferenceName will be assumed to be the same value as specified by the name attribute.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="queryName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>queryName is required if type=Query.
+queryName is used to look up the PDMQueryMappings.xml file to get the query details and execute the query as needed.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="returnVariableName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>This goes along with the queryName to indicate which return variable from that query is mapped to this role. A role can map to one 1 return variable in a query. A query can have multiple return variables so that multiple roles can map to a single query's multiple variables.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Relationship">
+		<xs:annotation>
+			<xs:documentation>Defines a relationship between any 2 roles specified in the PDM's Roles section.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>type indicates the kind of relationship between 2 roles. This is derived from the Java Meta Model and will be used to construct compound queries based on the model specification. The type must be one of:
+Creates
+Calls
+Contains
+Uses
+IsOfType
+Throws
+Catches
+Extends
+Implements</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="fromRole" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>fromRole indicates the starting point of the relationship</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="toRole" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>toRole indicates the ending point of the relationship</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Argument">
+		<xs:annotation>
+			<xs:documentation>Defines arguments that can be supplied to a role. </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the argument type: String, Integer. A special type is "RolePath" which identifies that the value should be used as a role path qualifier to drill down into the roles.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+			<xs:attribute name="sequence" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

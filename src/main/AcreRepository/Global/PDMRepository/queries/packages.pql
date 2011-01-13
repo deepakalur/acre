@@ -1,0 +1,10 @@
+
+define appPackages as 
+
+select p
+from packages p 
+where 
+(count(p.classes) > 0) and
+p.name like "com%";
+
+return appPackages;

@@ -1,0 +1,3 @@
+DEFINE applicationservice AS SELECT c FROM classes c WHERE ((c.shortName LIKE "%appserv%") OR (c.shortName LIKE "%applicationserv%"));
+
+RETURN applicationservice;

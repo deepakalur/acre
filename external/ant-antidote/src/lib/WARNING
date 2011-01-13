@@ -1,0 +1,20 @@
+**!! WARNING !!**
+
+Antidote currently depends on Sun's implementation of JAXP. and has
+only been compiled/tested against version 1.1 of this library. The
+reason for this is that the package org.apache.tools.ant.gui.acs
+(where the XML parser handler lives) uses a set of publically exposed
+classes that are part of the "com.sun.xml" structure which are not
+part of the JAXP specification.
+
+Why was such a crazy, non-standard thing done? Because the classes
+XmlDocumentBuilder and SimpleElementFactory in the package
+com.sun.xml.tree enabled the rapid creation of a data model that
+allowed Antidote to quicly become a useful application.
+
+Don't like it? Then help us fix it! :-) Basically a SAX handler needs
+to be implemented that builds a DOM whose element nodes are instances
+of specific types in the org.apache.tools.ant.gui.acs pakcage based on
+the element tag name.
+
+(You've been Warned)

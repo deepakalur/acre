@@ -1,0 +1,3 @@
+#define calledclasses as "methods.calls.parentClass";
+
+define tmp as select c from classes c;

@@ -1,0 +1,6 @@
+/////////////////////////////// Expressions test
+a^b;
+a*b;
+a + b - (c^d);
+(c and (a or b) and d) or w;
+

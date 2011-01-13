@@ -1,0 +1,6 @@
+define javaxclasses as
+select c 
+from classes c
+where c.parentPackage.name like "javax.%";
+
+return javaxclasses;

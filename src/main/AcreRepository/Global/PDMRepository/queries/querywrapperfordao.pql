@@ -1,0 +1,3 @@
+DEFINE querywrapperfordao AS SELECT c FROM classes c WHERE ((c.shortName LIKE "%query%") OR (c.shortName LIKE "%queries%"));
+
+RETURN querywrapperfordao;

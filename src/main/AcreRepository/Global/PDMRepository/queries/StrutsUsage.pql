@@ -1,0 +1,4 @@
+DEFINE strutsUsage AS SELECT c from classes c
+WHERE  c.isInner=false and (c.methods.calls.**.parentClass.name LIKE "org.apache.struts%");
+
+return strutsUsage;

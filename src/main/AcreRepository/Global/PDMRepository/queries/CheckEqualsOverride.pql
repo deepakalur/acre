@@ -1,0 +1,8 @@
+// classes overriding equals must also overide hashCode
+
+return
+select c
+from classes c, c.methods m
+where m.shortName = "equals" and m.shortName != "hashCode" 
+and c.parentPackage.name Not in ("java.lang");
+

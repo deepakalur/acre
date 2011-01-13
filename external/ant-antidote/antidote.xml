@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<project name="acre.antidote" default="runjava" basedir=".">
+
+<!--
+    <property name="java.home.tiger" value="c:/Program Files/Java/jdk1.5.0" />
+-->
+    <path id="classpath">
+        <fileset dir="${acre.home}/ant/lib">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${acre.home}/antidote/lib">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${acre.home}/lib/extractors/java/">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="runjava" >
+        <java classname="org.apache.tools.ant.gui.Main" fork="yes" spawn="true" jvm="${java.home.tiger}/bin/java" >
+            <classpath refid="classpath" />
+        </java>
+    </target>
+</project>

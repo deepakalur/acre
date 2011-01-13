@@ -1,0 +1,37 @@
+// The QL meta model for WSDL.  
+// Written by Mike Godfrey based on the meta model diagram 
+// designed by Syed Ali.  
+// August  5, 2004
+
+SCHEME TUPLE :
+
+imports		Definition	ExternalImport
+hasService	Definition	Service
+hasService	PortType	Service
+hasType		Definition	Type
+hasMessage	Definition	Message
+hasBinding	Definition 	Binding
+hasPortType	Definition 	PortType
+hasMessagePart	Message		Part
+hasOperation	Binding		Operation
+hasOperation	PortType	Operation
+hasInputParam	Operation	Parameter
+hasOutputParam	Operation	Parameter
+hasFault	Operation	Fault
+hasBody		Parameter	Body
+
+SCHEME ATTRIBUTE :
+
+Definition	{ name targetNameSpace }
+ExternalImport	{ namespace location }
+Type		{ }
+Service		{ name }
+Message		{ name }
+Part		{ name element type }
+Binding		{ name type transport style }
+PortType	{ name location }
+Operation	{ name parameterOrder type soapAction style}
+Body		{ namespace use encodingStyle parts }
+Parameter	{ name message }
+Fault		{ name message }
+

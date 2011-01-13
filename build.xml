@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ACRE Version 0.1" default="all" basedir=".">
+
+    <!-- Build properties can be overridden by setting them in the build.properties file-->
+    <property file="build.properties"/>
+
+    <property name="groovy.lib" value="${groovy.dir}/lib/"/>
+    <property name="ant.lib" value="${lib.dir.ant}"/>
+
+    <property location="${src.main.dir}/org/acre/pdm" name="jaxbpropertiessrc"/>
+    <property location="${src.output.dir}/org/acre/pdm" name="jaxbpropertiesdest"/>
+
+    <property name="extractor.dir" value="${src.main.dir}/org/acre/extractor"/>
+    <property name="bindingfile" value="${extractor.dir}/wsdl/binding.xjb"/>
+    <property name="catalogfile" value="${extractor.dir}/wsdl/catalog.cat"/>
+    <property name="schema.dir" value="${extractor.dir}/wsdl/schemas"/>
+    <property name="jaxb.package" value="org/acre/extractor/jaxb"/>
+    <property name="soap.schema" value="Soap.xsd"/>
+    <property name="wsdl.schema" value="wsdl-1.1.xsd"/>
+    <property name="xsd.schema"  value="XMLSchema.xsd"/>
+    <property name="datatypes.schema" value="datatypes.xsd"/>
+
+    <!-- classpaths which will be used in this build -->
+    <path id="src.class.path">
+        <pathelement location="${src.output.dir}"/>
+        <fileset dir="${java.tiger.home}/lib">
+            <include name="tools.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${groovy.lib}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir.ant}">
+            <include name="ant*.jar"/>
+        </fileset>
+    </path>
+
+    <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+        <classpath refid="src.class.path"/>
+    </taskdef>
+        
+    <target name="run" depends="all" >
+        <java classname="org.acre.visualizer.ui.Main" fork="true">
+            <classpath refid="src.class.path"/>
+            <jvmarg value="-Xms256M"/>
+            <jvmarg value="-Xmx512M"/>
+            <jvmarg value="-Dcom.sun.management.jmxremote"/>
+        </java>
+    </target>
+
+    <target name="runconfig" depends="all" >
+        <java classname="org.acre.visualizer.ui.config.Main" fork="true">
+            <classpath refid="src.class.path"/>
+            <jvmarg value="-Xms256M"/>
+            <jvmarg value="-Xmx512M"/>
+            <jvmarg value="-Dcom.sun.management.jmxremote"/>
+        </java>
+    </target>
+
+    <target name="dist">
+        <echo message="########################### Started ACRE distribution build           ##########################"/>
+        <echo message="=================== Copying startup scripts ..."/>
+        <copy todir="${dist}/bin">
+            <fileset dir="${basedir}/bin">
+                <include name="**/*"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying ACRE libraries ..."/>
+        <copy todir="${dist}/lib/acre">
+            <fileset dir="${lib.dir}">
+                <include name="**/*.jar"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying ACRE repository ..."/>
+
+        <copy todir="${dist}/AcreRepository">
+            <fileset dir="${basedir}/src/main/AcreRepository">
+                <include name="**/*"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying antidote ..."/>
+        <copy todir="${dist}/antidote">
+            <fileset dir="${basedir}/ant-antidote/dist">
+                <include name="**/*"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+            <fileset dir="${basedir}/ant-antidote">
+                <include name="antidote.xml"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying Groovy ..."/>
+        <mkdir dir="${dist}/groovy/lib"/>
+        <copy todir="${dist}/groovy/lib">
+            <fileset dir="${groovy.lib}">
+                <include name="groovy*.jar"/>
+                <include name="asm-*.jar"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying ant 1.6.2 installation ..."/>
+        <copy todir="${dist}/ant">
+            <fileset dir="${ant.dir}">
+                <include name="**/*"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </copy>
+        <echo message="=================== Copying ACRE classes ..."/>
+        <jar jarfile="${basedir}/acre.jar" basedir="${basedir}/classes"> </jar>
+
+        <echo message="=================== Creating ACRE launcher ..."/>
+        <mkdir dir="${basedir}/classes/tmp"/>
+        <jar jarfile="${dist}/lib/acre/acre-launcher.jar" basedir="${basedir}/classes/tmp"
+            manifest="${basedir}/acre-manifest.txt"> </jar>
+           
+    </target>
+
+    <!-- The 'do everything' target -->
+    <target name="build" depends="init, compile, unittests" description="Build ACRE project"/>
+    <target name="all" depends="build" 
+        description="full build for module ACRE Language">
+        <echo message="Build completed"/>
+    </target>
+
+    <!-- Any initialization logic should be placed in the 'init' target -->
+    <target name="init">
+        <available property="is_tiger" classname="java.lang.Enum"/>
+        <mkdir dir="${src.output.dir}"/>
+    </target>
+    <!-- Any cleanup logic should be placed in the 'clean' target -->
+    <target name="clean.grammar" depends="init" description="Clean up all the build artifacts">
+        <delete dir="${src.output.dir}"/>
+        <delete file="grammar/.done"/>
+        <delete file="${src.main.dir}/pdmschema/.done"/>
+    </target>
+  
+    <!-- A simple task for compiling of all java source files for the module -->
+    <target name="compile" depends="init, compile.grammar, compile.pdm" description="compile the  source for module ACRE Language">
+        <echo message="Java Tiger Home = ${java.tiger.home}"/>
+        <echo message="Output Directory = ${src.output.dir}"/>
+        <echo message="====================== Compiling sources ===================="/>
+        <mkdir dir="${src.output.dir}"/>
+        <javac destdir="${src.output.dir}" includeAntRuntime="off" debug="${build.debug}" bootclasspath="" 
+            deprecation="${build.deprecation}" fork="yes" memorymaximumsize="512m"
+            optimize="${build.optimize}">
+            <classpath refid="src.class.path"/>
+            <src path="${src.main.dir}"/>
+            <src path="${src.test.dir}"/>
+            <include name="**/*.java"/>
+            <exclude name="src/org/acre/visualizer/pdmcomposer/**/*.java"/>
+            <exclude name="src/org/acre/visualizer/v3d/**/*.java"/>
+            <exclude name="classes/**/*.java"/>
+            <exclude name="classes/**/*.java"/>
+            <exclude name="AcreRepository/**/*.java"/>
+        </javac>
+        <echo message="====================== Copying resources ===================="/>
+        <copy todir="${src.output.dir}">
+            <fileset dir="${src.main.dir}">
+                <include name="**/*.dat"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.jpg"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+    
+    
+    <target name="extract.acre" depends="init" description="compile the source for module
+        ACRE Language">
+        <mkdir dir="${src.output.dir}"/>
+        <echo message="====================== ACRE SQL Chars Extractor Started            ===================="/>
+        <javac includeAntRuntime="off" debug="${build.debug}" deprecation="${build.deprecation}"
+            optimize="${build.optimize}"
+            compiler="org.acre.extractor.java.SQLAntCompilerAdapter">
+            <classpath refid="src.class.path"/>
+            <src path="${src.main.dir}"/>
+            <src path="${src.test.dir}"/>
+            <include name="**/*.java"/>
+            <exclude name="classes/**/*.java"/>
+            <exclude name="org/acre/lang/runtime/FreqlShell.java"/>
+            <exclude name="classes/**/*.java"/>
+            <exclude name="AcreRepository/**/*.java"/>
+            <compilerarg value="-XDprojectname=ACRE"/>
+            <compilerarg value="-XDprojectversion=V1.0"/>
+        </javac>
+        <echo message="====================== ACRE SQL Chars Extractor Finished             ===================="/>
+    </target>
+    
+    <target name="printmetamodel" description="Run Populate Metamodel test">
+        <java classname="org.acre.model.metamodel.PopulateMetaModel">
+            <classpath>
+                <pathelement path="${src.output.dir}"/>
+            </classpath>
+            <classpath refid="src.class.path"/>
+        </java>
+    </target>
+    
+    <!-- A simple task for creating javadoc of all source directories -->
+    <target name="javadoc" depends="init" description="DISABLED - too many files on windows create
+        javadoc for module ACRE Language">
+        <!--
+		<mkdir dir="${javadoc.dir}"/>
+		<javadoc destdir="${javadoc.dir}" classpathref="src.class.path">
+			<fileset dir="${src.ql.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+			<fileset dir="${src.main.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+			<fileset dir="${src.test.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+		</javadoc>
+                -->
+    </target>
+    
+    <!-- A simple task for printing some diagnostic information about the build.-->
+    <!-- Useful for debugging purposes.-->
+    <target name="diagnostics" depends="init" description="print some simple build diagnostics">
+        <echoproperties/>
+    </target>
+    <path id="pql_queries">
+        <fileset dir="grammar/test/regression">
+            <include name="**/*.pql"/>
+        </fileset>
+    </path>
+    <pathconvert pathsep=" " property="pql_queries_args" refid="pql_queries"/>
+    <target name="regression_tests">
+        <java classname="org.acre.lang.application.CheckTree" classpath="classes">
+            <arg line="${pql_queries_args}"/>
+        </java>
+    </target>
+    <path id="test_queries">
+        <fileset dir="src/main/AcreRepository/Global/PDMRepository/queries">
+            <include name="*.pql"/>
+        </fileset>
+    </path>
+    <pathconvert pathsep=" " property="test_queries_args" refid="test_queries"/>
+    <target name="pattern_queries">
+        <java classname="org.acre.lang.pql.translator.Main">
+            <classpath refid="src.class.path"/>
+            <arg value="-analyse"/>
+            <arg value="-translate"/>
+            <arg value="-nodebug"/>
+            <arg value="-targetSQL"/>
+            <arg line="${test_queries_args}"/>
+        </java>
+    </target>
+    <target name="unittests" depends="compile, regression_tests, pattern_queries"/>
+
+    <target name="check_tiger" depends="init" unless="is_tiger">
+      <fail message="JDK 1.5 or later required"/>
+    </target>
+
+    <target name="remoteserver" depends="compile" description="build ACRE Remote Server">
+        <rmic classname="org.acre.server.SalsaServerImpl" base="${src.output.dir}"/>
+    </target>
+    <uptodate property="grammar.notRequired" srcfile="grammar/PQL.grammar"
+        targetfile="grammar/.done"/>
+    <target name="compile.grammar" unless="grammar.notRequired">
+        <delete dir="src/main/org/acre/lang/lexer"/>
+        <delete dir="src/main/org/acre/lang/parser"/>
+        <delete dir="src/main/org/acre/lang/node"/>
+        <delete dir="src/main/org/acre/lang/analysis"/>
+        <java jar="lib/sablecc-2.18.jar" fork="true">
+            <arg line="-d src/main grammar/PQL.grammar"/>
+        </java>
+        <touch file="grammar/.done"/>         
+    </target>
+
+    <uptodate property="compile_pdm_schema.notRequired" srcfile="${pdm.schema.dir}/${pdm.schema.file}"
+        targetfile="${pdm.schema.dir}/.pdmdone"/>
+    <uptodate property="compile_pdmqueries_schema.notRequired" srcfile="${pdm.schema.dir}/${query.schema.file}"
+        targetfile="${pdm.schema.dir}/.pdmqueriesdone"/>
+    <target name="compile.pdm" unless="clean.pdm, compile_schema.notRequired, compile_pdmqueries_schema.notRequired">
+        <!-- generate the Java content classes from the schema -->
+         <echo message="Compiling PDM schema..."/>
+         <xjc package="org.acre.pdm"
+             schema="${pdm.schema.dir}/${pdm.schema.file}"
+             extension="true"
+             target="${src.main.dir}/">
+             <depends dir="${pdm.schema.dir}">
+                 <filename name="${pdm.schema.file}"/>
+             </depends>
+             <produces dir="${src.main.dir}" includes="org/acre/pdm/**/*.java"/>
+         </xjc>
+             
+
+        <echo message="Compiling PDM Query Mappings schema..."/>
+        <xjc package="org.acre.pdmqueries"
+            schema="${pdm.schema.dir}/${query.schema.file}"
+            extension="true"
+            target="${src.main.dir}">
+            <depends dir="${pdm.schema.dir}">
+              <filename name="${query.schema.file}"/>
+            </depends>
+            <produces dir="${src.main.dir}" includes="org/acre/pdmqueries/**/*.java"/>
+        </xjc>
+ 
+        <touch file="${src.main.dir}/pdmschema/.done"/>
+    </target>
+
+    <target name="build.factextractor" depends="check_tiger, generate.factextractorjaxb" description="compile the project">
+    </target>
+
+    <target name="generate.factextractorjaxb">
+        <echo message="Building Fact Extractor JAXB: ${extractor.dir}"/>
+        <echo message="Src dir: ${src.main.dir}"/>
+        <echo message="Binding File: ${bindingfile}"/>
+        <echo message="Catalog File: ${catalogfile}"/>
+        <echo message="Schema Dir: ${schema.dir}"/>
+
+       <xjc target="${src.main.dir}" binding="${bindingfile}" extension="true" catalog="${catalogfile}">
+             <schema dir="${schema.dir}">
+                 <include name="${xsd.schema}"/>
+                 <include name="${soap.schema}"/>
+                 <include name="${xsd.schema}"/>
+             </schema>
+             <depends dir="${schema.dir}">
+               <filename name="${soap.schema}"/>
+               <filename name="${wsdl.schema}"/>
+               <filename name="${xsd.schema}"/>
+             </depends>
+            <produces dir="${src.main.dir}" includes="${jaxb.package}/**/*.java" />
+       </xjc>
+    </target>
+
+    <target name="copy.pdm" depends="init">
+        <copy file="${pdm.schema.file}" todir="${pdm.repository.dir}"/>
+    </target>
+
+    <target name="clean" depends="init, clean.grammar, clean.pdm" description="Clean all JAXB XJC products.">
+        <echo message="Cleaning. Deleting Class files"/>
+        <delete quiet="true" >
+            <fileset dir="${src.output.dir}">
+                <include name="**/*.java"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.ser"/>
+                <include name="**/*.class"/>
+                <exclude name="CVS"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="clean.pdm" depends="init" description="Clean all JAXB XJC products.">
+        <echo message="Cleaning. Deleting Javafiles generated by JAXB XJC"/>
+        <delete quiet="true" >
+            <fileset dir="${src.main.dir}/org/acre/pdm">
+                <include name="**/*.java"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.ser"/>
+                <exclude name="CVS"/>                
+            </fileset>
+			<fileset dir="${src.main.dir}/org/acre/pdmqueries">
+				<include name="**/*.java"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.ser"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+            <fileset dir="${src.output.dir}/org/acre/pdm">
+                <include name="**/*.java"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.ser"/>
+                <exclude name="CVS"/>                
+            </fileset>
+			<fileset dir="${src.output.dir}/org/acre/pdmqueries">
+				<include name="**/*.java"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.ser"/>
+                <exclude name="**/CVS"/>
+                <exclude name="**/CVS/**/*"/>
+            </fileset>
+        </delete>
+    </target>
+
+</project>

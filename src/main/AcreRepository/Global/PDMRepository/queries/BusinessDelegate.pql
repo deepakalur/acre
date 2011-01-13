@@ -1,0 +1,13 @@
+include ServiceLocator;
+
+include SessionFacade;
+
+define classesCallingServiceLocators as
+select c from classes c
+where c.methods.calls.**.parentClass in EJBServiceLocators;
+
+define BusinessDelegates as
+select c from classesCallingServiceLocators c
+where  c.fields.type in SFInterfaces;
+
+return BusinessDelegates;

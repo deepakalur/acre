@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PDMQueryList xsi:schemaLocation="http://java.sun.com/xml/ns/acre/
+AcrePDMQueryMappings.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/acre/">
+    <Query description="CJP2 business delegates" language="PQL" name="BusinessDelegate" relativeFilePath="BusinessDelegate.pql" type="Static"/>
+    <Query description="CJP2 session facades" language="PQL" name="SessionFacade" relativeFilePath="SessionFacade.pql" type="Static"/>
+    <Query description="CJP2 service locators" language="PQL" name="ServiceLocator" relativeFilePath="ServiceLocator.pql" type="Static"/>
+    <Query description="Find All Servlets" language="PQL" name="Servlets" relativeFilePath="servlets.pql" type="Static"/>
+    <Query description="Find All Servlets" language="PQL" name="Singleton" relativeFilePath="singleton.pql" type=" Static"/>
+    <Query description="Find Front Controllers" language="PQL" name="FrontController" relativeFilePath="frontcontroller.pql" type="static"/>
+    <Query description="Find Application Controllers" language="PQL" name="ApplicationController" relativeFilePath="applicationcontroller.pql" type="dynamic">
+        <Argument description="Results from executing Command query" name="command" relatedQueryName="Command" sequence="1" type="queryresult"/>
+        <Argument description="Results from Front Controller query" name="frontcontroller" relatedQueryName="FrontController" sequence="2" type="queryresult"/>
+    </Query>
+    <Query description="Find Command Factories" language="PQL" name="CommandFactory" relativeFilePath="commandfactory.pql" type="dynamic">
+        <Argument description="Results from executing Command query" name="command" relatedQueryName="Command" sequence="1" type="queryresult"/>
+    </Query>
+    <Query description="Find Command objects" language="PQL" name="Command" relativeFilePath="command.pql" type="static"/>
+    <Query description="Find POJOs" language="PQL" name="Pojo" relativeFilePath="pojos.pql" type="static"/>
+    <Query description="Find Methods that use public fields" language="PQL" name="MethodsUsingPublicFieldsHelperQuery" relativeFilePath="muplhelper.pql" type="static"/>
+    <Query description="Find methods that use public fields" language="PQL" name="MethodsUsingPublicFields" relativeFilePath="mupl.pql" type="dynamic">
+        <Argument description="Results from executing MUPL query" name="mupl" relatedQueryName="MethodsUsingPublicFieldsHelperQuery" sequence="1" type="queryresult"/>
+    </Query>
+    <Query description="Find Intercepting Filters" language="PQL" name="InterceptingFilter" relativeFilePath="InterceptingFilter.pql" type="PQL Script"/>
+    <Query description="Check Natural Class Ordering" language="PQL" name="CheckClassesNaturalOrdering" relativeFilePath="CheckClassesNaturalOrdering.pql" type="PQL Script"/>
+    <Query description="Check Equals Override" language="PQL" name="CheckEqualsOverride" relativeFilePath="CheckEqualsOverride.pql" type="PQL Script"/>
+    <Query description="Find Classes depending on Finalizer" language="PQL" name="ClassesWithFinalizer" relativeFilePath="ClassesWithFinalizer.pql" type="PQL Script"/>
+    <Query description="Find Defective Singletons" language="PQL" name="DefectiveSingleton" relativeFilePath="DefectiveSingleton.pql" type="PQL Script"/>
+    <Query description="" language="Groovy" name="PDMSingletonScript" relativeFilePath="PDMSingletons.groovy" type="Dynamic"/>
+    <Query description="identify recursive method calls" language="PQL" name="recursiveCalls" relativeFilePath="recursiveCalls.pql" type="Static"/>
+    <Query description="get names of application packages" language="PQL" name="packages" relativeFilePath="packages.pql" type="Static"/>
+    <Query description="" language="Groovy" name="packageArtifacts" relativeFilePath="packageArtifacts.groovy" type="Dynamic"/>
+    <Query description="Modify before saving" language="PQL" name="javaclasses" relativeFilePath="javaclasses.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="javaxclasses" relativeFilePath="javaxclasses.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="Governance1" relativeFilePath="Governance1.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="Macro1" relativeFilePath="Macro1.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="Macro2" relativeFilePath="Macro2.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="allMacros" relativeFilePath="allMacros.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="DataAccessObject" relativeFilePath="DataAccessObject.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="DataAccessInterface" relativeFilePath="DAOInterface.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="Struts" relativeFilePath="StrutsInTheHouse.pql" type="Static"/>
+    <Query description="Modify before saving" language="PQL" name="StrutsUsage" relativeFilePath="StrutsUsage.pql" type="Static"/>
+    <Query description="Find Application Service objects" language="PQL" name="ApplicationService" relativeFilePath="applicationservice.pql" type="static"/>
+    <Query description="Find QueryWrapperForDAO objects" language="PQL" name="QueryWrapperForDAO" relativeFilePath="querywrapperfordao.pql" type="static"/>
+</PDMQueryList>
+

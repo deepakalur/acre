@@ -1,0 +1,14 @@
+// Service Locator using Macro support
+
+#define calledclasses as "methods.calls.parentClass";
+#define returnTypes as "methods.returnType.name";
+
+define EJBServiceLocators as
+select c from classes c
+where c.$calledclasses.name="javax.naming.InitialContext"
+and c.$returnTypes in ("javax.ejb.EJBObject", "javax.ejb.EJBHome",
+"javax.ejb.EJBLocalHome");
+
+
+
+return EJBServiceLocators;

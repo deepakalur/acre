@@ -1,0 +1,57 @@
+		   How to use the Factor Extractor in SALSA
+		   ========================================
+
+				 Mike Godfrey
+			      migod@uwaterloo.ca
+
+		original version for Jackpot: January 15, 2004
+		   updated version for SALSA: June  7, 2004
+
+1.  To use the SALSA fact extractor, you need ANT (to build it) and a 1.5 JDK
+    (to run it).  At the time of writing, the 1.5 JDKs are still betas, but
+    they seem to work fine.
+	
+2.  Acquire and unpack the SALSA fact extractor distribution.  It should look
+    something like this:
+    	build.xml
+	run
+	winrun
+	doc/<stuff>
+	src/com/sun/tools/jackpot/<stuff>
+	src/com/sun/tools/salsa/<stuff>
+    Let's call the top-level directory $SALSA_EXTRACTOR.
+
+3.  Type "ant" to build the extractor, and check that everything worked.
+
+4.  Have a look at the "run" script to see if anything needs tweaking.  Look
+    for the appropriate installation dir of the 1.5 JDK, and also add in any
+    require jar files into the classpath option; for example, a J2EE system
+    might need to have /opt/SUNWappserver/lib/j2ee.jar added.  The rule of
+    thumb is that if you can build your system with javac 1.5, you should also
+    be able to perform an extraction on it using the same settings for
+    CLASSPATH.
+
+5.  Try running the "run" script ("winrun" for Windows) by
+	% ./run <target>
+    <target> can either be a (set of) Java file(s), or a directory.
+    Basically, the command-line use is like javac's.
+
+6.  The extraction will create two plain text files: "factTuples.ta" and
+    "factAttributes.ta".  To create a file you can use with QL, do this:
+    	cat factTuples.ta factAttributes.ta > mySystemFacts.ta
+    The filename you choose ("mySystemFacts.ta") is not important as long as
+    it has a ".ta" extension.  
+    
+    There is a diagram of the meta model that the extractor uses in:
+	$SALSA_EXTRACTOR/doc/metaModelDiagrams/JavaMetaModel.jpg
+
+7.  You can now use this fact file to run QL queries!  The first line of
+    your QL script will probably be "getta mySystemFacts.ta"
+
+
+[This file should be found in 
+ $SALSA_EXTRACTOR/doc/usingSalsaFactExtractor.txt] 
+ See also the file 
+ $SALSA_EXTRACTOR/doc/notesOnTheExtractedFacts.txt
+]
+

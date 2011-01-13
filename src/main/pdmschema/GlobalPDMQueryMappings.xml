@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Deepak Alur (Deepak Alur) -->
+<PDMQueryList xmlns="http://java.sun.com/xml/ns/acre/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/acre/
+AcrePDMQueryMappings.xsd">
+
+	<Query name="Servlets" language="PQL" type="Static" relativeFilePath="servlets.pql" description="Find All Servlets"/>
+	<Query name="Singleton" language="PQL" type=" Static" relativeFilePath="singleton.pql" description="Find All Servlets"/>
+	<Query name="FrontController" language="PQL" type="static" relativeFilePath="frontcontroller.pql" description="Find Front Controllers"/>
+	<Query name="ApplicationController" language="PQL" type="dynamic" relativeFilePath="applicationcontroller.pql" description="Find Application Controllers">
+		<Argument sequence="1" type="queryresult" description="Results from executing Command query" relatedQueryName="Command" name="command"/>
+		<Argument sequence="2" type="queryresult" description="Results from Front Controller query" relatedQueryName="FrontController" name="frontcontroller"/>
+	</Query>
+	<Query name="CommandFactory" language="PQL" type="dynamic" relativeFilePath="commandfactory.pql" description="Find Command Factories">
+		<Argument sequence="1" type="queryresult" description="Results from executing Command query" relatedQueryName="Command" name="command"/>
+	</Query>
+	<Query name="Command" language="PQL" type="static" relativeFilePath="command.pql" description="Find Command objects"/>
+	<Query name="MethodsUsingPublicFieldsHelperQuery" language="PQL" type="static" relativeFilePath="muplhelper.pql" description="Find Methods that use public fields"/>
+	<Query name="MethodsUsingPublicFields" language="PQL" type="dynamic" relativeFilePath="mupl.pql" description="Find methods that use public fields">
+		<Argument sequence="1" type="queryresult" description="Results from executing MUPL query" relatedQueryName="MethodsUsingPublicFieldsHelperQuery" name="mupl"/>
+	</Query>
+</PDMQueryList>

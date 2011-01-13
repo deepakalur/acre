@@ -1,0 +1,5 @@
+// Test for alternative OQL select syntax (use colons)
+select ssn: e.ssn, dept: e.dept.name, course: c.name
+                 from e in Instructors,
+                      c in e.teaches
+                where e.name = "Smith";

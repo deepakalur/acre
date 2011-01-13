@@ -1,0 +1,45 @@
+SCHEME TUPLE :
+
+$INHERIT 	jPackage 	jProgEntity
+$INHERIT	jType		jProgEntity
+$INHERIT 	jClass 		jType
+$INHERIT 	jInterface 	jType
+$INHERIT 	jNonClassType 	jType
+$INHERIT 	jMethod 	jProgEntity
+$INHERIT 	jField	 	jProgEntity
+$INHERIT 	jParameter 	jProgEntity
+
+jContain 	jPackage 	jPackage
+jContain 	jPackage 	jType
+jContain 	jType 		jType
+jContain 	jType 		jMethod
+jContain 	jType 		jField
+jImplements 	jClass 		jInterface
+jExtends 	jClass 		jClass
+jExtends 	jInterface 	jInterface
+jInstantiates 	jMethod		jClass
+jIsOfType	jMethod		jType
+jCalls 		jMethod		jMethod
+jUses 		jMethod		jField
+jThrows		jMethod		jType
+jCatches	jMethod		jType
+jIsOfType	jField		jType
+jHasParam	jMethod		jParameter
+jIsOfType	jParameter	jType
+
+SCHEME ATTRIBUTE :
+
+jProgEntity	{ jName }
+jPackage 	{ jShortName }
+jType		{ }
+jNonClassType	{ }
+jClass		{ jShortName jIsAbstract jIsStatic jIsFinal jIsInner jAccessibility jSourceFile jLineNum }
+jInterface	{ jShortName jIsStatic jIsInner jAccessibility jSourceFile jLineNum }
+jMethod		{ jShortName jIsAbstract jIsStatic jIsFinal jNumParams jIsConstructor jAccessibility jIsSynchronized jContainsSynchBlock jLineNum }
+jField		{ jShortName jIsStatic jIsFinal jAccessibility jLineNum }
+jParameter	{ jShortName jIndex }
+
+(jCalls) 	{ jLineNum }
+(jUses) 	{ jLineNum }
+(jCatches)	{ jLineNum }
+(jInstantates)	{ jLineNum }

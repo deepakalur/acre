@@ -1,0 +1,807 @@
+/**
+PQL grammar
+@author Modified from original OQL3 grammar (see below) by Yury Kamen
+
+This grammar is derived from nzdis-oql,
+ OQL3 parser and simple query analyser.
+Copyright (C) 1998-2001 Mariusz Nowostawski and others.  All rights reserved.
+
+See the file "AUTHORS" for the name of all copyright holders.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this program in the file "COPYING-LESSER"; if not,
+write to the Free Software Foundation, Inc., 59 Temple Place,
+Suite 330, Boston, MA  02111-1307  USA
+
+The nzdis web site is located at:  http://nzdis.otago.ac.nz/
+
+The nzdis-oql project on sourceforge is located at  http://sourceforge.net/projects/sablecc
+under NZDIS OQL module.
+*/
+
+
+Package org.acre.lang;
+
+Helpers
+
+tab = 9;
+cr = 13;
+lf = 10;
+eol = [[cr + lf] + [cr + lf]];
+white = [[' ' + tab] + eol];
+
+letter = [['A'..'Z'] + ['a'..'z']];
+digit = ['0'..'9'];
+normal = [[digit + '_'] + letter];
+special_character = [[['?' + '_'] + ['*' + '%']] + '\'];
+character = [[letter + digit] + special_character];
+
+a = 'a' | 'A';
+b = 'b' | 'B';
+c = 'c' | 'C';
+d = 'd' | 'D';
+e = 'e' | 'E';
+f = 'f' | 'F';
+g = 'g' | 'G';
+h = 'h' | 'H';
+i = 'i' | 'I';
+j = 'j' | 'J';
+k = 'k' | 'K';
+l = 'l' | 'L';
+m = 'm' | 'M';
+n = 'n' | 'N';
+o = 'o' | 'O';
+p = 'p' | 'P';
+q = 'q' | 'Q';
+r = 'r' | 'R';
+s = 's' | 'S';
+t = 't' | 'T';
+u = 'u' | 'U';
+v = 'v' | 'V';
+w = 'w' | 'W';
+x = 'x' | 'X';
+y = 'y' | 'Y';
+z = 'z' | 'Z';
+
+/*****/
+Tokens
+
+white = white+;
+
+dotdotdot = '...' | '.**.';    // PQL-specific transitive projection: example:  a..b  or a.**.b
+arrow = '->';
+binor = '||';
+bracket_l  = '(';
+bracket_r  = ')';
+colon = ':';
+comma = ',';
+divide = '/';
+dollar = '$';
+dotdot = '..';
+dot = '.';
+eq = '=';
+ge = '>=';
+gt = '>';
+le = '<=';
+lt = '<';
+minus = '-';
+ne = '!=';
+plus = '+';
+quote = ''';
+semicolon = ';';
+sq_bracket_l  = '[';
+sq_bracket_r  = ']';
+star = '*';
+set_and = '^';
+
+// Case-insensitive keywords
+
+abs = a b s;
+alias = a l i a s; // Disable for now
+all = a l l;
+andthen = a n d t h e n;
+and = a n d;
+any = a n y;
+array = a r r a y;
+as = a s;
+asc =a s c;
+avg = a v g;
+bag = b a g;
+boolean = b o o l e a n;
+by = b y;
+count = c o u n t;
+char = c h a r;
+date = d a t e;
+define = d e f i n e;
+desc = d e s c;
+dictionary = d i c t i o n a r y;
+distinct = d i s t i n c t;
+double = d o u b l e;
+element = e l e m e n t;
+enum = e n u m ;
+except = e x c e p t;
+exists = e x i s t s;
+false =f a l s e;
+first = f i r s t;
+flatten = f l a t t e n;
+float = f l o a t;
+for = f o r;
+from = f r o m;
+group = g r o u p;
+having = h a v i n g;
+include = i n c l u d e;
+instanceof = i n s t a n c e o f;
+intersect = i n t e r s e c t;
+interval = i n t e r v a l;
+in = i n;
+is_defined =  i s '_' d e f i n e d;
+is_undefined = i s '_' u n d e f i n e d;
+last = l a s t;
+like = l i k e;
+rlike = r l i k e;
+listtoset = l i s t t o s e t;
+list = l i s t;
+long = l o n g;
+max = m a x;
+mod = m o d;
+min = m i n;
+nil = n i l;
+not = n o t;
+octet = o c t e t;
+order = o r d e r;
+orelse = o r e l s e;
+or = o r;
+return = r e t u r n;
+tquery = q u e r y;
+select = s e l e c t;
+set = s e t;
+some = s o m e;
+short = s h o r t;
+string = s t r i n g;
+struct = s t r u c t;
+sum = s u m;
+timestamp = t i m e s t a m p;
+time = t i m e;
+true = t r u e ;
+undefined = u n d e f i n e d;
+undefine = u n d e f i n e;
+union = u n i o n;
+unique = u n i q u e;
+unsigned = u n s i g n e d;
+where = w h e r e ;
+
+
+identifier = ('@' letter | ':' letter | letter) (normal)* ; // PQL parameter identifier can start with ':'
+
+double_literal = digit (digit)* '.' digit (digit)* (('E' | 'e') ('+' | '-')? digit (digit)*)?;
+
+long_literal = digit (digit)*;
+
+char_literal = ''' character ''';
+
+string_literal = '"' [[0 .. 0xffff] - ['"' + [cr + lf]]]* '"';
+
+line_comment = '/' '/' [[0 .. 0xffff] - [cr + lf]]* eol |
+                '#' [[0 .. 0xffff] - [cr + lf]]* eol ;
+
+multiline_comment = '/' '*' [[0 .. 0xffff] - ['*' + '/']]* '*' '/' ;
+
+/*************/
+Ignored Tokens
+
+white, line_comment, multiline_comment;
+
+/**********/
+Productions
+
+
+query_program =
+    query_program semicolon declaration  |
+    {full} query_program semicolon query |
+    {query} query             |
+    {declaration} declaration |
+    {standalone_semicolon} query_program semicolon;
+
+declaration =
+    {include} include_clause |
+    {alias} alias_clause |
+    {return} return_query |
+    {define} define_query |
+    {undef} undefine_query ;
+                                            // ......... Old syntax, retained for reference
+                                            //    {import} import_clause |
+                                            //    {import_star} import_star_clause |
+                                            //    {assign} assign_query |
+                                            // import_clause = import qualified_name as_identifier?;
+                                            //assign_query = identifier eq select_x;
+                                            //import_star_clause = import qualified_name dot star;
+
+include_clause =
+    {simple}   include qualified_name;
+
+alias_clause  = alias  qualified_name as_identifier?;
+as_identifier = as identifier;
+
+define_query =    define tquery? identifier define_query_x? as query;
+define_query_x =  bracket_l parameter_list? bracket_r;
+
+return_query =
+  return query |
+  {tuple_list} tuple_list |
+  {bracketed_tuple_list} bracketed_tuple_list;
+
+bracketed_tuple_list =
+  {single}   return bracket_l identifier comma bracket_r |
+  {multiple} return bracket_l identifier comma identifier_list bracket_r;
+
+tuple_list =
+  {single}   return identifier comma |
+  {multiple} return identifier comma identifier_list;
+
+identifier_list = identifier_list comma identifier | {single} identifier;
+
+parameter_list =
+    parameter_list comma type identifier |
+    {single} type identifier ;
+
+undefine_query =
+    undefine tquery? identifier;
+
+qualified_name =
+    qualified_name dot identifier |
+    {single} identifier ;
+
+query =
+    (expr) |
+    {tmp_select} select_x |
+    {tmp_expr} expr_restricted |
+    {identifier} identifier |
+    {distinct} distinct bracket_l query_restricted bracket_r |
+    {distinct_identifier} distinct bracket_l identifier bracket_r;
+
+query_restricted =
+    {select} select_x |
+    {expr} expr_restricted ;
+
+
+select_x =
+    T.select T.distinct? projection_attributes
+    from_clause
+    where_clause?
+    group_clause?                                     /* To be implemented in PQL */
+    order_clause?;
+
+projection_attributes =
+    {list} projection_list |
+    {any} star;
+
+projection_list =
+    projection_list comma projection |
+    {single} projection ;
+
+projection =
+    {field} field |
+    {tmp_expr} expr_restricted as_identifier? |
+    {tmp_identifier} identifier as_identifier? |
+    ({expr} expr as_identifier? );
+
+from_clause =
+    from from_clause_list ;
+from_clause_list =
+    from_clause_list comma iterator_def |
+    {single} iterator_def ;
+
+iterator_def =
+    expr as_identifier_opt_as? |
+    {distinct} distinct bracket_l query_restricted bracket_r as_identifier_opt_as? |
+    {distinct_identifier} distinct bracket_l identifier bracket_r as_identifier_opt_as? ;
+
+as_identifier_opt_as =
+    as? identifier;
+
+where_clause =
+    (where all? expr) |
+    {tmp} where all? expr_restricted ;
+
+
+group_clause = group by field_list having_clause? ;
+
+having_clause =
+    (having expr) |
+    {tmp} having expr_restricted ;
+
+order_clause =
+    order by sort_criteria;
+
+sort_criteria =
+    sort_criterion sort_criteria_t?;
+sort_criteria_t =
+    comma sort_criterion sort_criteria_t?;
+
+sort_criterion =
+    expr sort_criterion_t?;
+sort_criterion_t =
+    {asc} asc |
+    {desc} desc;
+
+
+expr =     expr_restricted |
+    {identifier} identifier |
+
+/********************************** This is a "simplified" tree produced by the SimpleTreeWalker ****************/
+    ({literal} literal ) |
+    ({star} star ) |
+    ({long_param} dollar long_literal ) |
+    ({named_param} dollar identifier ) |
+
+    ({select} select_x ) |
+    ({nested} bracket_l query bracket_r) |
+
+    ({cast} bracket_l identifier bracket_r expr) |
+    ({cast_primitive} bracket_l type bracket_r expr) |
+
+    ({or}             [left]:expr or     [right]:expr) |
+    ({binor}          [left]:expr binor  [right]:expr) |
+    ({except}         [left]:expr except [right]:expr) |
+    ({orelse}         [left]:expr orelse [right]:expr) |
+    ({and}            [left]:expr and    [right]:expr) |
+    ({equality}       [left]:expr eqne   [right]:expr) |
+    ({instanceof}     [left]:expr instanceof [right]:expr) |
+    ({like}           [left]:expr like   [right]:expr) |
+    ({rlike}          [left]:expr rlike  [right]:expr) |
+    ({relational}     [left]:expr compare_token composite_predicate? [right]:expr) |
+    ({addition}       [left]:expr plus      [right]:expr) |
+    ({substraction}   [left]:expr minus     [right]:expr) |
+    ({multiplication} [left]:expr star      [right]:expr) |
+    ({intersection}   [left]:expr set_and   [right]:expr) |
+    ({division}       [left]:expr divide    [right]:expr) |
+    ({modulo}         [left]:expr mod       [right]:expr) |
+    ({intersect}      [left]:expr intersect [right]:expr) |
+    ({in}             [left]:expr not? in   [right]:expr+) |
+    ({forall} for all in_clause colon expr ) |
+    ({exists} exists in_clause colon expr ) |
+
+    ({unary_plus} plus expr) |
+    ({unary_minus} minus expr) |
+    ({unary_abs} abs expr) |
+    ({unary_not} not expr) |
+
+    ({new_object} expr bracket_l field_list bracket_r) |
+    ({new_array} array bracket_l value_list? bracket_r) |
+    ({new_set} set bracket_l value_list? bracket_r) |
+    ({new_bag} bag bracket_l value_list? bracket_r) |
+    ({new_list} list bracket_l value_or_range bracket_r) |
+    ({new_struct} struct bracket_l field_list bracket_r) |
+
+    ({path} [left]:expr dotarrow [right]:expr) |
+    ({method} identifier bracket_l value_list? bracket_r) |
+    ({index} expr sq_bracket_l index sq_bracket_r ) |
+
+    ({conversion_listtoset} listtoset bracket_l query bracket_r) |
+    ({conversion_element} element bracket_l query bracket_r) |
+    ({conversion_distinct} distinct bracket_l query bracket_r) |
+    ({conversion_flatten} flatten bracket_l query bracket_r) |
+
+    ({collection_first} first bracket_l query bracket_r) |
+    ({collection_last} last bracket_l query bracket_r) |
+    ({collection_unique} unique bracket_l query bracket_r) |
+    ({collection_exists} exists bracket_l query bracket_r) |
+
+    ({aggregate_sum} sum bracket_l query bracket_r) |
+    ({aggregate_min} min bracket_l query bracket_r) |
+    ({aggregate_max} max bracket_l query bracket_r) |
+    ({aggregate_avg} avg bracket_l query bracket_r) |
+    ({isundef} is_undefined bracket_l query bracket_r) |
+    ({isdef} is_defined bracket_l query bracket_r )    |
+    ({aggregate_count} count bracket_l query bracket_r);
+
+
+
+expr_restricted =
+    tmp_cast_expr ;
+
+
+
+tmp_cast_expr =
+    bracket_l identifier bracket_r tmp_or_expr |
+    {identifier} bracket_l [type]:identifier bracket_r [expr]:identifier |
+    {primitive} bracket_l type bracket_r tmp_or_expr |
+    {primitive_identifier} bracket_l type bracket_r identifier |
+    {or} tmp_or_expr ;
+
+
+
+tmp_or_expr =
+    tmp_or_expr or tmp_orelse_expr |
+    {last} tmp_or_expr or identifier |
+    {first} identifier or tmp_orelse_expr |
+    {both} [left]:identifier or [right]:identifier |
+    {orelse} tmp_orelse_expr ;
+
+
+
+tmp_orelse_expr =
+    tmp_orelse_expr orelse tmp_and_expr |
+    {last} tmp_orelse_expr orelse identifier |
+    {first} identifier orelse tmp_and_expr |
+    {both} [left]:identifier orelse [right]:identifier |
+    {and_expr} tmp_and_expr ;
+
+
+
+tmp_and_expr =
+    tmp_and_expr and quantifier_expr |
+    {last} tmp_and_expr and identifier |
+    {first} identifier and quantifier_expr |
+    {both} [left]:identifier and [right]:identifier |
+    {quantifier_expr} quantifier_expr ;
+
+
+quantifier_expr =
+    {forall} for all in_clause colon andthen_expr |
+    {identifier_forall} for all in_clause colon identifier |
+
+    {exists} exists in_clause colon andthen_expr |
+    {identifier_exists} exists in_clause colon identifier |
+
+    {andthen} andthen_expr ;
+
+in_clause =
+    identifier not? in expr_restricted |
+//    {list} identifier not? in bracket_l expr_restricted inlist bracket_r |
+    {identifier} [left]:identifier not? in [right]:identifier |
+    {distinct} identifier not? in distinct bracket_l query_restricted bracket_r |
+    {distinct_identifier} [left]:identifier not? in distinct bracket_l [right]:identifier bracket_r ;
+
+//inlist =
+//     inlist comma expr_restricted;
+////    {single} comma expr_restricted ;
+
+
+andthen_expr =
+    andthen_expr andthen tmp_equality_expr |
+    {last} andthen_expr andthen identifier |
+    {first} identifier andthen tmp_equality_expr |
+    {both} [left]:identifier andthen [right]:identifier |
+    {equality_expr} tmp_equality_expr ;
+
+
+
+tmp_equality_expr =
+    {eqne} tmp_equality_expr eqne composite_predicate? tmp_relational_expr |
+    {last_eqne} tmp_equality_expr eqne composite_predicate? identifier |
+    {first_eqne} identifier eqne composite_predicate? tmp_relational_expr |
+    {both_eqne} [left]:identifier eqne [right]:identifier |
+
+    {distinct} tmp_equality_expr eqne composite_predicate? distinct bracket_l query_restricted bracket_r  |
+    {distinct_identifier} tmp_equality_expr eqne composite_predicate? distinct bracket_l identifier bracket_r  |
+    {first_distinct} identifier eqne composite_predicate? distinct bracket_l query_restricted bracket_r  |
+    {first_distinct_identifier} [left]:identifier eqne composite_predicate? distinct bracket_l [right]:identifier bracket_r  |
+
+    {rlike} tmp_equality_expr      rlike tmp_relational_expr |
+    {last_rlike} tmp_equality_expr rlike identifier |
+    {first_rlike} identifier       rlike tmp_relational_expr |
+    {both_rlike} [left]:identifier rlike [right]:identifier |
+
+    {like} tmp_equality_expr        like tmp_relational_expr |
+    {last_like} tmp_equality_expr   like identifier |
+    {first_like} identifier         like tmp_relational_expr |
+    {both_like} [left]:identifier   like [right]:identifier |
+
+    {instanceof} tmp_equality_expr instanceof tmp_relational_expr |
+    {last_instanceof} tmp_equality_expr instanceof identifier |
+    {first_instanceof} identifier instanceof tmp_relational_expr |
+    {both_instanceof} [left]:identifier instanceof [right]:identifier |
+
+    {relational_expr} tmp_relational_expr ;
+
+
+
+tmp_relational_expr =
+    tmp_relational_expr compare_token composite_predicate? additive_expr |
+    {last} tmp_relational_expr compare_token composite_predicate? identifier |
+    {first} identifier compare_token composite_predicate? additive_expr |
+    {both} [left]:identifier compare_token composite_predicate? [right]:identifier |
+    {additive_expr} additive_expr ;
+
+
+
+eqne =    {eq} eq | {ne} ne;
+
+compare_token =
+    {lt} lt | {le} le | {gt} gt | {ge} ge;
+
+composite_predicate =
+    {some} some | {any} any | {all} all;
+
+
+
+additive_expr =
+    {plus} additive_expr plus multiplicative_expr |
+    {last_plus} additive_expr plus identifier |
+    {first_plus} identifier plus multiplicative_expr |
+    {both_plus} [left]:identifier plus [right]:identifier |
+
+    {minus} additive_expr minus multiplicative_expr |
+    {last_minus}additive_expr minus identifier |
+    {first_minus} identifier minus multiplicative_expr |
+    {both_minus} [left]:identifier minus [right]:identifier |
+
+    {union} additive_expr union multiplicative_expr |
+    {last_union} additive_expr union identifier |
+    {first_union} identifier union multiplicative_expr |
+    {both_union} [left]:identifier union [right]:identifier |
+
+    {except} additive_expr except multiplicative_expr |
+    {last_except} additive_expr except identifier |
+    {first_except} identifier except multiplicative_expr |
+    {both_except} [left]:identifier except [right]:identifier |
+
+    {binor} additive_expr binor multiplicative_expr |
+    {last_binor} additive_expr binor identifier |
+    {first_binor} identifier binor multiplicative_expr |
+    {both_binor} [left]:identifier binor [right]:identifier |
+
+    {multiplicative_expr} multiplicative_expr ;
+
+
+
+multiplicative_expr =
+    {times} multiplicative_expr star tmp_in_expr |
+    {last_times} multiplicative_expr star identifier |
+    {first_times} identifier star tmp_in_expr |
+    {both_times} [left]:identifier star [right]:identifier |
+
+    {intersection}       multiplicative_expr set_and tmp_in_expr |
+    {last_intersection}  multiplicative_expr set_and identifier |
+    {first_intersection} identifier          set_and tmp_in_expr |
+    {both_intersection} [left]:identifier    set_and [right]:identifier |
+
+    {divide} multiplicative_expr divide tmp_in_expr |
+    {last_divide} multiplicative_expr divide identifier |
+    {first_divide} identifier divide tmp_in_expr |
+    {both_divide} [left]:identifier divide [right]:identifier |
+
+    {mod} multiplicative_expr mod tmp_in_expr |
+    {last_mod} multiplicative_expr mod identifier |
+    {first_mod} identifier mod tmp_in_expr |
+    {both_mod} [left]:identifier mod [right]:identifier |
+
+    {intersect} multiplicative_expr intersect tmp_in_expr |
+    {last_intersect} multiplicative_expr intersect identifier |
+    {first_intersect} identifier intersect tmp_in_expr |
+    {both_intersect} [left]:identifier intersect [right]:identifier |
+
+    {in_expr} tmp_in_expr ;
+
+tmp_in_expr =
+//    tmp_in_expr not? in unary_expr |
+    tmp_in_expr not? in comma_expr |
+    {list} identifier not? in bracket_l unary_expr inlist+ bracket_r |
+    {last} tmp_in_expr not? in identifier |
+    {first} identifier not? in unary_expr |
+    {both} [left]:identifier not? in [right]:identifier |
+    {distinct} identifier not? in distinct bracket_l query_restricted bracket_r |
+    {distinct_identifier} [left]:identifier not? in distinct bracket_l [right]:identifier bracket_r |
+    {unary_expr} unary_expr;
+
+
+comma_expr = unary_expr |
+    {comma_separated_expr} bracket_l unary_expr inlist+ bracket_r;
+
+inlist = comma unary_expr;
+
+unary_expr =
+    {plus} plus unary_expr |
+    {identifier_plus} plus identifier |
+
+    {minus} minus unary_expr |
+    {identifier_minus} minus identifier |
+
+    {abs} abs unary_expr |
+    {identifier_abs} abs identifier |
+
+    {not} not unary_expr |
+    {identifier_not} not identifier |
+
+    {postfix} postfix_expr ;
+
+
+postfix_expr =
+    {index} postfix_expr sq_bracket_l index sq_bracket_r |
+    {identifier_index} identifier sq_bracket_l index sq_bracket_r |
+
+    {field} postfix_expr dotarrow identifier |
+    {identifier_field} [left]:identifier dotarrow [right]:identifier |
+
+    {method} postfix_expr dotarrow identifier bracket_l value_list? bracket_r |
+    {identifier_method} [left]:identifier dotarrow [right]:identifier bracket_l value_list? bracket_r |
+
+    {primary_expr} primary_expr ;
+
+
+
+dotarrow =
+    {transitivedot} dotdotdot |
+    {dot} dot |
+    {arrow} arrow;
+
+index = index_all;
+
+index_all =    expr_restricted |
+    ({simple} expr) |                                           // Yury Kamen
+    {colon} index colon expr_restricted |
+    {last_identifier} index colon identifier |
+    {identifier} identifier |
+    {comma} [left]:expr_restricted comma [right]:expr_restricted |
+    {first_comma} identifier comma expr_restricted |
+    {last_comma} expr_restricted comma identifier |
+    {both_comma} [left]:identifier comma [right]:identifier ;
+
+
+primary_expr =
+    {conversion} conversion_expr |
+    {collection} collection_expr |
+    {aggregate} aggregate_expr |
+    {undefined} undefined_expr |
+    {objconstr} identifier bracket_l field_list bracket_r |
+    {structconstr} struct_construction |
+    {collconstr} collection_construction |
+    {method} identifier bracket_l value_list? bracket_r |
+    {queryparam} query_param |
+    {literal} literal |
+    {tmp_query} bracket_l query_restricted bracket_r ;
+
+
+
+conversion_expr =
+    {listtoset} listtoset bracket_l query_restricted bracket_r |
+    {identifier_listtoset} listtoset bracket_l identifier bracket_r |
+
+    {element} element bracket_l query_restricted bracket_r |
+    {identifier_element} element bracket_l identifier bracket_r |
+
+    {flatten} flatten bracket_l query_restricted bracket_r |
+    {identifier_flatten} flatten bracket_l  identifier bracket_r;
+
+
+collection_expr =
+    {first} first bracket_l query_restricted bracket_r |
+    {identifier_first} first bracket_l identifier bracket_r |
+
+    {last} last bracket_l query_restricted bracket_r |
+    {identifier_last} last bracket_l identifier bracket_r |
+
+    {unique} unique bracket_l query_restricted bracket_r |
+    {identifier_unique} unique bracket_l identifier bracket_r |
+
+    {exists} exists bracket_l query_restricted bracket_r |
+    {identifier_exists} exists bracket_l identifier bracket_r;
+
+
+aggregate_expr =
+    {sum} sum bracket_l query_restricted bracket_r       |               /* Implemented in PREQL - enclosing () removed */
+    {identifier_sum} sum bracket_l identifier bracket_r  |               /* Implemented in PREQL - enclosing () removed */
+    {min} min bracket_l query_restricted bracket_r       |               /* Implemented in PREQL - enclosing () removed */
+    {identifier_min} min bracket_l identifier bracket_r  |               /* Implemented in PREQL - enclosing () removed */
+    {max} max bracket_l query_restricted bracket_r       |               /* Implemented in PREQL - enclosing () removed */
+    {identifier_max} max bracket_l identifier bracket_r  |               /* Implemented in PREQL - enclosing () removed */
+    {avg} avg bracket_l query_restricted bracket_r       |               /* Implemented in PREQL - enclosing () removed */
+    {identifier_avg} avg bracket_l identifier bracket_r  |               /* Implemented in PREQL - enclosing () removed */
+
+    {count} count bracket_l query_star bracket_r;
+
+
+query_star =
+    query_restricted |
+    {identifier} identifier |
+    {star} star;
+
+undefined_expr =
+    {undef} is_undefined bracket_l query_restricted bracket_r |
+    {identifier_undef} is_undefined bracket_l identifier bracket_r |
+    {def} is_defined bracket_l query_restricted bracket_r |
+    {identifier_def} is_defined bracket_l identifier bracket_r ;
+
+
+struct_construction =
+    struct bracket_l field_list bracket_r;
+
+field_list    =
+    field_list comma field |
+    {single} field ;
+
+field         =
+    (identifier colon expr) |
+    {tmp} identifier colon expr_restricted |
+    {tmp_identifier} [left]:identifier colon [right]:identifier ;
+
+collection_construction =
+    {array} array bracket_l value_list? bracket_r |
+    {set} set bracket_l value_list? bracket_r |
+    {bag} bag bracket_l value_list? bracket_r |
+    {list} list bracket_l value_or_range bracket_r ;
+value_or_range =
+    {value} value_list? |
+    {range} list_range;
+
+value_list =
+    (value_list comma expr) |
+    {tmp} value_list comma expr_restricted |
+    {single} expr_restricted |
+    {last} value_list comma identifier |
+    {identifier} identifier ;
+
+list_range =
+    [e1]:expr dotdot [e2]:expr;
+
+query_param =
+    dollar long_literal |
+   {named} dollar identifier;
+
+type =
+    {short} unsigned? short |
+    {long} unsigned? long |
+    {longlong} [l1]:long [l2]:long |
+    {float} float |
+    {double} double |
+    {char} char |
+    {string} string |
+    {boolean} boolean |
+    {octet} octet |
+    {enum} enum identifier type_x? |
+    {date} date |
+    {time} time |
+    {interval} interval |
+    {timestamp} timestamp |
+    {set} set lt type gt |
+    {bag} bag lt type gt |
+    {list} list lt type gt |
+    {array} array lt type gt |
+    {dictionary} dictionary lt [t1]:type comma [t2]:type gt ;
+type_x =
+    dot identifier;
+
+literal =
+    {boolean} p_boolean |
+    {long} long_literal |
+    {double} double_literal |
+    {char} char_literal |
+    {string} string_literal |
+    {date} p_date |
+    {time} p_time |
+    {timestamp} p_timestamp |
+    {nil} nil |
+    {undefined} undefined;
+
+p_boolean =
+    {true} true |
+    {false} false;
+
+p_date =
+    date [q1]:quote date_content [q2]:quote;
+
+p_time =
+    time [q1]:quote time_content [q2]:quote;
+
+p_timestamp =
+    timestamp [q1]:quote date_content time_content [q2]:quote;
+
+date_content =
+    [e1]:long_literal [q1]:minus [e2]:long_literal [q2]:minus [e3]:long_literal;
+
+time_content =
+    [hour]:long_literal [q1]:colon [minute]:long_literal [q2]:colon [second]:long_literal;
+
+
+/////////////////////////////// end of file /////////////////////////////

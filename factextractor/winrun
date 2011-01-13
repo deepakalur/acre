@@ -1,0 +1,1 @@
+$JAVA_HOME/bin/java -ea -classpath "classes;$JAVA_HOME/lib/tools.jar" com.sun.tools.salsa.Main $*

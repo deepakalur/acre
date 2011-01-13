@@ -1,0 +1,15 @@
+// Testing include statement
+//import a.b.c;
+//import foo as bar, x as y, p as q, w as v, e,g,f from baz;
+
+include ServiceLocator;
+
+include SessionFacade;
+
+define BusinessDelegates as
+select c from classes c
+where c.methods.calls.parentClass in EJBServiceLocators AND
+      ( c.fields.type in SFInterfaces);
+
+return BusinessDelegates;
+

@@ -1,0 +1,3 @@
+return SELECT c FROM classes c
+WHERE c.extendsClass.**.name IN ("javax.servlet.http.HttpServlet" , "javax.servlet.http.GenericServlet");
+

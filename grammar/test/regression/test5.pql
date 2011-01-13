@@ -1,0 +1,51 @@
+DEFINE langClasses AS SELECT p.classes FROM packages p WHERE p.shortName = "lang";  // OQL syntax
+
+SELECT c FROM classes c WHERE c.name NOT IN (
+    "java.lang.Object",
+    "java.lang.Exception"
+    )
+    AND c.parentPackage.shortName = "lang";
+
+SELECT c FROM classes c WHERE c.name IN ("java.lang.Object", "java.lang.Exception");
+
+
+SELECT max(c.filePosition) FROM classes c;
+
+SELECT c.methods.calls.**.name FROM classes c;
+SELECT count(c) FROM classes c WHERE c.shortName LIKE "St.*";
+SELECT c FROM classes c WHERE count(c.methods) > 10;
+SELECT c FROM classes c WHERE c IN (SELECT p.classes FROM packages p WHERE p.shortName = "lang");
+
+
+// ...................... Queries not implemented by translator
+SELECT c.name, c.parentPackage.shortName FROM classes c WHERE c.accessibility = "public";
+SELECT c FROM classes c WHERE ALL c.methods.accessibility = "public";
+
+
+// ...................... Deepak's precanned queries
+// ...................... Find all servlets
+SELECT c FROM classes c WHERE c.extendsClass.**.name IN (
+      "javax.servlet.http.HttpServlet"
+    , "javax.servlet.http.GenericServlet"
+);
+
+// ...................... Find all EJB classes
+SELECT c FROM classes c WHERE c.extendsClass.**.name IN (
+      "javax.ejb.EntityBean",
+      "javax.ejb.SessionBean",
+      "javax.ejb.EJBHome",
+      "javax.ejb.EJBLocalHome",
+      "javax.ejb.EJBLocalObject",
+      "javax.ejb.EJBObject"
+);
+
+// ...................... classes with abstract and non-abstract methods
+SELECT c FROM classes c, c.methods m WHERE m.isAbstract = true AND m.isAbstract = false;
+
+// ...................... Singleton classes
+SELECT cl FROM classes cl WHERE cl.methods.returnType = cl AND cl NOT IN(
+    SELECT c FROM classes c
+    WHERE  c.methods.isConstructor = true AND c.methods.accessibility != "private"
+);
+
+

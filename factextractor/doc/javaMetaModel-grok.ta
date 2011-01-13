@@ -1,0 +1,45 @@
+SCHEME TUPLE :
+
+$INHERIT 	jPackage 	jProgEntity
+$INHERIT	jType		jProgEntity
+$INHERIT 	jClass 		jType
+$INHERIT 	jInterface 	jType
+$INHERIT 	jNonClassType 	jType
+$INHERIT 	jMethod 	jProgEntity
+$INHERIT 	jField	 	jProgEntity
+$INHERIT 	jParameter 	jProgEntity
+
+contain 	jPackage 	jPackage
+contain 	jPackage 	jType
+contain 	jType 		jType
+contain 	jType 		jMethod
+contain 	jType 		jField
+implements 	jClass 		jInterface
+extends 	jClass 		jClass
+extends 	jInterface 	jInterface
+instantiates 	jMethod		jClass
+isOfType	jMethod		jType
+calls 		jMethod		jMethod
+uses 		jMethod		jField
+throws		jMethod		jType
+catches		jMethod		jType
+isOfType	jField		jType
+hasParam	jMethod		jParameter
+isOfType	jParameter	jType
+
+SCHEME ATTRIBUTE :
+
+jProgEntity	{ name }
+jPackage 	{ shortName }
+jType		{ }
+jNonClassType	{ }
+jClass		{ shortName isAbstract isStatic isFinal isInner accessibility sourceFile lineNum }
+jInterface	{ shortName isStatic isInner accessibility sourceFile lineNum }
+jMethod		{ shortName isAbstract isStatic isFinal numParams isConstructor accessibility isSynchronized containsSynchBlock lineNum }
+jField		{ shortName isStatic isFinal accessibility lineNum }
+jParameter	{ shortName index }
+
+(calls) 	{ lineNum }
+(uses) 		{ lineNum }
+(catches)	{ lineNum }
+(instantates)	{ lineNum }

@@ -1,0 +1,12 @@
+// ...................... Find All public field uses
+DEFINE methodsUsingPublicFields AS                         // OQL syntax
+    SELECT m as method, m.uses as field FROM methods m
+    WHERE m.uses IN (SELECT f
+      FROM fields f WHERE f.isFinal=false
+      AND f.accessibility="public"
+      AND f.parentClass.accessibility ="public"
+    );
+
+SELECT mupf FROM methodsUsingPublicFields mupf
+WHERE mupf.method.parentClass.parentPackage != mupf.field.parentClass.parentPackage;
+

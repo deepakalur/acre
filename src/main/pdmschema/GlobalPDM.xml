@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PDMList xmlns="http://java.sun.com/xml/ns/acre/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/acre/
+AcrePDMSchema.xsd">
+    <PDM type="Model" name="BusinessDelegate" tier="BusinessTier" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies all Business Delegates">
+        <Roles>
+            <Role type="Query" queryName="BusinessDelegate" sequence="1" name="BusinessDelegate"/>
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="Model" name="SessionFacade" tier="BusinessTier" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Session Facades">
+        <Roles>
+            <Role type="Query" queryName="SessionFacadeHome" sequence="1" name="SessionFacadeHome"/>
+            <Role type="Query" queryName="SessionFacadeInterface" sequence="2" name="SessionFacadeInterface"/>
+            <Role type="Query" queryName="SessionFacadeBean" sequence="3" name="SessionFacadeBean"/>
+        </Roles>
+        <Relationships>
+            <Relationship name="Creates" type="Creates" fromRole="SessionFacadeHome" toRole="SessionFacadeBean"/>
+            <Relationship name="Implements" type="Implements" fromRole="SessionFacadeBean" toRole="SessionFacadeInterface"/>
+        </Relationships>
+    </PDM>
+    <PDM type="Model" name="BD_Calls_SF" tier="BusinessTier" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Business Delegate calls to Session Facades">
+        <Roles>
+            <Role type="PDM" sequence="1" name="BDs" typeReferenceName="BusinessDelegate" />
+            <Role type="PDM" sequence="2" name="SFs" typeReferenceName="SessionFacade" />
+        </Roles>
+        <Relationships>
+            <Relationship name="Calls" type="Calls" fromRole="BDs" toRole="SFs.SessionFacade"/>
+        </Relationships>
+    </PDM>
+    <!--
+    <PDM type="Model" name="BD_call_SF" tier="BusinessTier" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Business Delegate calls to Session Facades">
+        <Roles>
+            <Role type="PDM" sequence="1" typeReferenceName="BusinessDelegate" />
+            <Role type="PDM" sequence="2" typeReferenceName="SessionFacade/>
+        </Roles>
+        <Relationships>
+            <Relationship name="Calls" type="Calls" fromRole="BusinessDelegate" toRole="SessionFacade"/>
+        </Relationships>
+    </PDM>
+    -->
+    <PDM type="GroovyPDM" name="ClassesWithAbsAndNonAbsMethods" scriptedPDMPath="PDMClassesWithAbsAndNonAbsMethods.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies classes with abstract methods">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EJBClasses" scriptedPDMPath="PDMEJBClasses.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies all EJB classes">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EJBHomes" scriptedPDMPath="PDMEJBHomes.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Home interfaces">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EJBLocalHomes" scriptedPDMPath="PDMEJBLocalHomes.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Local Home Home interfaces">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EJBLocalObjects" scriptedPDMPath="PDMEJBLocalObjects.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Local Object interfaces">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EJBRemoteObjects" scriptedPDMPath="PDMEJBRemoteObjects.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Remote Object interfaces">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="EntityBeans" scriptedPDMPath="PDMEntityBeans.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Entity Beans">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+<!--
+    SMA: Doesn't work
+    <PDM type="GroovyPDM" name="MethodsUsingPublicFields" scriptedPDMPath="PDMMethodsUsingPublicFields.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Methods using public fields">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+-->    
+    <PDM type="GroovyPDM" name="Servlets" scriptedPDMPath="PDMServlets.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies all Servlets">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="SessionBeans" scriptedPDMPath="PDMSessionBeans.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies EJB Session Beans">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    <PDM type="GroovyPDM" name="Singletons" scriptedPDMPath="PDMSingletons.groovy"
+      tier="AllTiers" attributes="attributes" category="CoreJ2EEPatterns" description="Identifies Singleton classes">
+        <Roles>
+            <Role type="Abstract" sequence="1" name="result" />
+        </Roles>
+        <Relationships/>
+    </PDM>
+    
+        
+</PDMList>
+

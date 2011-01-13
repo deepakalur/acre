@@ -1,0 +1,13 @@
+include Singleton;
+
+
+// serializable singletons must implement readResolve method
+define defectiveSingletons as
+select c 
+from singletons c, c.methods m 
+where c.implementsInterfaces.**.shortName="Serializable" and
+m.shortName != "readResolve";
+
+
+
+return defectiveSingletons;

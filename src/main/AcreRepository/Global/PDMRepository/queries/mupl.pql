@@ -1,0 +1,3 @@
+//SELECT mupf FROM $$MethodsUsingPublicFieldsHelperQuery mupf WHERE mupf.method.parentClass.parentPackage != mupf.field.parentClass.parentPackage
+define a as select c from classes c;
+return a;

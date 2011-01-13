@@ -1,0 +1,3 @@
+// Tests "define as"
+define x as select foo.a as a, foo.b AS b from foo;
+define y as select x.b from x where x.a = "xexe";

@@ -1,0 +1,6 @@
+
+FACT ATTRIBUTE :
+
+http://bidservice.com:BidServiceService { name=BidServiceService targetNameSpace=http://bidservice.com }
+http://bidservice.com:BidServiceService:BidService { name=BidService }
+http://bidservice.com:BidServiceService:BidServiceBinding { name=BidServiceBindingtype={http://bidservice.com}BidService }

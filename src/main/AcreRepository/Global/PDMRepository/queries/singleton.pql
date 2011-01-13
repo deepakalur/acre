@@ -1,0 +1,14 @@
+DEFINE singletons AS SELECT m.parentClass FROM methods m
+WHERE  m.returnType = m.parentClass AND m.accessibility = "public" AND m.isStatic = true
+ AND m.parentClass IN (
+           SELECT m.parentClass FROM methods m
+           WHERE  m.accessibility = "private" AND m.isConstructor = true
+        )
+   AND m.parentClass NOT IN (
+          SELECT m.parentClass FROM methods m
+          WHERE m.accessibility = "public" AND m.isConstructor = true
+        )
+
+;
+
+RETURN singletons;

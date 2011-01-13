@@ -1,0 +1,94 @@
+TODO List:
+
+    * Improve editors for defining file sets, and other "sets".
+
+    * Begin to use wizard framework to develop useful wizards, such
+      as target creation.
+
+    * Implement a build progress reporter beyond the console
+      itself to write a log to a file in addition. Obviously
+      the log line formtting has to be definable interactively
+      and stored in preferences.
+
+    * Implement a "Worker Thread" pattern that allows workers to have
+      their work done in a thread property registered with Antidote, and
+      provide support to that worker to provide progress updates via
+      the GUI. Should also provide support for hour-glass cursor
+      handling, and AWT event blocking until task is completed. This
+      would be used for things such as loading files or other tasks
+      that the user must wait for completion. Currently there is no
+      way to stop Ant once it runs from Antidote!
+
+    * Add menu option to select the compiler to use, which then sets
+      the "build.compiler" property. Better yet, create a generic menu 
+      building capability that allows the setting of a property from a 
+      list of options,  not just setting the complier, but allowing
+      the option to set all Ant -D parameters from the gui and make
+      them storable.
+
+    * Add ability to put an "all" or "don't care" specifyer on the action
+      "enableOn" and "disableOn" properties.
+
+    * Add ability to view task dependencies more fully. It would be
+      nice to be able to show a graphic with all the targets and
+      arrows between them to show the dependencies.
+
+    * Add better editors for specific tasks. Not only for tasks, but
+      properties in addition. We mean editors just like the dependency
+      chooser.
+
+    * Add a Progress Monitor for file loading (especially for slow boxen like
+      mine) .
+
+    * Implement some for of refid hyperlinking functionality.
+      DOWNGRADED: We think integration into IDEs is no BIG project aim
+      anymore or at least at the moment.
+
+    * Implement context sensitive menus for the console window, allowing
+      an error to be selected and invoked in IDE.
+
+    * Write preferences framwork, including persistence support.
+
+    * Provide some sort of class path debugging support, e.g.,
+      displaying the Ant-build-classpath and introspect the jars one
+      by one ... search for Classes and multiple occurrences in the
+      classpath ... and so on.
+
+    * Add "syntax" colorization to the console window {done}, 
+      with a preferences editor for setting up the styles {not-done},
+      to make the syntax highlighting in the console window
+      configurable via the Preferences window and persistent via
+      properties.
+
+    * Figure out an approach to gracefully stopping a running build.
+      "Uneasy to implement without hooks in Ant itself." - (Christoph
+      Wilhelms)
+
+
+    * Add error handler for SAX parser to better report loading errors.
+
+    * Project properties viewer, including the ability to view
+      dependencies (local and cascading). View and modify the project
+      properties you can override using -D with the Ant commandline
+      "Cascading" means from imported build.xml's.
+
+    * Acquire or implement a logging facility. C. Wilhelms would
+      prefer Log4J. Logkit would be another option, or the jakarta
+      common logging facility.
+
+    * Eat more dog food. E.g, When you delete a target, the editor in
+      which you were editing the target "hangs around" in the editor
+      window. The editor itself should go away so that you don't think you
+      are editing a target anymore, because you are not doing so!
+
+(pending Ant 2.0)
+    
+    * Need Ant API access to:
+        - Tasks within a Target
+        - The topo sorted task list to get flattened dependencies
+        - The build setup code to recduce code replication.
+        - Normalize the Ant data model to represent a more consistent
+          tree structure, and more bean-like API.
+
+    * Better define the data model architecture, and how it interfaces
+      with the Ant data model.

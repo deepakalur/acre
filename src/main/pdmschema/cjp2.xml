@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PDMList xmlns="http://java.sun.com/xml/ns/salsa/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/salsa/
+C:\salsa\workspace\SalsaPDMSchema.xsd">
+
+
+<!-- Level 1 Patterns -->
+<PDM name="IF-intercepts-FC" description="InterceptingFilter intercepts FrontController" type="ModelPDM">
+<Roles>
+<Role name="InterceptingFilter" type="PDM" sequence="1"/>
+<Role name="FrontController" type="PDM" sequence="2" />
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="InterceptingFilter" toRole="FrontController"/>
+</Relationships>
+</PDM>
+
+<PDM name="IF-intercepts-WSB" description="InterceptingFilter intercepts WebServiceBroker" type="ModelPDM">
+<Roles>
+<Role name="InterceptingFilter" type="PDM" sequence="1"/>
+<Role name="WebServiceBroker" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="InterceptingFilter" toRole="WebServiceBroker"></Relationship>
+</Relationships>
+</PDM>
+
+<PDM name="FC-calls-AC" description="FrontController delegates command and view processing to ApplicationController" type="ModelPDM">
+<Roles>
+<Role name="FrontController" type="PDM" sequence="1"/>
+<Role name="ApplicationController" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="calls" type="Calls" fromRole="FrontController" toRole="ApplicationController.Controller"/>
+</Relationships>
+</PDM>
+
+<PDM name="FC-calls-BD" description="FrontController delegates command processing to Business Delegate" type="ModelPDM">
+<Roles>
+<Role name="FrontController" type="PDM" sequence="1"/>
+<Role name="BusinessDelegate" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="FrontController" toRole="BusinessDelegate"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="FC-creates-CO" description="FrontController creates protocol independent Context Objects" type="ModelPDM">
+<Roles>
+<Role name="FrontController" type="PDM" sequence="1"/>
+<Role name="ContextObject" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Creates" type="Creates" fromRole="FrontController" toRole="ContextObject.ContextObject"/>
+</Relationships>
+</PDM>
+
+<PDM name="AC-creates-CO" description="Application Controller creates protocol independent Context Objects" type="ModelPDM">
+<Roles>
+<Role name="ApplicationController" type="PDM" sequence="1"/>
+<Role name="ContextObject" type="PDM" sequence="2" />
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ApplicationController.Controller" toRole="ContextObject.ContextObjectFactory"/>
+<Relationship name="Calls" type="Calls" fromRole="ApplicationController.Controller" toRole="ContextObject.ContextObject"/>
+</Relationships>
+</PDM>
+
+<PDM name="AC-uses-BD" description="Application Controller command processing to Business Delegate" type="ModelPDM">
+<Roles>
+<Role name="ApplicationController" type="PDM" sequence="1"/>
+<Role name="BusinessDelegate" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ApplicationController.Command" toRole="BusinessDelegate"/>
+</Relationships>
+</PDM>
+
+<PDM name="VH-uses-BD" description="View Helper delegates business processing to Business Delegate" type="PQLPDM">
+<Roles>
+<Role name="ViewHelper" type="Query" sequence="1"/>
+<Role name="BusinessDelegate" type="Query" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ViewHelper.ViewHelper" toRole="BusinessDelegate"/>
+</Relationships>
+</PDM>
+
+<PDM name="BD-uses-SL" description="Business Delegate uses ServiceLocator to lookup dependent components" type="ModelPDM">
+<Roles>
+<Role name="BusinessDelegate" type="PDM" sequence="1"/>
+<Role name="ServiceLocator" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="BusinessDelegate" toRole="ServiceLocator.ServiceLocator"/>
+</Relationships>
+</PDM>
+
+<PDM name="BD-calls-SF" description="" type="ModelPDM">
+<Roles>
+<Role name="BusinessDelegate" type="PDM" sequence="1"/>
+<Role name="SessionFacade" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="BusinessDelegate" toRole="SessionFacade"/>
+</Relationships>
+</PDM>
+
+<PDM name="VLH-uses-DAO" description="" type="ModelPDM">
+<Roles>
+<Role name="ValueListHandler" type="PDM" sequence="1"/>
+<Role name="DataAccessObject" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="access" type="Calls" fromRole="ValueListHandler.VLH" toRole="DataAccessObject.DAO"></Relationship>
+</Relationships>
+</PDM>
+
+
+<PDM name="SF-uses-AS" description="" type="ModelPDM">
+<Roles>
+<Role name="SessionFacade" type="PDM" sequence="1" />
+<Role name="ApplicationService" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="SessionFacade" toRole="ApplicationService"></Relationship>
+</Relationships>
+</PDM>
+
+<PDM name="SF-uses-VLH" description="Session Facade delegates to Value List Handler to build large result set" type="ModelPDM">
+<Roles>
+<Role name="SessionFacade" type="PDM" sequence="1"></Role>
+<Role name="ValueListHandler" type="PDM" sequence="2"></Role>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="SessionFacade" toRole="ValueListHandler.VLH"/>
+<Relationship name="Calls" type="Cals" fromRole="SessionFacade" toRole="ValueListHandler.ValueListIterator"/>
+</Relationships>
+</PDM>
+
+
+
+
+<PDM name="SA-calls-SF" description="Service Activator delegates business processing to Session Facade" type="ModelPDM">
+<Roles>
+<Role name="SessionActivator" type="Query" sequence="1"/>
+<Role name="SessionFacade" type="Query" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ServiceActivator" toRole="SessionFacade"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="SA-calls-AS" description="Service Activator delegates business processing to POJO-based ApplicationService" type="ModelPDM">
+<Roles>
+<Role name="ServiceActivator" type="PDM" sequence="1"/>
+<Role name="ApplicationService" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ServiceActivator" toRole="ApplicationService"/>
+</Relationships>
+</PDM>
+
+<PDM name="SF-uses-BO" description="Session Facades processes business rules using Business Objects" type="ModelPDM">
+<Roles>
+<Role name="SessionFacade" type="PDM" sequence="1"/>
+<Role name="BusinessObject" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="SessionFacade" toRole="BusinessObject.ParentBO"/>
+</Relationships>
+</PDM>
+
+<PDM name="AS-uses-BO" description="ApplicationService processes business rules using Business Objects" type="ModelPDM">
+<Roles>
+<Role name="ApplicationService" type="PDM" sequence="1"/>
+<Role name="BusinessObject" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ApplicationService" toRole="BusinessObject.ParentBO"/>
+</Relationships>
+</PDM>
+
+<PDM name="SF-uses-DAO" description="Session Facades access data directly using Data access objects" type="ModelPDM">
+<Roles>
+<Role name="SessionFacade" type="PDM" sequence="1"/>
+<Role name="DataAccessObject" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="SessionFacade" toRole="DataAccessObject.DAO"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="WSB-uses-SA" description="WebServiceBroker delegates asynchronous business processing to ServiceActivator" type="ModelPDM">
+<Roles>
+<Role name="WebServiceBroker" type="PDM" sequence="1"></Role>
+<Role name="ServiceActivator" type="PDM" sequence="1"></Role>
+</Roles>
+<Relationships>
+<!-- <Relationship name="Calls" type="Calls" fromRole="WebServiceBroker.WSBrokers" toRole="ServiceActivator"/> -->
+
+<Relationship name="Calls" type="Calls" fromRole="WebServiceBroker.POJOBroker" toRole="ServiceActivator"/>
+<Relationship name="Calls" type="Calls" fromRole="WebServiceBroker.EJBBroker" toRole="ServiceActivator"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="WSB-uses-AS" description="WebServiceBroker delegates business processing to ApplicationService" type="PDM">
+<Roles>
+<Role name="WebServiceBroker" type="PDM" sequence="1"/>
+<Role name="ApplicationService" type="PDM" sequence="2"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="WebServiceBroker.POJOBroker" toRole="ApplicationService"/>
+<Relationship name="Calls" type="Calls" fromRole="WebServiceBroker.EJBBroker" toRole="ApplicationService"/>
+</Relationships>
+</PDM>
+
+
+<!-- Level 0 (Design Patterns) -->
+<PDM name="FrontController" description="Servlet front strategy" type="PQLPDM" >
+<Roles>
+<Role name="FrontController" type="Query" sequence="1" queryName="FrontController.pql"/>
+<!-- TODO - Frontcontroller annotations -->
+</Roles>
+</PDM>
+
+
+<PDM name="InterceptingFilter" description="using filters in servlet 2.3 specification " type="PQLPDM" >
+<Roles>
+<Role name="Filters"  type="Query" sequence="1"  queryName="InterceptingFilter.pql" />
+<!-- TODO - InterceptingFilter annotations -->
+</Roles>
+</PDM>
+
+
+<PDM name="ApplicationController" description="" type="PQLPDM" scriptedPDMPath="ApplicationController.pql">
+<Roles>
+<Role name="Controller" type="Query" sequence="1" typeReferenceName="controllers"/>
+<Role name="Mapper" type="Query" sequence="2" typeReferenceName="mappers"/>
+<Role name="Map" type="Query" sequence="3" typeReferenceName="map"/>
+<Role name="Command" type="Query" sequence="4" typeReferenceName="commands"/>
+</Roles>
+<Relationships>
+<Relationship name="resolves" type="Calls" fromRole="Controller" toRole="Mapper"/>
+<Relationship name="users" type="Uses" fromRole="Mapper" toRole="Map"/>
+<Relationship name="Calls" type="Calls" fromRole="Controller" toRole="Command"/>
+<Relationship name="Creates" type="IsOfType" fromRole="Mapper" toRole="Controller"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="BusinessDelegate" description="" type="PQLPDM">
+<Roles>
+<Role name="BusinessDelegate" type="Query" sequence="1" queryName="BusinessDelegate.pql"/>
+</Roles>
+</PDM>
+
+
+<PDM name="WebServiceBroker" description="" type="PQLPDM">
+<Roles>
+<Role name="WSBrokers" type="Abstract" sequence="1" />
+<Role name="POJOBroker" type="query" sequence="2" queryName="WSPojoBroker.pql"/>
+<Role name="EJBBroker" type="query" sequence="3" queryName="WSEJBBroker.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="POJO implementation" type="Extends" fromRole="WSBrokers" toRole="POJOBroker"/>
+<Relationship name="EJB implementation" type="Extends" fromRole="WSBrokers" toRole="EJBBroker"/>
+</Relationships>
+</PDM>
+
+<PDM name="ContextObject" description="" type="PQLPDM" scriptedPDMPath="ContextFactory.pql">
+<Roles>
+<Role name="ContextObject" type="query" sequence="1" typeReferenceName="contextObjects"/>
+<Role name="ContextObjectFactory" type="query" sequence="2" typeReferenceName="contextFactories"/>
+<Role name="ProtocolInterface" type="query" sequence="3" typeReferenceName="protocolInterfaces"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ContextObject" toRole="ProtocolInterface"/>
+<Relationship name="Creates" type="Creates" fromRole="ContextObjectFactory" toRole="ContextObject"/>
+</Relationships>
+</PDM>
+
+<PDM name="ViewHelper" description="" type="PQLPDM">
+<Roles>
+<Role name="View" type="Query" sequence="1" queryName="View.pql"/>
+<Role name="ViewHelper" type="Query" sequence="2" queryName="ViewHelper.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="View" toRole="ViewHelper"/>
+</Relationships>
+</PDM>
+
+<PDM name="ServiceLocator" description="" type="PQLPDM" scriptedPDMPath="ServiceLocator.pql">
+<Roles>
+<Role name="ServiceLocator" type="Query" sequence="1" typeReferenceName="serviceLocators"/>
+<Role name="Target" type="Query" sequence="2" typeReferenceName="targets"/>
+<Role name="RegistryService" type="Query" sequence="3" typeReferenceName="registryServices"/>
+</Roles>
+<Relationships>
+<Relationship name="Calls" type="Calls" fromRole="ServiceLocator" toRole="RegistryService"/>
+<Relationship name="Looksup" type="IsOfType" fromRole="ServiceLocator" toRole="Target"/>
+</Relationships>
+</PDM>
+
+<PDM name="SessionFacade" description="" type="PQLPDM" >
+<Roles>
+<Role name="SessionFacadeHome" queryName="SessionFacadeHome.pql" sequence="1" type="Query"/>
+<Role name="SessionFacadeInterface" queryName="SessionFacadeInterface.pql" sequence="2" type="Query"/>
+<Role name="SessionFacadeBean" queryName="SessionFacadeBean.pql" sequence="3" type="Query"></Role>
+</Roles>
+<Relationships>
+<Relationship fromRole="SessionFacadeHome" name="Creates" toRole="SessionFacadeBean" type="Creates"/>
+<Relationship fromRole="SessionFacadeBean" name="Implements" toRole="SessionFacadeInterface" type="Implements"/>
+</Relationships>
+</PDM>
+
+
+<PDM name="ApplicationService" description="" type="PQLPDM">
+<Roles>
+<Role name="ApplicationService" type="Query" sequence="1" queryName="ApplicationService.pql"></Role>
+</Roles>
+</PDM>
+
+
+<PDM name="BusinessObject" description="" type="PQLPDM">
+<Roles>
+<Role name="ParentBO" type="Query" sequence="1" queryName="ParentBO.pql"/>
+<Role name="DependentBO" type="Query" sequence="2" queryName="DepedentBO.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="contains" type="Contains" fromRole="ParentBO" toRole="DependentBO"/>
+<Relationship name="contains" type="Contains" fromRole="DependentBO" toRole="DependentBO"/>
+</Relationships>
+</PDM>
+
+<PDM name="CompositeEntity" description="" type="PQLPDM">
+<Roles>
+<Role name="CompositeEntity" type="Query" sequence="1" queryName="CompositeEntity.pql"/>
+<Role name="DependentBO" type="Query" sequence="2" queryName="DependentBO.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="contains" type="Contains" fromRole="CompositeEntity" toRole="DependentBO"/>
+</Relationships>
+</PDM>
+
+<PDM name="TransferObject" description="" type="PQLPDM">
+<Roles>
+<Role name="TransferObject" type="Query" sequence="1" queryName="TransferObject.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="Contains" type="Contains" fromRole="TransferObject" toRole="TransferObject"/>
+</Relationships>
+</PDM>
+
+<PDM name="TransferObjectAssembler" description="" type="PQLPDM">
+<Roles>
+<Role name="TransferObjectAssembler" type="Query" sequence="1" queryName="TOAssembler.pql"/>
+<Role name="TransferObject" type="PDM" sequence="2" />
+<Role name="BusinessObject" type="PDM" sequence="3"/>
+<Role name="ApplicationService" type="PDM" sequence="4"/>
+<Role name="SessionFacade" type="PDM" sequence="5"/>
+<Role name="DataAccessObject" type="PDM" sequence="6"/>
+</Roles>
+<Relationships>
+<Relationship name="assembles" type="Creates" fromRole="TransferObjectAssembler" toRole="TransferObject"/>
+<Relationship name="Calls" type="Calls" fromRole="TransferObjectAssembler" toRole="BusinessObject"/>
+<Relationship name="Calls" type="Calls" fromRole="TransferObjectAssembler" toRole="DataAccessObject.DAO"/>
+<Relationship name="Calls" type="Calls" fromRole="TransferObjectAssembler" toRole="SessionFacade"/>
+<Relationship name="Calls" type="Calls" fromRole="TransferObjectAssembler" toRole="ApplicationService"/>
+</Relationships>
+</PDM>
+
+<PDM name="ValueListHandler" description="" type="PQLPDM" scriptedPDMPath="ValueListHandler.pql">
+<Roles>
+<Role name="VLH" type="Query" sequence="1" typeReferenceName="valueListHandlers"/>
+<Role name="ValueList" type="Query" sequence="2" typeReferenceName="valueLists"/>
+<Role name="ValueListIterator" type="Query" sequence="3" typeReferenceName="valueListIterators"/>
+</Roles>
+<Relationships>
+<Relationship name="manages" type="Contains" fromRole="VLH" toRole="ValueList"/>
+<Relationship name="Calls" type="Calls" fromRole="ValueListIterator" toRole="ValueList"/>
+<Relationship name="Creates" type="Creates" fromRole="ValueList" toRole="ValueListIterator"/>
+</Relationships>
+</PDM>
+
+<PDM name="DataAccessObject" description="" type="PQLPDM" scriptedPDMPath="DataAccessObject.pql">
+<Roles>
+<Role name="DAO" type="Query" sequence="1" typeReferenceName="DataAccessObjects"/>
+<Role name="DataSource" type="Query" sequence="2" typeReferenceName="dataSources"/>
+<Role name="ResultSet" type="Query" sequence="3" typeReferenceName="resultSets"/>
+<Role name="TransferObject" type="PDM" sequence="4"/>
+</Roles>
+<Relationships>
+<Relationship name="accesses" type="Calls" fromRole="DataAccessObject" toRole="DataSource"/>
+<Relationship name="Calls" type="Calls" fromRole="DataAccessObject" toRole="ResultSet"/>
+<Relationship name="Creates" type="Creates" fromRole="DataSource" toRole="ResultSet"/>
+<Relationship name="Creates" type="Creates" fromRole="DataAccessObject" toRole="TransferObject"/>
+</Relationships>
+</PDM>
+
+<PDM name="ServiceActivator" description="" type="ModelPDM">
+<Roles>
+<Role name="ServiceActivator" type="Query" sequence="1" queryName="ServiceActivator.pql"/>
+<Role name="Request" type="Query" sequence="2" queryName="MessageRequest.pql"/>
+</Roles>
+<Relationships>
+<Relationship name="receives" type="Calls" fromRole="ServiceActivator" toRole="Request"/>
+</Relationships>
+</PDM>
+
+
+</PDMList>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Deepak Alur (none) -->
+<xs:schema targetNamespace="http://java.sun.com/xml/ns/acre/" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pdmquery="http://java.sun.com/xml/ns/acre/"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    jaxb:extensionBindingPrefixes="xjc"
+    jaxb:version="1.0"
+    >
+    <xs:annotation>
+       <xs:appinfo>
+          <jaxb:globalBindings generateIsSetMethod="true">
+              <xjc:serializable uid="6223522371707017018"/>
+          </jaxb:globalBindings>
+       </xs:appinfo>
+    </xs:annotation>
+
+	<xs:element name="PDMQueryList">
+		<xs:annotation>
+			<xs:documentation>List of all Queries used in the  PDM definitions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdmquery:Query" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Query">
+		<xs:annotation>
+			<xs:documentation>Query definition</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pdmquery:Argument" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="pdmquery:ReturnVariable" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>type indicates what kind of query this is. Options are: PQL Script, Groovy Script</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="relativeFilePath" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>This attribute indicates the relative file path where the script is stored under the AcreRepository.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="language" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Indicates which query language must be used for this script. Currently only option supported is "PQL"</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Argument">
+		<xs:complexType>
+			<xs:attribute name="sequence" type="xs:integer" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>This indicates the type of query argument. 
+Static - pass the value attribute as is to the script
+Dynamic - future use.
+Query Variable - query argument values are already computed in another query and returned as that 2nd query's return variable. You must specify relatedQueryName and relatedQueryReturnVariableName attributes.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="relatedQueryName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>relatedQueryName and relatedQueryReturnVariableName lets you specify that the values for this input argument to this query is coming from the output/return variable from another query.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="relatedQueryReturnVariableName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>relatedQueryName and relatedQueryReturnVariableName lets you specify that the values for this input argument to this query is coming from the output/return variable from another query.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The value element is used to pass static values as-is to the script as the script's input variable.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReturnVariable">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Indicates the type of the return variable. Options are Static, Dynamic, or Any.
+Currently, only "Any" is supported.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

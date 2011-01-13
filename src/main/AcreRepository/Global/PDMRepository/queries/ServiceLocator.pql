@@ -1,0 +1,10 @@
+// Service Locator
+define EJBServiceLocators as
+select c from classes c
+where c.methods.calls.parentClass.name="javax.naming.InitialContext"
+and c.methods.returnType.name in ("javax.ejb.EJBObject", "javax.ejb.EJBHome",
+"javax.ejb.EJBLocalHome");
+
+
+
+return EJBServiceLocators;

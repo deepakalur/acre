@@ -1,0 +1,7 @@
+include allMacros;
+
+
+return
+select c 
+from classes c 
+where c.$calledClasses.shortName = "PSAServiceLocator";

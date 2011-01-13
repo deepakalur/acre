@@ -1,0 +1,4 @@
+return
+select m.parentClass
+from methods m
+where m.shortName = "finalize";

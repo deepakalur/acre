@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Deepak Alur (Deepak Alur) -->
+<PDM name="SALSAPDMLibrary" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\dev\salsapdm\src\SalsaPDM.xsd">
+	<!-- Define GoF Pattern Models -->
+	<Model name="Singleton" type="Pattern" category="GoF" tier="Any">
+		<Roles>
+			<Role name="Singleton" type="Query" sequence="1"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Creates" type="Creates" fromRole="Singleton" toRole="Singleton"/>
+			<Relation name="Returns" type="Throws" fromRole="Singleton" toRole="Singleton"/>
+		</Relationships>
+	</Model>
+	<!-- Start - Define Core J2EE Pattern Models -->
+	<!-- Presentation Tier Patterns -->
+	<Model name="InterceptingFilter" type="Pattern" category="CoreJ2EEPatterns" tier="PresentationTier">
+		<Roles>
+			<Role name="FilterManager" type="Query" sequence="1"/>
+			<Role name="FilterChain" type="Query" sequence="2"/>
+			<Role name="Filter" type="Query" sequence="3"/>
+			<Role name="Target" type="Query" sequence="4"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Creates" type="Creates" fromRole="FilterManager" toRole="FilterChain"/>
+			<Relation name="Manages" type="Uses" fromRole="FilterManager" toRole="FilterChain"/>
+			<Relation name="Creates" type="Creates" fromRole="FilterManager" toRole="FilterChain"/>
+			<Relation name="Contains" type="Contains" fromRole="FilterChain" toRole="Filter"/>
+			<Relation name="Invokes" type="Calls" fromRole="FilterChain" toRole="Target"/>
+		</Relationships>
+	</Model>
+	<Model name="FrontController" type="Pattern" category="CoreJ2EEPatterns" tier="PresentationTier">
+		<Roles>
+			<Role name="FrontController" type="Query" sequence="1"/>
+			<Role name="Helper" type="Query" sequence="2"/>
+			<Role name="ApplicationController" type="Model" sequence="3"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Delegates" type="Uses" fromRole="FrontController" toRole="ApplicationController"/>
+			<Relation name="Invokes" type="Calls" fromRole="FrontController" toRole="Helper"/>
+		</Relationships>
+	</Model>
+	<Model name="ApplicationController" type="Pattern" category="CoreJ2EEPatterns" tier="PresentationTier">
+		<Roles>
+			<Role name="ApplicationController" type="Query" sequence="1"/>
+			<Role name="Mapper" type="Abstract" sequence="2"/>
+			<Role name="Map" type="Abstract" sequence="3"/>
+			<Role name="Target" type="Abstract" sequence="4"/>
+			<Role name="CommandFactory" type="Query" sequence="5"/>
+			<Role name="CommandMap" type="Query" sequence="6"/>
+			<Role name="Command" type="Query" sequence="7"/>
+			<Role name="ViewFactory" type="Query" sequence="8"/>
+			<Role name="ViewMap" type="Query" sequence="9"/>
+			<Role name="View" type="Query" sequence="10"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Resolves" type="Uses" fromRole="ApplicationController" toRole="Mapper"/>
+			<Relation name="Calls" type="Calls" fromRole="ApplicationController" toRole="Target"/>
+			<Relation name="Implements" type="Implements" fromRole="CommandFactory" toRole="Mapper"/>
+			<Relation name="Implements" type="Implements" fromRole="CommandMap" toRole="Map"/>
+			<Relation name="Implements" type="Implements" fromRole="Command" toRole="Target"/>
+			<Relation name="Implements" type="Implements" fromRole="ViewFactory" toRole="Mapper"/>
+			<Relation name="Implements" type="Implements" fromRole="ViewMap" toRole="Map"/>
+			<Relation name="Implements" type="Implements" fromRole="View" toRole="Target"/>
+		</Relationships>
+	</Model>
+	<!-- Business Tier Patterns -->
+	<Model name="BusinessDelegate" type="Pattern" category="CoreJ2EEPatterns" tier="BusinessTier">
+		<Roles>
+			<Role name="BusinessDelegate" type="Query" sequence="1"/>
+		</Roles>
+		<Relationships/>
+	</Model>
+	<Model name="SessionFacade" type="Pattern" category="CoreJ2EEPatterns" tier="BusinessTier">
+		<Roles>
+			<Role name="SessionFacadeHome" type="Query" sequence="1"/>
+			<Role name="SessionFacadeBean" type="Query" sequence="2"/>
+			<Role name="SessionFacadeInterface" type="Query" sequence="3"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Creates" type="Creates" fromRole="SessionFacadeHome" toRole="SessionFacadeBean"/>
+			<Relation name="Implements" type="Implements" fromRole="SessionFacadeBean" toRole="SessionFacadeInterface"/>
+		</Relationships>
+	</Model>
+	<Model name="ServiceLocator" type="Pattern" category="CoreJ2EEPatterns" tier="BusinessTier">
+		<Roles>
+			<Role name="ServiceLocator" type="Query" sequence="1"/>
+			<Role name="RegistryService" type="Abstract" sequence="2"/>
+			<Role name="Target" type="Abstract" sequence="3"/>
+			<Role name="EJBHome" type="Query" sequence="4"/>
+			<Role name="EJBLocalHome" type="Query" sequence="5"/>
+			<Role name="JDBCDataSource" type="Query" sequence="6"/>
+			<Role name="JMSConnectionFactory" type="Query" sequence="7"/>
+		</Roles>
+		<Relationships>
+			<Relation name="LooksUp" type="Uses" fromRole="ServiceLocator" toRole="RegistryService"/>
+			<Relation name="LooksUp" type="Throws" fromRole="ServiceLocator" toRole="Target"/>
+			<Relation name="Is A" type="Implements" fromRole="EJBHome" toRole="Target"/>
+			<Relation name="Is A" type="Implements" fromRole="EJBLocalHome" toRole="Target"/>
+			<Relation name="Is A" type="Implements" fromRole="JDBCDataSource" toRole="Target"/>
+			<Relation name="Is A" type="Implements" fromRole="JMSConnectionFactory" toRole="Target"/>
+		</Relationships>
+	</Model>
+	<!-- End - Define Core J2EE Patterns -->
+	<!-- Start - Define Core J2EE Pattern Relations and Micro-Architectures -->
+	<!-- Presentation Tier Pattern Relations and Micro-Architectures -->
+	<Model name="InterceptingFilterToFrontController" type="PatternSet" category="CoreJ2EEPatterns" tier="PresentationTier">
+		<Roles>
+			<Role name="InterceptingFilter" type="Model" sequence="1"/>
+			<Role name="FrontController" type="Model" sequence="2"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Delegates" type="Uses" fromRole="InterceptingFilter" toRole="FrontController"/>
+		</Relationships>
+	</Model>
+	<Model name="FrontControllerToApplicationController" type="PatternSet" category="CoreJ2EEPatterns" tier="PresentationTier">
+		<Roles>
+			<Role name="FrontController" type="Model" sequence="1"/>
+			<Role name="ApplicationController" type="Model" sequence="2"/>
+		</Roles>
+		<Relationships>
+			<Relation name="Delegates" type="Uses" fromRole="FrontController" toRole="ApplicationController.ApplicationController"/>
+		</Relationships>
+	</Model>
+	<!-- Business Tier Pattern Relations and Micro-Architectures -->
+	<!-- Integration Tier Pattern Relations and Micro-Architectures -->
+	<!-- End - Define Core J2EE Pattern Relations and Micro-Architectures -->
+</PDM>

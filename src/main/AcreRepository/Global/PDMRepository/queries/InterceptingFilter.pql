@@ -1,0 +1,11 @@
+// Intercepting Filter - Standard Filter Strategy
+
+// J2EE fact annotations
+//define declaredFilters as
+//select filter-name, filter-class from filters;
+
+Define filters as
+select c from classes c, c.implementsInterfaces i
+where   (i.**.name = "javax.servlet.Filter");
+
+return filters;

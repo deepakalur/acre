@@ -1,0 +1,30 @@
+<project name="ACRE Characteristics Extractor" default="compile" basedir=".">
+  <description>ACRE Characteristics Extractor for Java/J2EE</description>
+
+  <property name="src" value="${basedir}/src"/>
+  <property name="dst" value="${basedir}/classes"/>
+
+  <target name="init">
+    <available property="is_tiger" classname="java.lang.Enum"/>
+  </target>
+
+  <target name="check_tiger" depends="init" unless="is_tiger">
+    <fail message="JDK 1.5 or later required"/>
+  </target>
+
+  <target name="compile" depends="check_tiger" description="compile the project">
+        <mkdir dir="${dst}"/>
+        <javac source="1.5" debug="yes" srcdir="${src}" destdir="${dst}" >
+            <classpath>
+                <fileset dir="${ant.lib}">
+                  <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+  </target>
+
+  <target name="clean" description="delete generated files">
+    <delete dir="${dst}"/>
+  </target>
+
+</project>

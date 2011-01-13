@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+<!--
+  2003 by Thomas Pluempe, thomanski@gmx.de
+
+  xjc.sh -extension -b binding.xjb -catalog catalog.cat -d generated_src/ \
+       schemas/bpel-1.1-schema-may2003.xsd \
+       schemas/ws-addressing.xsd \
+       schemas/partnerLinkType-may2003.xsd
+
+  See also:
+ http://swjscmail1.sun.com/cgi-bin/wa?A2=ind0306&L=jaxb-interest&D=0&X=2929F31A36B3306DCB&Y=thomanski@gmx.de&P=12218 http://swjscmail1.sun.com/cgi-bin/wa?A2=ind0306&L=jaxb-interest&F=&S=&X=2D0CFA75B0C917443D&Y=thomanski@gmx.de&P=13172
+
+-->
+<jxb:bindings version="1.0"
+               xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <jxb:bindings schemaLocation="http://schemas.xmlsoap.org/wsdl/" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="org.acre.extractor.jaxb.wsdl"/>
+      <jxb:nameXmlTransform>
+        <jxb:elementName prefix="WsdlElem_"/>
+        <jxb:typeName prefix="WsdlType_"/>
+        <jxb:modelGroupName prefix="WsdlGroup_"/>
+        <jxb:anonymousTypeName prefix="WsdlAnon_"/>
+        <jxb:attributeName prefix="WsdlAttr_"/>
+      </jxb:nameXmlTransform>
+    </jxb:schemaBindings>
+  </jxb:bindings>
+  <jxb:bindings schemaLocation="schemas/Soap.xsd" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="org.acre.extractor.jaxb.soap"/>
+      <jxb:nameXmlTransform>
+        <jxb:elementName prefix="SoapElem_"/>
+        <jxb:typeName prefix="SoapType_"/>
+        <jxb:modelGroupName prefix="SoapGroup_"/>
+        <jxb:anonymousTypeName prefix="SoapAnon_"/>
+        <jxb:attributeName prefix="SoapAttr_"/>
+      </jxb:nameXmlTransform>
+    </jxb:schemaBindings>
+  </jxb:bindings>
+
+  <jxb:bindings schemaLocation="schemas/XMLSchema.xsd" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="org.acre.extractor.jaxb.xsd"/>
+      <jxb:nameXmlTransform>
+        <jxb:elementName prefix="XsdElem_"/>
+        <jxb:typeName prefix="XsdType_"/>
+        <jxb:modelGroupName prefix="XsdGroup_"/>
+        <jxb:anonymousTypeName prefix="XsdAnon_"/>
+        <jxb:attributeName prefix="XsdAttr_"/>
+      </jxb:nameXmlTransform>
+    </jxb:schemaBindings>
+  </jxb:bindings>
+
+<!--
+  <jxb:bindings schemaLocation="http://www.w3.org/2001/XMLSchema.xsd" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="org.acre.extractor.jaxb.xsd"/>
+      <jxb:nameXmlTransform>
+        <jxb:elementName prefix="XsdElem_"/>
+        <jxb:typeName prefix="XsdType_"/>
+        <jxb:modelGroupName prefix="XsdGroup_"/>
+        <jxb:anonymousTypeName prefix="XsdAnon_"/>
+        <jxb:attributeName prefix="XsdAttr_"/>
+      </jxb:nameXmlTransform>
+    </jxb:schemaBindings>
+  </jxb:bindings>
+  <jxb:bindings schemaLocation="jar:file:/d:/jwsdp-1.4/jaxb/lib/jaxb-xjc.jar!/com/sun/xml/xsom/impl/parser/datatypes.xsd" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="org.acre.extractor.jaxb.dt.xsd"/>
+      <jxb:nameXmlTransform>
+        <jxb:elementName prefix="DtXsdElem_"/>
+        <jxb:typeName prefix="DtXsdType_"/>
+        <jxb:modelGroupName prefix="DtXsdGroup_"/>
+        <jxb:anonymousTypeName prefix="DtXsdAnon_"/>
+        <jxb:attributeName prefix="DtXsdAttr_"/>
+      </jxb:nameXmlTransform>
+    </jxb:schemaBindings>
+  </jxb:bindings>
+-->
+
+
+</jxb:bindings>

@@ -1,0 +1,9 @@
+define servlets as SELECT c FROM classes c WHERE c.extendsClass.**.name IN ( "javax.servlet.GenericServlet") 
+AND c.name NOT IN ("javax.servlet.http.HttpServlet", "org.apache.jasper.runtime.HttpJspBase");
+DEFINE jspClasses AS SELECT a.parentClass FROM annotations a WHERE a.arguments.stringValue = "JSP";
+
+define frontControllers as servlets - jspClasses;
+
+return frontControllers;
+
+

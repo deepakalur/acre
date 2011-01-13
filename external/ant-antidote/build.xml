@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Build file for Antidote -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<project name="Antidote" default="main" basedir=".">
+
+  <!-- Give user a chance to override without editing this file 
+       (and without typing -D each time it compiles it) -->
+  <property file=".ant.properties" />
+  <property file="${user.home}/.ant.properties" />
+
+  <property name="Name" value="Antidote"/>
+  <property name="name" value="antidote"/>
+  <property name="version" value="0.2alpha"/>
+
+  <property name="debug" value="false" />
+  <property name="deprecation" value="true" />
+  <property name="optimize" value="true" />
+
+
+  <!--  Set the properties related to the source tree -->
+  <property name="src.dir" value="src"/>
+  <property name="java.dir" value="${src.dir}/java"/>
+  <property name="lib.dir" value="${src.dir}/lib"/>
+  <property name="bin.dir" value="${src.dir}/bin"/>
+  <property name="docs.dir" value="docs"/>
+  <property name="manifest" value="${src.dir}/manifest"/>
+
+  <!--  Set the properties for the build area  -->
+  <property name="build.dir" value="build"/>
+  <property name="build.classes" value="${build.dir}/classes"/>
+  <property name="build.lib" value="${build.dir}/lib"/>
+  <property name="build.javadocs" value="${build.dir}/javadocs"/>
+
+  <path id="classpath">
+    <pathelement location="${lib.dir}/crimson.jar"/>
+    <pathelement location="${lib.dir}/jaxp.jar"/>
+    <pathelement location="${lib.dir}/ant.jar"/>
+  </path>
+
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Set up properties for the distribution area -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <property name="dist.name" value="jakarta-${name}-${version}"/>
+  <property name="dist.base" value="distribution"/>
+  <property name="defaultdist.dir" value="dist"/>
+
+  <target name="setup-distproperties">
+
+    <property name="dist.dir" value="${defaultdist.dir}"/>
+    <property name="dist.bin" value="${dist.dir}/bin"/>
+    <property name="dist.lib" value="${dist.dir}/lib"/>
+    <property name="dist.docs" value="${dist.dir}/docs"/>
+    <property name="dist.javadocs" value="${dist.dir}/docs/api"/>
+
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Prepare the build -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="prepare">
+    <tstamp />
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Build the code  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="build" depends="prepare"
+          description="--> compiles the source code">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.classes}"/>
+    <mkdir dir="${build.lib}"/>
+    
+    <javac srcdir="${java.dir}"
+           destdir="${build.classes}"
+           debug="${debug}"
+           deprecation="${deprecation}"
+           optimize="${optimize}" >
+      <classpath refid="classpath" />
+    </javac>
+    
+    <copy todir="${build.classes}">
+      <fileset dir="${java.dir}">
+        <include name="**/*.properties" />
+        <include name="**/*.dtd" />
+        <include name="**/*.gif" />
+      </fileset>
+    </copy>
+
+    <filter token="VERSION" value="${version}" />
+    <filter token="DATE" value="${TODAY}" />
+    <filter token="TIME" value="${TSTAMP}" />
+    <copy todir="${build.classes}" overwrite="true" filtering="on">
+      <fileset dir="${java.dir}">
+        <include name="**/version.txt" />
+      </fileset>
+    </copy>
+
+  </target>
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Create the antidote.jar file  -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="jars" 
+          depends="build" 
+          description="--> creates the jars file">
+
+    <jar jarfile="${build.lib}/${name}.jar" manifest="${manifest}">
+      <fileset dir="${build.classes}"/>
+    </jar>
+
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Create the essential distribution that can run antidote -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="dist-lite" 
+          depends="jars, setup-distproperties"
+          description="--> creates a minimum distribution to run antidote">
+
+    <mkdir dir="${dist.dir}"/>
+    <mkdir dir="${dist.bin}"/>
+    <mkdir dir="${dist.lib}"/>
+
+    <copy todir="${dist.lib}">
+      <fileset dir="${build.lib}"/>
+      <fileset dir="${lib.dir}"/>
+    </copy>
+    
+    <copy todir="${dist.bin}">
+      <fileset dir="${bin.dir}/" />
+    </copy>
+
+    <fixcrlf srcdir="${dist.bin}" eol="crlf" includes="*.bat" />
+    <fixcrlf srcdir="${dist.bin}" eol="lf" includes="antidote"/>
+
+    <chmod perm="ugo+rx" dir="${dist.dir}" type="dir" includes="**" />
+    <chmod perm="ugo+r" dir="${dist.dir}" type="file" includes="**" />
+    <chmod perm="ugo+x" dir="${dist.bin}" type="file" includes="antidote"/>
+
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Create the complete distribution -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="dist" description="--> creates a complete distribution">
+    <antcall target="internal_dist">
+      <param name="dist.dir" value="${dist.name}" />
+    </antcall>
+  </target>  
+  
+  <target name="internal_dist" depends="dist-lite,javadocs">
+    <mkdir dir="${dist.docs}"/>
+    <mkdir dir="${dist.javadocs}"/>
+
+    <copy todir="${dist.lib}">
+      <fileset dir="${lib.dir}">
+        <include name="*.jar" />
+        <include name="*.zip" />
+      </fileset>
+    </copy>
+
+    <copy todir="${dist.docs}"
+          filtering="on">
+      <fileset dir="${docs.dir}"/>
+    </copy>
+
+    <copy todir="${dist.javadocs}">
+      <fileset dir="${build.javadocs}"/>
+    </copy>
+
+    <copy todir="${dist.dir}">
+      <fileset dir=".">
+        <include name="README"/>
+        <include name="LICENSE.txt"/>
+        <include name="TODO"/>
+      </fileset>
+    </copy>
+
+    <chmod perm="ugo+rx" dir="${dist.dir}" type="dir" includes="**" />
+    <chmod perm="ugo+r" dir="${dist.dir}" type="file" includes="**" />
+    <chmod perm="ugo+x" type="file">
+       <fileset dir="${dist.bin}">
+         <include name="**/antidote" />
+       </fileset>
+    </chmod>
+
+  </target>
+
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Create the binary distribution -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="distribution" 
+          description="--> creates a binary distribution">
+    <mkdir dir="${dist.base}"/>
+
+    <antcall target="internal_dist">
+      <param name="dist.dir" value="${dist.name}" />
+    </antcall>
+    <zip zipfile="${dist.base}/${dist.name}-bin.zip" 
+         basedir="${dist.name}/.." 
+         includes="${dist.name}/**"
+         excludes="${dist.name}/lib/optional.jar"/>
+    <tar longfile="gnu"
+         tarfile="${dist.base}/${dist.name}-bin.tar">
+      <tarfileset dir="${dist.name}/.." username="ant" group="ant"> 
+        <include name="${dist.name}/**"/>
+        <exclude name="${dist.name}/bin/antidote"/>
+      </tarfileset> 
+    </tar>
+    <gzip zipfile="${dist.base}/${dist.name}-bin.tar.gz" 
+          src="${dist.base}/${dist.name}-bin.tar"/>
+    <delete file="${dist.base}/${dist.name}-bin.tar"/>
+    <delete dir="${dist.name}" />
+
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Cleans up build and distribution directories -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="clean"
+          description="--> cleans up build and dist directories">
+    <delete dir="${build.dir}" />
+    <delete dir="${dist.base}" />
+    <delete dir="${defaultdist.dir}" />
+    <delete> 
+      <fileset dir="." includes="**/*~" defaultexcludes="no"/>
+    </delete>
+  </target> 
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Installs ant -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="install" if="ant.install">
+    <antcall target="dist">
+      <param name="dist.dir" value="${ant.install}" />
+    </antcall>
+  </target>
+
+  <target name="install-lite" if="ant.install">
+    <antcall target="dist-lite">
+      <param name="dist.dir" value="${ant.install}" />
+    </antcall>
+  </target>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!--  Creates the API documentation -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="javadocs" depends="prepare" 
+          description="--> creates the API documentation">
+    <mkdir dir="${build.javadocs}"/>
+    <javadoc packagenames="org.apache.*"
+             sourcepath="${java.dir}"
+             destdir="${build.javadocs}"
+             author="true"
+             version="true"
+             windowtitle="${Name} API"
+             doctitle="${Name}"
+             bottom="Copyright &#169; 2001 Apache Software Foundation. All Rights Reserved.">
+    </javadoc>
+  </target>
+  
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Main target - runs dist-lite by default -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <target name="main" 
+          description="--> creates a minimum distribution in ./dist">
+    <antcall target="dist-lite"/>
+  </target>
+  
+</project>

@@ -1,0 +1,5 @@
+select p from Persons p where p.address in
+( select address from Addresses address
+  where address.city in (select city from Zones z, z.city city)
+ );
+

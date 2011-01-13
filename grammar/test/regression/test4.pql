@@ -1,0 +1,40 @@
+// Select statement tests
+select c, m.name from classes c, for all m in c.methods: m.name = "aaa" and m.shortName = "bbb";
+select c1, c2 from classes c1, c1.methods.calls.parentclass c2
+where c1 != c2
+and
+	for all m1 in c1.methods:
+		(exists m2 in c2.methods:
+                         m1.calls = m2
+                     and m1.signature = m2.signature
+                     and m2.isPublic = true
+                )
+                or m1.isPublic = false
+;
+
+select c1, c2 from classes c1, c1.methods.calls.parentclass c2, c1.methods mset
+where c1 != c2
+and mset.ispublic = true
+and
+        for all m1 in mset:
+                (exists m2 in c2.methods:
+                         m1.calls = m2
+                     and m1.signature = m2.signature
+                     and m2.isPublic = true
+                )
+;
+
+SELECT count(c) FROM classes c
+WHERE ALL
+      c.methods.accessibility.x.y.z = "private"
+  AND c.methods.parameters[0].type instanceof "java.util.List"
+  AND 1 = 0
+;
+
+
+define PatternA as SELECT c FROM classes c WHERE c.name = "com.acme.Jane" AND c.methods.calls.parentClass.name = "com.acme.biz.Account";
+define PatternB as SELECT c FROM classes c WHERE c.name = "com.acme.biz.Account" AND c.methods.calls.parentClass.packageName = "com.acme.biz.dao";
+define MyPattern as SELECT c FROM classes c WHERE c IN PatternA AND c.methods.calls.parentClass IN PatternB;
+
+DEFINE y AS SELECT foo FROM a.b.c.d WHERE foo.bar[1].ggg NOT IN ("xexe", "xuxu", "xaxa");
+

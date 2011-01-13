@@ -1,0 +1,93 @@
+<project name="Run FactExtractor" default="factextractor" basedir=".">
+
+  <property file="build.properties"/>
+  <property environment="env"/>
+  <property name="psa.home" value="PSA" />
+
+  <property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
+  <property name="webapp.path" value="${psa.home}/assemble/jasper"/>
+  <property name="webapp.dist" value="${psa.home}/dist"/>
+  <property name="psa.lib" value="${psa.home}/lib"/>
+
+  <property name="webapp.out" value="${webapp.path}/WEB-INF/src"/>
+
+  <property name="ant.home" value="${env.ANT_HOME}"/>
+  <property name="api.home" value="${tomcat.home}/common/lib"/>
+  <property name="jasper.root" value="${tomcat.home}/jakarta-tomcat-jasper/jasper2"/>
+
+  <property name="tools.jar" value="${java.home}/lib/tools.jar"/>
+  <property name="ant.jar" value="${ant.home}/lib/ant.jar"/>
+  <property name="servlet-api.jar" value="${api.home}/servlet-api.jar"/>
+  <property name="jsp-api.jar" value="${api.home}/jsp-api.jar"/>
+  <property name="commons-el.jar" value="${catalina.lib}/commons-el.jar"/>
+  <property name="commons-daemon.jar" value="${catalina.bin}/commons-daemon.jar"/>
+  <property name="commons-launcher.jar" value="${catalina.bin}/commons-launcher.jar"/>
+  <property name="commons-collections.jar" value="${catalina.bin}/commons-collections.jar"/>
+  <property name="commons-logging.jar" value="${catalina.bin}/commons-logging-api.jar"/>
+  <property name="commons-daemon-launcher-bootstrap.class" value="${catalina.bin}/LauncherBootstrap.class"/>
+  <property name="jasper.build" value="${jasper.root}/build"/>
+  <property name="xercesImpl.jar" value="./lib/xercesImpl.jar"/>
+  <property name="xmlParserAPIs.jar" value="./lib/xmlParserAPIs.jar"/>    
+
+
+ <path id="jspc.classpath">
+    <pathelement location="${ant.jar}"/>
+    <pathelement location="${servlet-api.jar}"/>
+    <pathelement location="${jsp-api.jar}"/>
+    <pathelement location="${tools.jar}"/>
+    <pathelement location="${xercesImpl.jar}"/>
+    <pathelement location="${xmlParserAPIs.jar}"/>
+    <pathelement location="${commons-el.jar}"/>
+    <pathelement location="${commons-collections.jar}"/>
+    <pathelement location="${commons-logging.jar}"/>
+    <pathelement location="${commons-daemon.jar}"/>
+    <pathelement location="${commons-launcher.jar}"/>
+    <pathelement location="${jasper.build}/shared/classes"/>
+  </path>
+
+
+   <target name="factextractor" >
+    <!-- fact extractor -->
+
+    <echo message="====================== Running SQL Fact Extractor ====================" />
+    <javac destdir="${appl.dist}"
+           optimize="off"
+           debug="on" failonerror="false"
+           srcdir="${appl.dist}"
+	        excludes="**/*.smap"
+           compiler="com.sun.acre.extractor.java.SQLAntCompilerAdapter"
+           >
+      <classpath>
+        <pathelement location="${webapp.path}/WEB-INF/classes"/>
+        <fileset dir="${webapp.path}/WEB-INF/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/common/classes"/>
+        <fileset dir="${tomcat.home}/common/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/shared/classes"/>
+        <fileset dir="${tomcat.home}/shared/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${psa.lib}">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+      <include name="**" />
+        <!-- Yury Kamen: not implemented yet
+            <compilerarg value='-gj'  />
+            <compilerarg value='-ace' />
+            <compilerarg value='-noanalysis' />
+            <compilerarg line='-source 1.5' />
+            <compilerarg value='-s' />
+        -->
+      <compilerarg value="-XDprojectname=${projectname}" />
+      <compilerarg value="-XDprojectversion=${projectversion}" />
+    </javac>
+    </target>
+
+</project>

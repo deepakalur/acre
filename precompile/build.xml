@@ -1,0 +1,225 @@
+<project name="JSP Precompilation" default="all" basedir=".">
+
+  <property name="psa.home" value="../PSA" />
+  <property name="jspannotate" value="../jspannotate" />
+  <property name="tomcat.home" value="${jspannotate}/jakarta-tomcat-5.0.19"/>
+  <property name="webapp.path" value="${psa.home}/assemble/jasper"/>
+  <property name="webapp.dist" value="${psa.home}/dist"/>
+  <property name="psa.lib" value="${psa.home}/lib"/>
+
+  <property name="webapp.out" value="${webapp.path}/WEB-INF/src"/>
+
+  <property name="annotation.src" value="${jspannotate}/annotation/src" />
+  <property name="ant.home" value="../apache-ant-1.6.1"/>
+  <property name="api.home" value="${jspannotate}/jakarta-tomcat-5.0.19/common/lib"/>
+  <property name="jasper.root" value="${jspannotate}/jakarta-tomcat-5.0.19-src/jakarta-tomcat-jasper/jasper2"/>
+
+  <property name="tools.jar" value="${java.home}/lib/tools.jar"/>
+  <property name="ant.jar" value="${ant.home}/lib/ant.jar"/>
+  <property name="servlet-api.jar" value="${api.home}/servlet-api.jar"/>
+  <property name="jsp-api.jar" value="${api.home}/jsp-api.jar"/>
+  <property name="commons-el.jar" value="${catalina.lib}/commons-el.jar"/>
+  <property name="commons-daemon.jar" value="${catalina.bin}/commons-daemon.jar"/>
+  <property name="commons-launcher.jar" value="${catalina.bin}/commons-launcher.jar"/>
+  <property name="commons-collections.jar" value="${catalina.bin}/commons-collections.jar"/>
+  <property name="commons-logging.jar" value="${catalina.bin}/commons-logging-api.jar"/>
+  <property name="commons-daemon-launcher-bootstrap.class" value="${catalina.bin}/LauncherBootstrap.class"/>
+  <property name="jasper.build" value="${jasper.root}/build"/>
+
+ <path id="jspc.classpath">
+    <pathelement location="${ant.jar}"/>
+    <pathelement location="${servlet-api.jar}"/>
+    <pathelement location="${jsp-api.jar}"/>
+    <pathelement location="${tools.jar}"/>
+    <pathelement location="${xercesImpl.jar}"/>
+    <pathelement location="${xmlParserAPIs.jar}"/>
+    <pathelement location="${commons-el.jar}"/>
+    <pathelement location="${commons-collections.jar}"/>
+    <pathelement location="${commons-logging.jar}"/>
+    <pathelement location="${commons-daemon.jar}"/>
+    <pathelement location="${commons-launcher.jar}"/>
+    <pathelement location="${jasper.build}/shared/classes"/>
+  </path>
+
+  <target name="jspc">
+
+    <mkdir dir="${annotation.src}"/>
+    <mkdir dir="${webapp.out}"/>
+
+    <copy todir="${webapp.out}">
+        <fileset dir="${annotation.src}">
+          <include name="**/*.java"/>
+        </fileset>
+    </copy>
+
+
+    <taskdef classname="org.apache.jasper.JspC" name="jasper2" >
+      <classpath id="jspc.classpath">
+        <pathelement location="${java.home}/../lib/tools.jar"/>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/server/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/common/lib">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+    </taskdef>
+
+    <echo message="webapp.path=${webapp.path}" />
+    <echo message="webapp.out=${webapp.out}" />
+    <jasper2
+             validateXml="false"
+             uriroot="${webapp.path}"
+             webXmlFragment="${webapp.out}"
+             outputDir="${webapp.path}/WEB-INF/src" />
+  </target>
+
+  <target name="compile">
+
+    <mkdir dir="${webapp.path}/WEB-INF/classes"/>
+    <mkdir dir="${webapp.path}/WEB-INF/lib"/>
+
+    <javac destdir="${webapp.path}/WEB-INF/classes"
+           optimize="off"
+           debug="on" failonerror="false"
+           srcdir="${webapp.path}/WEB-INF/src"
+	   excludes="**/*.smap">
+      <classpath>
+        <pathelement location="${webapp.path}/WEB-INF/classes"/>
+        <fileset dir="${webapp.path}/WEB-INF/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/common/classes"/>
+        <fileset dir="${tomcat.home}/common/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/shared/classes"/>
+        <fileset dir="${tomcat.home}/shared/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+      <include name="**" />
+      <exclude name="tags/**" />
+    </javac>
+
+  </target>
+
+  <target name="all" depends="jspc,compile">
+    <mkdir dir="${webapp.dist}" />
+
+    <copy todir="${webapp.dist}">
+        <fileset dir="${webapp.out}">
+            <include name="**/*.java"/>
+        </fileset>
+    </copy>
+    <copy todir="${webapp.dist}">
+        <fileset dir="${webapp.out}">
+            <include name="**/*.java"/>
+        </fileset>
+        <fileset dir="${webapp.dist}/../src">
+            <include name="**/*.java"/>
+            <exclude name="docroot/**" />
+        </fileset>
+    </copy>
+  </target>
+
+    <target name="xxx" >
+        <echo message="ant.home=${ant.home}" />
+    </target>
+
+   <target name="factextractor.ql" >
+        <echo message="====================== Running QL Fact Extractor ====================" />
+        <javac destdir="${webapp.dist}"
+               optimize="off"
+               debug="on" failonerror="false"
+               srcdir="${webapp.dist}"
+           excludes="**/*.smap"
+               compiler="com.sun.acre.extractor.java.AntCompilerAdapter"
+               >
+          <classpath>
+            <pathelement location="${webapp.path}/WEB-INF/classes"/>
+            <fileset dir="${webapp.path}/WEB-INF/lib">
+              <include name="*.jar"/>
+            </fileset>
+            <pathelement location="${tomcat.home}/common/classes"/>
+            <fileset dir="${tomcat.home}/common/lib">
+              <include name="*.jar"/>
+            </fileset>
+            <pathelement location="${tomcat.home}/shared/classes"/>
+            <fileset dir="${tomcat.home}/shared/lib">
+              <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${tomcat.home}/bin">
+              <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${psa.lib}">
+              <include name="*.jar"/>
+            </fileset>
+          </classpath>
+          <include name="**" />
+        </javac>
+
+        <concat destfile="${webapp.dist}/factDatabase.ta" force="no">
+            <filelist dir="." files="factTuples.ta,factAttributes.ta"/>
+        </concat>
+        <concat destfile="${psa.home}/factDatabase.ta" force="no">
+            <filelist dir="." files="factTuples.ta,factAttributes.ta"/>
+        </concat>
+        <!--
+        <delete file="factTuples.ta"/>
+        <delete file="factAttributes.ta"/>
+        <echo message="=========== Created combined PSA facts database in PSA/dist/factDatabase.ta ===========" />
+        -->
+   </target>
+
+   <target name="factextractor" >
+    <!-- fact extractor -->
+
+    <echo message="====================== Running SQL Fact Extractor ====================" />
+    <javac destdir="${webapp.dist}"
+           optimize="off"
+           debug="on" failonerror="false"
+           srcdir="${webapp.dist}"
+	        excludes="**/*.smap"
+           compiler="com.sun.acre.extractor.java.SQLAntCompilerAdapter"
+           >
+      <classpath>
+        <pathelement location="${webapp.path}/WEB-INF/classes"/>
+        <fileset dir="${webapp.path}/WEB-INF/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/common/classes"/>
+        <fileset dir="${tomcat.home}/common/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tomcat.home}/shared/classes"/>
+        <fileset dir="${tomcat.home}/shared/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${psa.lib}">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+      <include name="**" />
+        <!-- Yury Kamen: not implemented yet
+            <compilerarg value='-gj'  />
+            <compilerarg value='-ace' />
+            <compilerarg value='-noanalysis' />
+            <compilerarg line='-source 1.5' />
+            <compilerarg value='-s' />
+        -->
+      <compilerarg value="-XDprojectname=PSA" />
+      <compilerarg value="-XDprojectversion=V1.0" />
+    </javac>
+    </target>
+
+</project>

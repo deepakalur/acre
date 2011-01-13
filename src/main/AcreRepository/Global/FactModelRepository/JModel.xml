@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Model type="JModel">
+<Type name="JPackage">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Relationship assocType="JPackage">
+          <Forward name="packages" cardinality="n"/>
+          <Inverse name="parentPackage" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="classes" cardinality="n"/>
+          <Inverse name="parentPackage" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JClass">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="isStatic" type="Boolean"/>
+     <Attribute name="isFinal" type="Boolean"/>
+     <Attribute name="isInner" type="Boolean"/>
+     <Attribute name="isInterface" type="Boolean"/>
+     <Attribute name="accessibility" type="String"/>
+     <Attribute name="sourceFile" type="String"/>
+     <Attribute name="filePosition" type="Integer"/>
+     <Attribute name="numStatements" type="Integer"/>
+     <Attribute name="numLocalVariables" type="Integer"/>
+     <Attribute name="numTryClauses" type="Integer"/>
+     <Attribute name="numCatchClauses" type="Integer"/>
+     <Attribute name="numCalls" type="Integer"/>
+     <Attribute name="numInstantiations" type="Integer"/>
+     <Attribute name="numAnonClassInstantiations" type="Integer"/>
+     <Attribute name="numLines" type="Integer"/>
+     <Attribute name="numSynchronizedBlocks" type="Integer"/>
+     <Attribute name="numReturnStatements" type="Integer"/>
+     <Attribute name="numThrowStatements" type="Integer"/>
+     <Attribute name="numAssertStatements" type="Integer"/>
+     <Attribute name="numCasts" type="Integer"/>
+     <Attribute name="numSkips" type="Integer"/>
+     <Attribute name="numAssignStatements" type="Integer"/>
+     <Attribute name="numInitializedLocalVariables" type="Integer"/>
+     <Attribute name="numLoopStatements" type="Integer"/>
+     <Attribute name="numIfStatements" type="Integer"/>
+     <Attribute name="numSwitchStatements" type="Integer"/>
+     <Attribute name="numCaseStatements" type="Integer"/>
+     <Attribute name="numBranchStatements" type="Integer"/>
+     <Attribute name="numLinearSegments" type="Integer"/>
+     <Attribute name="numLocalAnnotations" type="Integer"/>
+     <Attribute name="numFields" type="Integer"/>
+     <Attribute name="numInitializedFields" type="Integer"/>
+     <Attribute name="numMethods" type="Integer"/>
+     <Relationship assocType="JClass">
+          <Forward name="implementsInterfaces" cardinality="n"/>
+          <Inverse name="implementingClasses" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="extendsClass" cardinality="1"/>
+          <Inverse name="extendingClasses" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="contains" cardinality="n"/>
+          <Inverse name="containingClass" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JMethod">
+          <Forward name="methods" cardinality="n"/>
+          <Inverse name="parentClass" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JField">
+          <Forward name="fields" cardinality="n"/>
+          <Inverse name="parentClass" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JAnnotation">
+          <Forward name="annotations" cardinality="n"/>
+          <Inverse name="parentClass" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JMethod">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="isAbstract" type="Boolean"/>
+     <Attribute name="isConstructor" type="Boolean"/>
+     <Attribute name="isStatic" type="Boolean"/>
+     <Attribute name="isFinal" type="Boolean"/>
+     <Attribute name="numParams" type="Integer"/>
+     <Attribute name="accessibility" type="String"/>
+     <Attribute name="filePosition" type="Integer"/>
+     <Attribute name="signature" type="String"/>
+     <Attribute name="typeSignature" type="String"/>
+     <Attribute name="paramSignature" type="String"/>
+     <Attribute name="numStatements" type="Integer"/>
+     <Attribute name="numLocalVariables" type="Integer"/>
+     <Attribute name="numTryClauses" type="Integer"/>
+     <Attribute name="numCatchClauses" type="Integer"/>
+     <Attribute name="numCalls" type="Integer"/>
+     <Attribute name="numInstantiations" type="Integer"/>
+     <Attribute name="numAnonClassInstantiations" type="Integer"/>
+     <Attribute name="numLines" type="Integer"/>
+     <Attribute name="numSynchronizedBlocks" type="Integer"/>
+     <Attribute name="numReturnStatements" type="Integer"/>
+     <Attribute name="numThrowStatements" type="Integer"/>
+     <Attribute name="numAssertStatements" type="Integer"/>
+     <Attribute name="numCasts" type="Integer"/>
+     <Attribute name="numSkips" type="Integer"/>
+     <Attribute name="numAssignStatements" type="Integer"/>
+     <Attribute name="numInitializedLocalVariables" type="Integer"/>
+     <Attribute name="numLoopStatements" type="Integer"/>
+     <Attribute name="numIfStatements" type="Integer"/>
+     <Attribute name="numSwitchStatements" type="Integer"/>
+     <Attribute name="numCaseStatements" type="Integer"/>
+     <Attribute name="numBranchStatements" type="Integer"/>
+     <Attribute name="numLinearSegments" type="Integer"/>
+     <Attribute name="numLocalAnnotations" type="Integer"/>
+     <Relationship assocType="JClass">
+          <Forward name="returnType" cardinality="1"/>
+          <Inverse name="returnedBy" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="throwsExceptions" cardinality="n"/>
+          <Inverse name="thrownBy" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="catchesExceptions" cardinality="n"/>
+          <Inverse name="caughtBy" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JClass">
+          <Forward name="instantiates" cardinality="n"/>
+          <Inverse name="instantiatedBy" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JMethod">
+          <Forward name="calls" cardinality="n"/>
+          <Inverse name="callers" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JParameter">
+          <Forward name="parameters" cardinality="n"/>
+          <Inverse name="method" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JField">
+          <Forward name="usedFields" cardinality="n"/>
+          <Inverse name="usedByMethods" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JAnnotation">
+          <Forward name="annotations" cardinality="n"/>
+          <Inverse name="parentMethod" cardinality="1"/>
+     </Relationship>
+     <Relationship assocType="JCallpath">
+          <Forward name="callpaths" cardinality="n"/>
+          <Inverse name="parentMethod" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JField">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="isStatic" type="Boolean"/>
+     <Attribute name="isFinal" type="Boolean"/>
+     <Attribute name="accessibility" type="String"/>
+     <Attribute name="filePosition" type="Integer"/>
+     <Relationship assocType="JClass">
+          <Forward name="type" cardinality="1"/>
+          <Inverse name="typeFields" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JAnnotation">
+          <Forward name="annotations" cardinality="n"/>
+          <Inverse name="parentField" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JParameter">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="parameterIndex" type="Integer"/>
+     <Relationship assocType="JClass">
+          <Forward name="type" cardinality="1"/>
+          <Inverse name="typeParameters" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JAnnotation">
+          <Forward name="annotations" cardinality="n"/>
+          <Inverse name="parentParameter" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JAnnotation">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="numArgs" type="Integer"/>
+     <Relationship assocType="JClass">
+          <Forward name="type" cardinality="1"/>
+          <Inverse name="typeAnnotations" cardinality="n"/>
+     </Relationship>
+     <Relationship assocType="JAnnotationArgument">
+          <Forward name="arguments" cardinality="n"/>
+          <Inverse name="annotation" cardinality="1"/>
+     </Relationship>
+</Type>
+<Type name="JAnnotationArgument">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Attribute name="shortName" type="String"/>
+     <Attribute name="stringValue" type="String"/>
+     <Relationship assocType="JClass">
+          <Forward name="type" cardinality="1"/>
+          <Inverse name="typeAnnotationArguments" cardinality="n"/>
+     </Relationship>
+</Type>
+<Type name="JCallpath">
+     <Attribute name="id" type="Long"/>
+     <Attribute name="name" type="String"/>
+     <Relationship assocType="JClass">
+          <Forward name="classes" cardinality="n"/>
+          <Inverse name="callpaths" cardinality="n"/>
+     </Relationship>
+</Type>
+
+</Model>	

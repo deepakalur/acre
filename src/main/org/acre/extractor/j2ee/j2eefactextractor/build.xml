@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="j2eefactextractor" default="all">
+    <property environment='env' />
+    <property name='java_home'                  value='${env.JAVA_HOME}'                                        />
+    <property name="module.j2eefactextractor.basedir" value="${basedir}"/>
+
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!--
+  <property file="j2eefactextractor.properties"/>
+  <property name="skip.tests" value="true"/>
+   -->
+
+  <!-- Compiler options -->
+
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="compiler.excluded">
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+  </patternset>
+
+  <!-- JDK definitions -->
+  <path id="jdk.classpath.java_version_1.4.2_06">
+    <fileset dir="${java_home}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/sunrsasign.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/ldapsec.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+    </fileset>
+  </path>
+
+  <property name="project.jdk.home" value="${java_home}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.java_version_1.4.2_06"/>
+
+
+  <!-- Project Libraries -->
+
+  <path id="library.javac-tools.classpath">
+    <pathelement location="${java_home}/lib/tools.jar"/>
+  </path>
+
+  <path id="library.j2eefactextractor.classpath">
+    <pathelement location="${basedir}/lib/s2b.jar"/>
+    <pathelement location="${basedir}/lib/jsse.jar"/>
+    <pathelement location="${basedir}/lib/jaxrpc-impl.jar"/>
+    <pathelement location="${basedir}/lib/jaxrpc-api.jar"/>
+    <pathelement location="${basedir}/lib/saaj-impl.jar"/>
+    <pathelement location="${basedir}/lib/saaj-api.jar"/>
+    <pathelement location="${basedir}/lib/jnet.jar"/>
+    <pathelement location="${basedir}/lib/jcert.jar"/>
+    <pathelement location="${basedir}/lib/jaxr-api.jar"/>
+    <pathelement location="${basedir}/lib/activation.jar"/>
+    <pathelement location="${basedir}/lib/jaxr-impl.jar"/>
+    <pathelement location="${basedir}/lib/jaxr-apidoc.jar"/>
+    <pathelement location="${basedir}/lib/dtdformatter.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging.jar"/>
+    <pathelement location="${basedir}/lib/optional.jar"/>
+    <pathelement location="${basedir}/lib/jaas.jar"/>
+    <pathelement location="${basedir}/lib/mail.jar"/>
+    <pathelement location="${basedir}/lib/j2ee.jar"/>
+    <pathelement location="${basedir}/lib/servlet.jar"/>
+  </path>
+
+  <path id="library.salsalibrary.classpath">
+    <pathelement location="${basedir}/../../lib/jax-qname.jar"/>
+    <pathelement location="${basedir}/../../lib/xsltc.jar"/>
+    <pathelement location="${basedir}/../../lib/sablecc-2.18.jar"/>
+    <pathelement location="${basedir}/../../lib/mysql-connector-java-3.0.14-production-bin.jar"/>
+    <pathelement location="${basedir}/../../lib/dasl-rt.jar"/>
+    <pathelement location="${basedir}/../../lib/jaxb-libs.jar"/>
+    <pathelement location="${basedir}/../../lib/xsdlib.jar"/>
+    <pathelement location="${basedir}/../../lib/dom.jar"/>
+    <pathelement location="${basedir}/../../lib/metouia.jar"/>
+    <pathelement location="${basedir}/../../lib/jaxp-api.jar"/>
+    <pathelement location="${basedir}/../../lib/sablecc-anttask-1.0.1.jar"/>
+    <pathelement location="${basedir}/../../lib/jaxb-impl.jar"/>
+    <pathelement location="${basedir}/../../lib/concurrent.jar"/>
+    <pathelement location="${basedir}/../../lib/xercesImpl.jar"/>
+    <pathelement location="${basedir}/../../lib/sax.jar"/>
+    <pathelement location="${basedir}/../../lib/junit.jar"/>
+    <pathelement location="${basedir}/../../lib/namespace.jar"/>
+    <pathelement location="${basedir}/../../lib/grappa1_2.jar"/>
+    <pathelement location="${basedir}/../../lib/jaxb-xjc.jar"/>
+    <pathelement location="${basedir}/../../lib/xalan.jar"/>
+    <pathelement location="${basedir}/../../lib/relaxngDatatype.jar"/>
+    <pathelement location="${basedir}/../../lib/jaxb-api.jar"/>
+    <pathelement location="${basedir}/../../lib/ant-1.6.jar"/>
+  </path>
+
+  <!-- Modules -->
+
+
+  <!-- Module J2EEFactExtractor -->
+
+
+
+  <property name="module.jdk.home.j2eefactextractor" value="${project.jdk.home}"/>
+  <property name="module.jdk.classpath.j2eefactextractor" value="${project.jdk.classpath}"/>
+
+  <property name="compiler.args.j2eefactextractor" value="${compiler.args}"/>
+
+  <property name="j2eefactextractor.output.dir" value="${module.j2eefactextractor.basedir}/classes"/>
+  <property name="j2eefactextractor.testoutput.dir" value="${module.j2eefactextractor.basedir}/classes"/>
+
+  <path id="j2eefactextractor.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+  <path id="j2eefactextractor.module.classpath">
+    <path refid="${module.jdk.classpath.j2eefactextractor}"/>
+    <path refid="library.j2eefactextractor.classpath"/>
+    <path refid="library.javac-tools.classpath"/>
+    <path refid="library.salsalibrary.classpath"/>
+  </path>
+
+
+
+  <patternset id="excluded.from.compilation.j2eefactextractor">
+    <patternset refid="compiler.excluded"/>
+  </patternset>
+
+  <path id="j2eefactextractor.module.sourcepath">
+    <dirset dir="${module.j2eefactextractor.basedir}">
+      <include name="j2eeri/appserv-commons/src/java"/>
+      <include name="j2eeri/deployment-api/src/java"/>
+      <include name="j2eeri/ejb-api/src/share/classes"/>
+      <include name="j2eeri/jmx/src/jmxri"/>
+      <include name="src"/>
+    </dirset>
+  </path>
+
+  <target name="compile" depends="compile.module.j2eefactextractor" description="compile module(s) J2EEFactExtractor"/>
+
+  <target name="compile.module.j2eefactextractor" depends="compile.module.j2eefactextractor.production,compile.module.j2eefactextractor.tests" description="compile module(s) J2EEFactExtractor"/>
+
+  <target name="compile.module.j2eefactextractor.production" description="compile module(s) J2EEFactExtractor production classes">
+    <mkdir dir="${j2eefactextractor.output.dir}"/>
+    <echo message="java_home=${java_home}"/>
+    <javac destdir="${j2eefactextractor.output.dir}"
+            debug="${compiler.debug}"
+            nowarn="${compiler.generate.no.warnings}"
+            memoryMaximumSize="${compiler.max.memory}"
+            fork="true"
+            executable="${module.jdk.home.j2eefactextractor}/bin/javac"
+            source="1.4"
+        >
+      <compilerarg line="${compiler.args.j2eefactextractor}"/>
+      <bootclasspath refid="j2eefactextractor.module.bootclasspath"/>
+      <classpath refid="j2eefactextractor.module.classpath"/>
+      <src refid="j2eefactextractor.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+    </javac>
+    <copy todir="${j2eefactextractor.output.dir}">
+      <fileset dir="${module.j2eefactextractor.basedir}/j2eeri/appserv-commons/src/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+      </fileset>
+      <fileset dir="${module.j2eefactextractor.basedir}/j2eeri/deployment-api/src/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+      </fileset>
+      <fileset dir="${module.j2eefactextractor.basedir}/j2eeri/ejb-api/src/share/classes">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+      </fileset>
+      <fileset dir="${module.j2eefactextractor.basedir}/j2eeri/jmx/src/jmxri">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+      </fileset>
+      <fileset dir="${module.j2eefactextractor.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.j2eefactextractor"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="compile.module.j2eefactextractor.tests" depends="compile.module.j2eefactextractor.production" description="compile module(s) J2EEFactExtractor test classes" unless="skip.tests"/>
+
+  <target name="clean.module.j2eefactextractor" description="cleanup module">
+    <delete dir="${j2eefactextractor.output.dir}"/>
+    <delete dir="${j2eefactextractor.testoutput.dir}"/>
+  </target>
+
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+
+  <target name="clean" depends="clean.module.j2eefactextractor" description="cleanup all"/>
+
+  <target name="all" depends="init, clean, compile.module.j2eefactextractor" description="build all"/>
+
+  <target name='extract.facts.supplier' depends='compile'>
+        <java classname='com.sun.acre.factextractor.j2ee.J2EEFactExtractor' fork='true' failonerror="true">
+            <classpath><pathelement path='${basedir}/classes'/><path refid="j2eefactextractor.module.classpath"/></classpath>
+            <jvmarg value='-Dcom.sun.aas.installRoot=${basedir}' />
+            <arg value='test/ears/supplier.ear'/>
+        </java>
+  </target>
+
+  <target name='extract.facts.petstoreadmin' depends='compile'>
+        <java classname='com.sun.acre.factextractor.j2ee.J2EEFactExtractor' fork='true' failonerror="true">
+            <classpath><pathelement path='${basedir}/classes'/><path refid="j2eefactextractor.module.classpath"/></classpath>
+            <jvmarg value='-Dcom.sun.aas.installRoot=${basedir}' />
+            <arg value='test/ears/petstoreadmin.ear'/>
+        </java>
+  </target>
+
+  <target name='extract.facts.DukesBankApp' depends='compile'>
+        <java classname='com.sun.acre.factextractor.j2ee.J2EEFactExtractor' fork='true' failonerror="true">
+            <classpath><pathelement path='${basedir}/classes'/><path refid="j2eefactextractor.module.classpath"/></classpath>
+            <jvmarg value='-Dcom.sun.aas.installRoot=${basedir}' />
+            <arg value='test/ears/DukesBankApp.ear'/>
+        </java>
+  </target>
+
+  <target name='extract.facts.psa' depends='compile'>
+        <java classname='com.sun.acre.factextractor.j2ee.J2EEFactExtractor' fork='true' failonerror="true">
+            <classpath><pathelement path='${basedir}/classes'/><path refid="j2eefactextractor.module.classpath"/></classpath>
+            <jvmarg value='-Dcom.sun.aas.installRoot=${basedir}' />
+            <arg value='${basedir}/../../PSA/assemble/psaapp.ear'/>
+        </java>
+  </target>
+
+
+  <target name='test'
+        depends="extract.facts.supplier, extract.facts.petstoreadmin, extract.facts.DukesBankApp, extract.facts.psa"
+    >
+  </target>
+
+
+</project>

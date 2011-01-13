@@ -1,0 +1,5 @@
+
+FACT TUPLE :
+
+hasPortType urn:GoogleSearch:GoogleSearch urn:GoogleSearch:GoogleSearch:GoogleSearchPort
+hasBinding urn:GoogleSearch:GoogleSearch urn:GoogleSearch:GoogleSearch:GoogleSearchBinding

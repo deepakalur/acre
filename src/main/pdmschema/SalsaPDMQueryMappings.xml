@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Deepak Alur (Deepak Alur) -->
+<QueryMappings>
+	<Query name="Servlets" language="PQL" type="Static">
+		<QueryStatement>
+			SELECT c 
+			FROM classes c 
+			WHERE c.extendsClass.**.name IN (
+			     "javax.servlet.http.HttpServlet" , "javax.servlet.http.GenericServlet")
+		</QueryStatement>
+	</Query>
+	<Query name="Singleton" language="PQL" type="Static">
+		<QueryStatement>	
+			SELECT cl 
+			FROM classes cl 
+			WHERE cl.methods.returnType = cl 
+			AND cl NOT IN ( 
+				SELECT c 
+				FROM classes c
+				WHERE  c.methods.isConstructor = true 
+					AND c.methods.accessibility != "private")
+		</QueryStatement>
+	</Query>
+	<Query name="FrontController" language="PQL" type="static">
+		<QueryStatement>
+			SELECT c
+			FROM CLASSES c 
+			WHERE c.extendsClass.**.name IN ("javax.servlet.GenericServlet", "javax.servlet.HttpServlet")
+		</QueryStatement>
+	</Query>
+	<Query name="ApplicationController" language="PQL" type="dynamic">
+		<QueryStatement>
+			SELECT c
+			FROM CLASSES c 
+			WHERE c.CALLS IN ( $$CommandFactory )
+			AND c.CALLEDBY IN ( $$FrontController )
+		</QueryStatement>
+	</Query>
+	<Query name="CommandFactory" language="PQL" type="dynamic">
+		<QueryStatement>
+			SELECT c.name 
+			FROM CLASSES c
+			WHERE c.CREATES IN ( $$Command )
+		</QueryStatement>
+	</Query>
+	<Query name="Command" language="PQL" type="static">
+		<QueryStatement>
+			SELECT c.name
+			FROM CLASSES c
+			WHERE c.method.name IN ( "execute", "doExecute", "action", "doAction", "perform", "doPerform" )
+		</QueryStatement>
+	</Query>
+	<Query name="MethodsUsingPublicFieldsHelperQuery" language="PQL" type="static">
+		<QueryStatement>
+			SELECT m as method, m.uses as field 
+			FROM methods m 
+			WHERE m.uses IN 
+				(SELECT f FROM fields f 
+				WHERE f.isFinal=false AND f.accessibility="public" 
+				AND f.parentClass.accessibility ="public")
+		</QueryStatement>
+	</Query>
+	<Query name="MethodsUsingPublicFields" language="PQL" type="dynamic">
+		<QueryStatement>
+			SELECT mupf 
+			FROM $$MethodsUsingPublicFieldsHelperQuery mupf
+		 	WHERE mupf.method.parentClass.parentPackage != mupf.field.parentClass.parentPackage
+	 	</QueryStatement>
+	</Query>
+</QueryMappings>

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# The extractor requires JDK v1.5 to run.  You can set its location 
+# to be $TIGER_HOME if it's not in /usr/java/jdk1.5.0, as it is for the
+# beta2 release of TIGER.
+if [ x$TIGER_HOME = x ] ; then
+    TIGER_HOME=/usr/java/jdk1.5.0
+    # echo "Assuming JDK 1.5 is in " $TIGER_HOME
+fi
+echo using $TIGER_HOME as '$TIGER_HOME'
+
+# Add any common jar files of interest here.
+# The user can also specify a colon-delimited list in $SALSA_LIBS.
+J2EE_JAR=/opt/SUNWappserver/lib/j2ee.jar
+SALSA_LIBS=classes:$TIGER_HOME/lib/tools.jar:$J2EE_JAR:$SALSA_LIBS
+
+# The actual call to run the extractor
+$TIGER_HOME/bin/java -ea -classpath $SALSA_LIBS com.sun.tools.salsa.Main $*

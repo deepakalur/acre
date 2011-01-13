@@ -1,0 +1,9 @@
+// warning ensure the "natural ordering" of these classes 
+// are consistent between equals and CompareTo implementation
+define customOrderingClasses as
+select c 
+from classes c, c.methods m
+where c.implementsInterfaces.**.shortName="CompareTo" 
+and m.shortName = "equals";
+
+return customOrderingClasses;

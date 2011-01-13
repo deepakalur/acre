@@ -1,0 +1,5 @@
+DEFINE interfaces AS SELECT c FROM classes c where c.isInterface = true;;
+
+DEFINE daoInterfaces AS SELECT i FROM interfaces i WHERE ((i.shortName LIKE "%DAO%") OR (i.shortName LIKE "%DATAACCESS%"));
+
+return daoInterfaces;

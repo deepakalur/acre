@@ -1,0 +1,53 @@
+
+DEFINE javaClasses AS SELECT c from classes c
+WHERE  c.parentPackage.name LIKE "java.*";
+
+DEFINE javaxClasses AS SELECT c from classes c
+WHERE  c.parentPackage.name LIKE "javax.*";
+
+
+// Find All EJB Classes
+DEFINE ejbClasses1 AS SELECT c FROM classes c 
+WHERE c.extendsClass.**.name IN 
+    ("javax.ejb.EntityBean", "javax.ejb.SessionBean", "javax.ejb.EJBHome",
+     "javax.ejb.EJBLocalHome", "javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE ejbClasses2 AS SELECT c FROM classes c 
+WHERE c.implementsInterfaces.**.name IN 
+    ("javax.ejb.EntityBean", "javax.ejb.SessionBean", "javax.ejb.EJBHome",
+     "javax.ejb.EJBLocalHome", "javax.ejb.EJBLocalObject","javax.ejb.EJBObject");
+
+DEFINE allEJBClasses AS ejbClasses1 + ejbClasses2;
+
+// Find All Servlets, or interfaces extending basic servlet interfaces
+DEFINE servlets AS
+SELECT c FROM classes c
+WHERE c.extendsClass.**.name IN ("javax.servlet.http.HttpServlet", "javax.servlet.http.GenericServlet");
+
+// Find All Non Exception classes
+DEFINE nonExceptionClasses AS
+SELECT c FROM classes c
+WHERE c.extendsClass.**.name NOT IN ("java.lang.Throwable");
+
+// Find POJOs
+DEFINE pojos AS nonExceptionClasses - allEJBClasses ;
+DEFINE pojos AS pojos - servlets;
+
+//Find DAO
+DEFINE classesWithCRUDoperations AS SELECT c from classes c
+WHERE  c.methods.shortName RLIKE ".*[uU]pdate.*"
+    OR c.methods.shortName RLIKE ".*[dD]elete.*"
+    OR c.methods.shortName RLIKE ".*[lL]oad.*"
+    OR c.methods.shortName RLIKE ".*[iI]nsert.*";
+
+DEFINE classesWithJDBCCalls AS SELECT c from classes c
+WHERE  c.methods.calls.parentClass.name LIKE "java.sql%"
+         OR c.methods.calls.parentClass.name LIKE "java.sql%";
+
+DEFINE potentialDaoClasses AS classesWithCRUDoperations + classesWithJDBCCalls;
+
+
+DEFINE daoClasses AS potentialDaoClasses ^ pojos;
+
+
+return daoClasses;

@@ -1,0 +1,93 @@
+<project name="Salsa Fact Extractor" default="compile" basedir=".">
+  <description>The Salsa WSDL fact extractor</description>
+
+  <property name="src" value="${basedir}/src"/>
+  <property name="classes" value="${basedir}/classes"/>
+  <property location="../../lib" name="libdir"/>
+  <property name="jaxb.package" value="org/acre/jaxb"/>
+  <property name="soap.schema" value="schemas/Soap.xsd"/>
+  <property name="wsdl.schema" value="schemas/wsdl-1.1.xsd"/>
+  <property name="xsd.schema"  value="schemas/XMLSchema.xsd"/>
+
+  <path id="compile.classpath">
+    <pathelement location="${classes}"/>
+    <!--
+    <fileset dir="d:/jwsdp-1.4/jaxb/lib/">
+      <include name="*.jar"/>
+    </fileset>
+    <fileset dir="d:/jwsdp-1.4/jaxp/lib/endorsed/">
+      <include name="*.jar"/>
+    </fileset>
+    -->
+    <fileset dir="${libdir}">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+    <classpath refid="compile.classpath"/>
+  </taskdef>
+
+  <target name="init">
+    <available property="is_tiger" classname="java.lang.Enum"/>
+  </target>
+
+  <target name="generate.jaxb">
+     <mkdir dir="${src}/"/>
+     <xjc target="${src}"
+       binding="binding.xjb" extension="true"
+       catalog="catalog.cat"
+     >
+       <schema dir="${basedir}">
+           <include name="${xsd.schema}"/>
+           <include name="${soap.schema}"/>
+       </schema>
+       <depends dir="${basedir}">
+         <filename name="${soap.schema}"/>
+         <filename name="${wsdl.schema}"/>
+         <filename name="${xsd.schema}"/>
+       </depends>
+       <produces dir="${src}" includes="${jaxb.package}/**/*.java" />
+     </xjc>
+  </target>
+  
+  <target name="clean.jaxb">
+    <delete dir="${src}/${jaxb.package}"/>
+  </target>
+
+  <target name="compile" depends="generate.jaxb" description="compile the project">
+    <mkdir dir="${classes}"/>
+    <javac debug="yes" srcdir="${src}" destdir="${classes}" >
+      <classpath refid="compile.classpath"/>
+    </javac>
+    <copy todir='${classes}' >
+        <fileset dir='src' >
+          <include name='**/*.properties' />
+        </fileset>
+    </copy>
+  </target>
+
+  <target name="clean" description="delete generated files">
+    <delete dir="${classes}"/>
+  </target>
+
+  <target name="mike.test1" depends="compile" >
+        <java classname='com.sun.acre.wsdlimport.WSDL_FactExtractor' >
+          <classpath refid="compile.classpath"/>
+          <arg value='samples/AttendeeWebService.wsdl' />
+        </java>
+  </target>
+  <target name="mike.test2" depends="compile" >
+        <java classname='com.sun.acre.wsdlimport.WSDL_FactExtractor' >
+          <classpath refid="compile.classpath"/>
+          <arg value='samples/BidServiceService.wsdl' />
+        </java>
+  </target>
+  <target name="mike.test3" depends="compile" >
+        <java classname='com.sun.acre.wsdlimport.WSDL_FactExtractor' >
+          <classpath refid="compile.classpath"/>
+          <arg value='samples/GoogleSearch.wsdl' />
+        </java>
+  </target>
+
+</project>

@@ -1,0 +1,15 @@
+--DROP USER salsa;
+DELETE FROM mysql.user WHERE user = 'salsa';
+DROP DATABASE salsa;
+
+CREATE DATABASE salsa;
+
+
+GRANT ALL PRIVILEGES ON salsa.* TO 'salsa'@'localhost'
+IDENTIFIED BY 'salsa' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON salsa.* TO 'salsa'@'%'
+IDENTIFIED BY 'salsa' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+

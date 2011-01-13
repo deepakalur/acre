@@ -1,0 +1,23 @@
+include BusinessDelegate;
+include SessionFacade;
+//include Command;
+
+define cmd_Delegate_Callpaths as
+select p
+from JCallpath p
+where p.classes in (select d from BusinessDelegates d)
+and p.parentMethod.parentClass.parentPackage.shortName="helper";
+
+
+define cmd_SF_Callpaths as
+select p
+from JCallpath p
+where p.classes in (select f from SFInterfaces f)
+and p.parentMethod.parentClass.parentPackage.shortName="helper";
+
+
+define cmd_Delegate_SF_Callpaths as cmd_Delegate_Callpaths ^  cmd_SF_Callpaths ;
+
+define cmdCallpath_Violations as  cmd_SF_Callpaths - cmd_Delegate_SF_Callpaths;
+
+return cmdCallpath_Violations, cmd_SF_Callpaths, cmd_Delegate_Callpaths ;

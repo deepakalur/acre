@@ -1,0 +1,7 @@
+define recursiveCalls as
+select m.shortName, m.parentClass 
+from methods m 
+where m.calls = m ;
+
+
+return recursiveCalls;
